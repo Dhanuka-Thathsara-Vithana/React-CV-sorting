@@ -10,21 +10,23 @@ import TableChartTwoToneIcon from '@mui/icons-material/TableChartTwoTone';
 import DisplaySettingsTwoToneIcon from '@mui/icons-material/DisplaySettingsTwoTone';
 import { TextField, TextareaAutosize, Typography } from '@mui/material'
 import {Box, Grow} from '@mui/material';
+import Divider from '@mui/material/Divider';
+
 function SideBar() {
   return (
      <Box paddingLeft='0.5rem'>
-        <Grow in={true} {...(true ? { timeout: 1000 } : {})} style={{ transformOrigin: '0 0 0' }}>
+        <Grow in={true} {...(true ? { timeout: 600 } : {})} style={{ transformOrigin: '0 0 0' }}>
     <List
-    sx={{ paddingLeft: '1rem', borderRadius: '18px' ,width: '260px', height: '800px', bgcolor: '#5A96E3', color: 'black' }}
+    sx={{ paddingTop: '2rem', paddingLeft: '1rem', borderRadius: '18px' ,width: '260px', height: '800px', bgcolor: '#009BD6', color: 'white' }}
     aria-label="contacts"
   >
-        <Typography paddingTop='2rem' paddingBottom='1rem'>
+        <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
                 DASHBOARDS
         </Typography>
     <ListItem disablePadding>
       <ListItemButton>
         <ListItemIcon>
-          <StarIcon />
+          <StarIcon sx={{ color: '#A4EBF3'}} />
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItemButton>
@@ -32,7 +34,7 @@ function SideBar() {
     <ListItem disablePadding>
       <ListItemButton>
         <ListItemIcon>
-          <MmsTwoToneIcon />
+          <MmsTwoToneIcon sx={{ color: '#A4EBF3'}} />
         </ListItemIcon>
         <ListItemText primary="Messenger" />
       </ListItemButton>
@@ -40,28 +42,29 @@ function SideBar() {
     <ListItem disablePadding>
       <ListItemButton>
             <ListItemIcon>
-            <DisplaySettingsTwoToneIcon />
+            <DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3'}} />
             </ListItemIcon>
-        <ListItemText primary="Jobs" />
+        <ListItemText  color='#A4EBF3' primary="Jobs" />
       </ListItemButton>
     </ListItem>
-        <Typography paddingTop='2rem' paddingBottom='1rem'>
+       <Divider/>
+        <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
                 QUALIFICATION
         </Typography>
     <ListItem disablePadding>
       <ListItemButton>
         <ListItemIcon>
-        <TableChartTwoToneIcon />
+        <TableChartTwoToneIcon sx={{ color: '#A4EBF3'}} />
         </ListItemIcon>
-        <ListItemText primary="Educational" />
+        <ListItemText color='#A4EBF3' primary="Educational" />
       </ListItemButton>
     </ListItem>
     <ListItem disablePadding>
       <ListItemButton>
         <ListItemIcon>
-         <TableChartTwoToneIcon />
+         <TableChartTwoToneIcon sx={{ color: '#A4EBF3'}} />
         </ListItemIcon>
-        <ListItemText primary="Work Experience" />
+        <ListItemText  color='#A4EBF3' primary="Work Experience" />
       </ListItemButton>
     </ListItem>
   </List>
