@@ -13,7 +13,7 @@ import Divider from '@mui/material/Divider';
 
 interface Props {
     message: string,
-    icon: string
+    icon: JSX.Element
 }
 
 function ListItemCom({message,icon }: Props) {

@@ -24,54 +24,17 @@ function SideBar() {
         <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
                 DASHBOARDS
         </Typography>
-      <ListItemCom message='Dashboard' icon={ < StarIcon sx={{ color: '#A4EBF3'}} />} icolor='#A4EBF3'/>  
-    <ListItem disablePadding>
-      <ListItemButton>
-        <ListItemIcon>
-          <StarIcon sx={{ color: '#A4EBF3'}} />
-        </ListItemIcon>
-        <ListItemText primary="Dashboard" />
-      </ListItemButton>
-    </ListItem>
-
-    <ListItem disablePadding>
-      <ListItemButton>
-        <ListItemIcon>
-          <MmsTwoToneIcon sx={{ color: '#A4EBF3'}} />
-        </ListItemIcon>
-        <ListItemText primary="Messenger" />
-      </ListItemButton>
-    </ListItem>
-
-    <ListItem disablePadding>
-      <ListItemButton>
-            <ListItemIcon>
-            <DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3'}} />
-            </ListItemIcon>
-        <ListItemText  color='#A4EBF3' primary="Jobs" />
-      </ListItemButton>
-    </ListItem>
+      <ListItemCom message='Dashboard' icon={ < StarIcon sx={{ color: '#A4EBF3'}} />} /> 
+      <ListItemCom message='Messenger' icon={ <MmsTwoToneIcon sx={{ color: '#A4EBF3'}} />} /> 
+      <ListItemCom message='Jobs' icon={ <DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3'}} />} /> 
 
        <Divider/>
         <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
                 QUALIFICATION
         </Typography>
-    <ListItem disablePadding>
-      <ListItemButton>
-        <ListItemIcon>
-        <TableChartTwoToneIcon sx={{ color: '#A4EBF3'}} />
-        </ListItemIcon>
-        <ListItemText color='#A4EBF3' primary="Educational" />
-      </ListItemButton>
-    </ListItem>
-    <ListItem disablePadding>
-      <ListItemButton>
-        <ListItemIcon>
-         <TableChartTwoToneIcon sx={{ color: '#A4EBF3'}} />
-        </ListItemIcon>
-        <ListItemText  color='#A4EBF3' primary="Work Experience" />
-      </ListItemButton>
-    </ListItem>
+        <ListItemCom message='Educational' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3'}} />}/> 
+        <ListItemCom message='Work Experience' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3'}} />}/> 
+
   </List>
         </Grow>
     </Box>
