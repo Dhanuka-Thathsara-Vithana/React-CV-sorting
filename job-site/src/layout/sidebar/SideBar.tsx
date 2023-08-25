@@ -11,6 +11,7 @@ import DisplaySettingsTwoToneIcon from '@mui/icons-material/DisplaySettingsTwoTo
 import { TextField, TextareaAutosize, Typography } from '@mui/material'
 import {Box, Grow} from '@mui/material';
 import Divider from '@mui/material/Divider';
+import ListItemCom from './ListItem';
 
 function SideBar() {
   return (
@@ -23,6 +24,7 @@ function SideBar() {
         <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
                 DASHBOARDS
         </Typography>
+      <ListItemCom message='Dashboard' icon={ < StarIcon sx={{ color: '#A4EBF3'}} />} icolor='#A4EBF3'/>  
     <ListItem disablePadding>
       <ListItemButton>
         <ListItemIcon>
@@ -31,6 +33,7 @@ function SideBar() {
         <ListItemText primary="Dashboard" />
       </ListItemButton>
     </ListItem>
+
     <ListItem disablePadding>
       <ListItemButton>
         <ListItemIcon>
@@ -39,6 +42,7 @@ function SideBar() {
         <ListItemText primary="Messenger" />
       </ListItemButton>
     </ListItem>
+
     <ListItem disablePadding>
       <ListItemButton>
             <ListItemIcon>
@@ -47,6 +51,7 @@ function SideBar() {
         <ListItemText  color='#A4EBF3' primary="Jobs" />
       </ListItemButton>
     </ListItem>
+
        <Divider/>
         <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
                 QUALIFICATION

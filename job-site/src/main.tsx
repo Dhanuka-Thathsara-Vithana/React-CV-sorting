@@ -9,7 +9,7 @@ import NavBar from './layout/navbar/NavBar.tsx'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <StyledEngineProvider injectFirst>
-    <NavBar/>
+      <SideBar/>
     </StyledEngineProvider>
   </React.StrictMode>
 )
