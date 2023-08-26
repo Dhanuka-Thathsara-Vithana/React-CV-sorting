@@ -8,7 +8,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 function NavBar() {
   return (
-    <Box borderRadius='18'  paddingLeft='3rem' sx={{ width: '1200px' }}>
+    <Box borderRadius='18'  paddingLeft='1rem' sx={{ width: '1840px' }}>
     <AppBar position="static" sx={{bgcolor: '#19A7CE'}}>
       <Toolbar>
         <Typography

@@ -15,7 +15,7 @@ import ListItemCom from './ListItem';
 
 function SideBar() {
   return (
-     <Box paddingLeft='0.5rem' paddingTop='1rem'>
+     <Box paddingLeft='1rem' paddingTop='1rem'>
         <Grow in={true} {...(true ? { timeout: 600 } : {})} style={{ transformOrigin: '0 0 0' }}>
     <List
     sx={{ paddingTop: '2rem', paddingLeft: '1rem', borderRadius: '18px' ,width: '260px', height: '800px', bgcolor: '#009BD6', color: 'white' }}
