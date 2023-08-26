@@ -6,7 +6,7 @@ import {
     useTheme,
     Grow
   } from '@mui/material';
-  import Counter from './counter';
+  import Counter from './Counter';
   
 
 function UserPerformance() {
