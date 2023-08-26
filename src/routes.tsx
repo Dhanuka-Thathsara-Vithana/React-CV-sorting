@@ -1,4 +1,4 @@
-const { createBrowserRouter } = require("react-router-dom");
+import { createBrowserRouter } from "react-router-dom";
 import NavBar from './layout/navbar/NavBar'
 import SideBar from './layout/sidebar/SideBar'
 
