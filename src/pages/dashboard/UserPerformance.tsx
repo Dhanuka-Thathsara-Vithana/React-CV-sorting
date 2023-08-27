@@ -11,7 +11,7 @@ import {
 
 function UserPerformance() {
   return (
-    <Card>
+    <Card sx={{borderRadius: '15px'}}>
     <Box p={4}>
         <Typography
           sx={{

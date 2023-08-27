@@ -73,7 +73,7 @@ export default function Calendar() {
   };
 
   return (
-    <Card>
+    <Card sx={{borderRadius: '15px', boxShadow: 3}}>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateCalendar
         loading={isLoading}

@@ -1,4 +1,4 @@
-import { Container, Grid } from '@mui/material';
+import { Box, Container, Grid } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import Calander from './Calander';
 import UserPerformance from './UserPerformance';
@@ -8,20 +8,24 @@ function Dashboard() {
     <>
     <Container maxWidth="lg">
       <Grid
-        width='1800px'
+        width='1500px'
         paddingTop='20px'
         container
         direction="row"
         justifyContent="center"
         alignItems="stretch"
         spacing={5}
-        paddingLeft='23rem'
+        
       >
         <Grid item lg={8} xs={12}>
-        <UserPerformance/>
+            <Box sx={{boxShadow: 3}}>
+                <UserPerformance/>
+            </Box>
         </Grid>
         <Grid item lg={3} xs={12}>
-          <Calander/>
+            <Box sx={{boxShadow: 3}}>
+            <Calander/>
+            </Box>
         </Grid>
         <Grid item lg={25} xs={12}>
         {/* <JobPostGrid/> */}

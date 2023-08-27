@@ -1,10 +1,12 @@
-import { Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import React from 'react'
 import NavBar from './navbar/NavBar'
 import { Outlet } from 'react-router-dom'
 
+
 function Layout() {
   return (
+    <Box bgcolor='white' >
     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={30}>
             <NavBar/>
@@ -13,6 +15,7 @@ function Layout() {
              <Outlet/>
         </Grid>
     </Grid>
+    </Box>
   )
 }
 

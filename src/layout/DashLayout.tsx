@@ -5,41 +5,35 @@ import { Outlet } from 'react-router-dom'
 
 function DashLayout() {
   return (
-    <>
-    <Box
-        sx={{
-          flex: 1,
-          height: '100%'
-        }}
-      >
-         <SideBar/>
-        <Box
-          sx={{
-            position: 'relative',
-            zIndex: 5,
-            display: 'block',
-            flex: 1,
-            pt: '110px',
-          }}
-        >
-          <Box display="block">
-            <Outlet />
-          </Box>
-        </Box>
-      </Box>
-    </>
+    // <>
+    // <Box>
+    //      <SideBar/>
+    //     <Box>
+    //       <Box >
+    //         <Outlet />
+    //       </Box>
+    //     </Box>
+    //   </Box>
+    // </>
 
 
-//     <Box sx={{width: '4500px'}}>
-//     <Grid>
-//   <Grid item xs={3}>
-//      <SideBar/>
-//   </Grid>
-//   <Grid item xs={3}>
-//      <Outlet/>
-//   </Grid>
-// </Grid>
-// </Box>
+    <Box >
+        <Grid  width='100px'
+        paddingTop='1rem'
+        container
+        direction="row"
+        alignItems="stretch"
+        spacing={5}>
+            <Grid item xs={3}>
+                <SideBar/>
+            </Grid>
+            <Grid item xs={3}>
+                <Box paddingLeft='250px'>
+                <Outlet/>
+                </Box>
+            </Grid>
+        </Grid>
+    </Box>
   )
 }
 
