@@ -74,7 +74,13 @@ export default function Calendar() {
 
   return (
    
-    <Card sx={{borderRadius: '20px', boxShadow: 3}}>
+    <Card sx={{borderRadius: '20px', boxShadow: 3,
+    transition: "transform 0.15s ease-in-out",
+    '&:hover': {
+      CSSTransition: '10s',
+      transform: "scale3d(1.02, 1.02, 1)"
+    }
+}}>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateCalendar
         loading={isLoading}

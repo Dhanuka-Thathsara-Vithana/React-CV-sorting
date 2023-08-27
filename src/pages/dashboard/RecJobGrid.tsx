@@ -41,7 +41,13 @@ const jobs = [
 
 function RecJobGrid() {
   return (
-    <Card sx={{borderRadius: '15px'}} >
+    <Card sx={{borderRadius: '15px',
+        transition: "transform 0.15s ease-in-out",
+        '&:hover': {
+        CSSTransition: '10s',
+        transform: "scale3d(1.02, 1.02, 1)"
+    }
+    }} >
     <Box p={5} paddingLeft='4rem' paddingTop='1.2rem'>
         <Typography
           sx={{

@@ -1,6 +1,7 @@
 import { Card, Grid, Grow, Typography } from '@mui/material'
 import React from 'react'
 import Counter from './Counter'
+import { transform } from 'framer-motion'
 
 interface Props {
     start: number,
@@ -22,14 +23,17 @@ function PerformanceCard({start, end, title, b1, b2}:Props) {
           backgroundColor: b1,
           borderRadius: '12px',
           textAlign: 'center',
+          transition: "transform 0.15s ease-in-out",
           '&:hover': {
             backgroundColor: b2,
-            CSSTransition: '0.8s',
-            opacity: [0.9, 0.8, 0.7]
+            CSSTransition: '10s',
+            opacity: [0.9, 0.8, 0.7],
+            transform: "scale3d(1.02, 1.02, 1)"
           },
           ':hover': {
             boxShadow: 20
           }
+         
         }}
       >
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }} 

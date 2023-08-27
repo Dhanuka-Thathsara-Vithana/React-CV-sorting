@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 interface JobDesProps{
   id: string,
-  Img1: string,
+  Img1: string
   Logo: string,
   Position: string,
   ComName: string,
@@ -49,17 +49,17 @@ function JobDec() {
       return () => controller.abort();
    
   }, [])
-  //  console.log(jobDes);
+    console.log();
  return (
     <>
-    {jobDes.map((jobDes) => (
+   { jobDes &&
       <JobDecCard 
         id={jobDes.id} img1={jobDes.Img1} logo={jobDes.Logo} position={jobDes.Position} comName={jobDes.Des1}
         rating={jobDes.Rating} reviews={jobDes.Reviews} company={jobDes.Company} aboutCom={jobDes.AboutCompany}
         location={jobDes.Location} dec2={jobDes.Des1} duration={jobDes.Duration}
         jobDec={jobDes.JobDec} Responsibilities={jobDes.Responsibilities}
         additionalInformation={jobDes.AdditionalInformation} qualifications={jobDes.Qualifications} time={""} technology={undefined}    />
-    ))
+  
 }
   </>
  )

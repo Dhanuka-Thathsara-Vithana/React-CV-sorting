@@ -12,7 +12,13 @@ import PerformanceCard from './PerformanceCard';
 
 function UserPerformance() {
   return (
-    <Card sx={{borderRadius: '15px',opacity: '0.8'}}>
+    <Card sx={{borderRadius: '15px',opacity: '0.8',
+       transition: "transform 0.16s ease-in-out",
+    '&:hover': {
+      CSSTransition: '10s',
+      transform: "scale3d(1.03, 1.03, 1)"
+    }
+    }}>
     <Box p={4} paddingLeft='5rem' >
         <Typography
           sx={{
@@ -24,7 +30,7 @@ function UserPerformance() {
         >
           Dhanuka Perfomance
         </Typography>
-        <Box>
+        <Box >
         <Grid container spacing={20}>
           
         <PerformanceCard start={0} end={500} title={'Avalible Jobs'} b1={'#D1E9FC'} b2={'#79c2fc'}/>
