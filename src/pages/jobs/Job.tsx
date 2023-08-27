@@ -6,8 +6,7 @@ import {
   useTheme,
   Grow
 } from '@mui/material';
-import JobCard from 'src/content/dashboards/Crypto/JobCard';
-import JobSt from './JobSt';
+import JobCard from './JobCard';
 import { useEffect, useState } from 'react';
 import axios, { CanceledError } from 'axios';
 
@@ -60,7 +59,7 @@ const handelId = (id: number) => {
          
            {jobCard.map((job) => (
              <Grid key={job._id} item xs={12} md={4} lg={3.4}>
-               <JobSt
+               <JobCard
                   id={job._id}
                   image={job.Image}
                   title={job.Title}
