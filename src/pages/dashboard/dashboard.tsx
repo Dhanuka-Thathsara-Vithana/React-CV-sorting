@@ -13,7 +13,7 @@ function Dashboard() {
         paddingTop='20px'
         container
         direction="row"
-        justifyContent="center"
+        //justifyContent="center"
         alignItems="stretch"
         spacing={5}
         

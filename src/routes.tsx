@@ -5,6 +5,7 @@ import Layout from "./layout/Layout";
 import DashLayout from "./layout/DashLayout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Jobs from "./pages/jobs/Job";
+import JobDec from "./pages/jobs/JobDec/JobDec";
 
 const router = createBrowserRouter([
     { path: '/',
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
           element: <DashLayout/>,
           children: [
             { path: 'dashboard',  element: <Dashboard/> },
-            { path: 'jobs',  element: <Jobs/> }
+            { path: 'jobs',  element: <Jobs/> },
+            { path: 'jobs/:id', element: <JobDec/> }
           ]
         }
       ]

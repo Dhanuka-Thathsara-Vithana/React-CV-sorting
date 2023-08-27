@@ -28,7 +28,7 @@ function DashLayout() {
                 <SideBar/>
             </Grid>
             <Grid item xs={3}>
-                <Box paddingLeft='250px'>
+                <Box paddingLeft='350px' paddingTop='1rem'>
                 <Outlet/>
                 </Box>
             </Grid>

@@ -44,8 +44,8 @@ const handelId = (id: number) => {
  }
 
   return (
-    <Card>
-    <Box p={5}>
+    <Card sx={{width: '1200px', paddingLeft: '4rem', borderRadius: '15px'}}>
+    <Box p={5} paddingTop='3rem'>
         <Typography
           sx={{
             pb: 3
@@ -55,7 +55,7 @@ const handelId = (id: number) => {
           All Jobs
         </Typography>
            
-        <Grid container spacing={2.5}>
+        <Grid container spacing={25}>
          
            {jobCard.map((job) => (
              <Grid key={job._id} item xs={12} md={4} lg={3.4}>
@@ -67,7 +67,7 @@ const handelId = (id: number) => {
                   rating={job.Rating}
                   des1={job.Des1}
                   des2={job.Des2}
-                  handelClick={handelId}
+              
                />
             </Grid>
             ))}

@@ -11,7 +11,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import Stack from '@mui/material/Stack';
 import Rating from '@mui/material/Rating';
 import { Button, Grid, Grow } from '@mui/material';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { Link, NavLink as RouterLink, useNavigate } from 'react-router-dom';
 
 interface Props {
    id: number,
@@ -20,12 +20,12 @@ interface Props {
   subheader: string,
   rating: number,
   des1: string,
-  des2: string,
-  handelClick: (id: number) => void;
-    
+  des2: string
+  
 }
 
-export default function JobCard({id, image, title, subheader, rating, des1, des2, handelClick}: Props) {
+export default function JobCard({id, image, title, subheader, rating, des1, des2}: Props) {
+    const navigate = useNavigate();
 
   return (
     <Grow in={true} {...(true ? { timeout: 1000 } : {})} style={{ transformOrigin: '0 0 0' }} >   
@@ -68,13 +68,10 @@ export default function JobCard({id, image, title, subheader, rating, des1, des2
           <Grid item>
             <Button
               
-             onClick={() => handelClick(id)}
-              disableRipple
-              component={RouterLink}
-              to="/dashboards/jobDec"
+             onClick={() => navigate(`/jobs/${id}`)}
              sx={{ bgcolor: '#09bd0c', 
                 '&:hover': {
-                    backgroundColor: '#fa0505',
+                    backgroundColor: '#4EF037',
                     opacity: [0.9, 0.8, 0.7]
                   },
                 color: 'white', width: '120px' }}>View More</Button>
