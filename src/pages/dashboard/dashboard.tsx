@@ -8,18 +8,20 @@ function Dashboard() {
     <>
     <Container maxWidth="lg">
       <Grid
+        width='1800px'
         paddingTop='20px'
         container
         direction="row"
         justifyContent="center"
         alignItems="stretch"
-        spacing={3}
+        spacing={5}
+        paddingLeft='23rem'
       >
         <Grid item lg={8} xs={12}>
         <UserPerformance/>
         </Grid>
         <Grid item lg={3} xs={12}>
-          {/* <Calander/> */}
+          <Calander/>
         </Grid>
         <Grid item lg={25} xs={12}>
         {/* <JobPostGrid/> */}
