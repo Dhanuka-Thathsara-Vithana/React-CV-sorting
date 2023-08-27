@@ -22,7 +22,7 @@ interface Props {
   des2: string
 }
 
-export default function JobCard({image, title, subheader, rating, des1, des2}: Props) {
+export default function RecJobCard({image, title, subheader, rating, des1, des2}: Props) {
 
   return (
     <Card sx={{ width: '350px', height: '410px' , borderRadius: '12px', bgcolor: '#cae5fa'  }}>
@@ -63,7 +63,9 @@ export default function JobCard({image, title, subheader, rating, des1, des2}: P
           </Grid>
           <Grid item>
             <Button 
-            sx={{ bgcolor: '#09bd0c', 
+            sx={{ 
+                borderRadius: '10px',
+                bgcolor: '#09bd0c', 
                 '&:hover': {
                     backgroundColor: '#fa0505',
                     opacity: [0.9, 0.8, 0.7]

@@ -2,6 +2,7 @@ import { Box, Container, Grid, Grow } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import Calander from './Calander';
 import UserPerformance from './UserPerformance';
+import RecJobGrid from './RecJobGrid';
 
 function Dashboard() {
   return (
@@ -31,8 +32,12 @@ function Dashboard() {
                 </Box>
             </Grow>
         </Grid>
-        <Grid item lg={25} xs={12}>
-        {/* <JobPostGrid/> */}
+        <Grid item lg={10.1} xs={12}>
+          <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 1600 } : {})}>   
+            <Box borderRadius ='15px' sx={{boxShadow: 3}}>
+            <RecJobGrid/>
+            </Box>
+          </Grow>  
         </Grid>
         <Grid item xs={12}>
           {/* <WatchList /> */}
