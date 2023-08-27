@@ -27,7 +27,7 @@ function SideBar() {
         <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
                 QUALIFICATION
         </Typography>
-        <ListItemCom message='Educational' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={''}/> 
+        <ListItemCom message='Educational' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'education'}/> 
         <ListItemCom message='Work Experience' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={''}/> 
 
   </List>

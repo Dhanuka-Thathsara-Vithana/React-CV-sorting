@@ -6,6 +6,7 @@ import DashLayout from "./layout/DashLayout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Jobs from "./pages/jobs/Job";
 import JobDec from "./pages/jobs/JobDec/JobDec";
+import Education from "./pages/education/Education";
 
 const router = createBrowserRouter([
     { path: '/',
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
           children: [
             { path: 'dashboard',  element: <Dashboard/> },
             { path: 'jobs',  element: <Jobs/> },
-            { path: 'jobs/:id', element: <JobDec/> }
+            { path: 'jobs/:id', element: <JobDec/> },
+            { path: 'education', element: <Education/> }
           ]
         }
       ]

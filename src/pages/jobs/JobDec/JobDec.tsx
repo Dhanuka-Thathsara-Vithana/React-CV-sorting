@@ -28,6 +28,7 @@ function JobDec() {
 
   const [jobDes, setJobDes] = useState<JobDesProps[]>([]);
   const [error, setError] = useState('');
+  
   useEffect(() => {
     // const savedId = localStorage.getItem('jobCardId');
     // if(savedId) { const parsedId = JSON.parse(savedId); 
