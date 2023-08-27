@@ -4,7 +4,7 @@ import SideBar from './layout/sidebar/SideBar'
 import Layout from "./layout/Layout";
 import DashLayout from "./layout/DashLayout";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Jobs from "./pages/jobs/jobs";
+import Jobs from "./pages/jobs/Job";
 
 const router = createBrowserRouter([
     { path: '/',

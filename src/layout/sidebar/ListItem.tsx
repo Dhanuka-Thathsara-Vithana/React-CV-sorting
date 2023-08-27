@@ -12,7 +12,7 @@ import {Box, Grow} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { MouseEventHandler } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 interface Props {
     message: string,
     icon: JSX.Element,
@@ -20,11 +20,17 @@ interface Props {
 }
 
 
-
 function ListItemCom({message,icon,link }: Props) {
+  const navigate = useNavigate();
+  
+  const handelClick = () => {
+      navigate(`/${link}`)
+  }
+  
+  
   return (
    <ListItem disablePadding>
-      <ListItemButton  >
+      <ListItemButton onClick={handelClick} >
           <ListItemIcon>
             {icon}
         </ListItemIcon>
