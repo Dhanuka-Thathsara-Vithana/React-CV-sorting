@@ -11,18 +11,20 @@ import {
 
 function UserPerformance() {
   return (
-    <Card sx={{borderRadius: '15px'}}>
-    <Box p={4}>
+    <Card sx={{borderRadius: '15px',opacity: '0.8'}}>
+    <Box p={4} paddingLeft='5rem' >
         <Typography
           sx={{
             pb: 3
           }}
-          variant="h4"
+          variant="h5"
+          fontFamily='sans-serif'
+          fontStyle='oblique'
         >
           Dhanuka Perfomance
         </Typography>
-         
-        <Grid container spacing={23}>
+        <Box>
+        <Grid container spacing={20}>
           <Grid item xs={12} md={4} lg={3}>
             <Grow in={true}>
             <Card
@@ -48,7 +50,7 @@ function UserPerformance() {
               >
                 <h4>Avalible Jobs</h4>
               </Typography>
-              <Typography variant="h3"><Counter start={0} end={500}/></Typography>
+              <Typography variant="h4"><Counter start={0} end={500}/></Typography>
             </Card>
           </Grow>
         </Grid>
@@ -78,11 +80,11 @@ function UserPerformance() {
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         <h4>Applied Jobs</h4>
       </Typography>
-      <Typography variant="h3"><Counter start={0} end={10}/></Typography>
+      <Typography variant="h4"><Counter start={0} end={10}/></Typography>
     </Card>
   </Grow>
-</Grid>
-<Grid item xs={12} md={4} lg={3}>
+        </Grid>
+        <Grid item xs={12} md={4} lg={3}>
   <Grow
     in={true}
     style={{ transformOrigin: '0 0 0' }}
@@ -109,11 +111,12 @@ function UserPerformance() {
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         <h4>Recommended Jobs</h4>
       </Typography>
-      <Typography variant="h3"><Counter start={0} end={250}/></Typography>
+      <Typography variant="h4"><Counter start={0} end={250}/></Typography>
     </Card>
   </Grow>
-</Grid>
         </Grid>
+        </Grid>
+        </Box> 
         </Box>
    
 </Card>

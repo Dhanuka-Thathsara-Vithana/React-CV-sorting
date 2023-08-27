@@ -1,12 +1,19 @@
-import { Box, Grid } from '@mui/material'
+import { Box, Grid, Paper } from '@mui/material'
 import React from 'react'
 import NavBar from './navbar/NavBar'
 import { Outlet } from 'react-router-dom'
+import backImg from '../assets/image.jpg'
 
+const styles = {
+    paperContainer: {
+        backgroundImage: `url(${backImg})`
+    }
+};
 
 function Layout() {
   return (
-    <Box bgcolor='white' >
+    <Paper style={styles.paperContainer}>
+    <Box >
     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={30}>
             <NavBar/>
@@ -16,6 +23,7 @@ function Layout() {
         </Grid>
     </Grid>
     </Box>
+    </Paper>
   )
 }
 

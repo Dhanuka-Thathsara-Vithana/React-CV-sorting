@@ -6,7 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { DayCalendarSkeleton } from '@mui/x-date-pickers/DayCalendarSkeleton';
-import { Card } from '@mui/material';
+import { Card, Grow } from '@mui/material';
 
 
 function fakeFetch(date: Dayjs, { signal }: { signal: AbortSignal }) {
@@ -73,7 +73,8 @@ export default function Calendar() {
   };
 
   return (
-    <Card sx={{borderRadius: '15px', boxShadow: 3}}>
+   
+    <Card sx={{borderRadius: '20px', boxShadow: 3}}>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateCalendar
         loading={isLoading}
@@ -90,5 +91,6 @@ export default function Calendar() {
       />
     </LocalizationProvider>
     </Card>
+   
   );
 }
