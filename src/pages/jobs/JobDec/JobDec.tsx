@@ -28,7 +28,6 @@ function JobDec() {
 
   const [jobDes, setJobDes] = useState<JobDesProps[]>([]);
   const [error, setError] = useState('');
-
   useEffect(() => {
     // const savedId = localStorage.getItem('jobCardId');
     // if(savedId) { const parsedId = JSON.parse(savedId); 
@@ -40,7 +39,7 @@ function JobDec() {
       .post<JobDesProps[]>('http://localhost:5000/api/jobDescription', params)
       .then((res) => {
       setJobDes(res.data)
-      console.log(res.data)
+      // console.log(res.data)
       })
       .catch(err => {
         if(err instanceof CanceledError) return;
@@ -49,7 +48,7 @@ function JobDec() {
       return () => controller.abort();
    
   }, [])
-    console.log();
+    console.log(jobDes);
  return (
     <>
    { jobDes &&
@@ -59,8 +58,7 @@ function JobDec() {
         location={jobDes.Location} dec2={jobDes.Des1} duration={jobDes.Duration}
         jobDec={jobDes.JobDec} Responsibilities={jobDes.Responsibilities}
         additionalInformation={jobDes.AdditionalInformation} qualifications={jobDes.Qualifications} time={""} technology={undefined}    />
-  
-}
+  }
   </>
  )
 }
