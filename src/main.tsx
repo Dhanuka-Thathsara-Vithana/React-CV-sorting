@@ -7,6 +7,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import NavBar from './layout/navbar/NavBar.tsx'
 import { RouterProvider } from 'react-router-dom'
 import router from './routes.tsx'
+import Dashboard from './pages/dashboard/dashboard.tsx'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

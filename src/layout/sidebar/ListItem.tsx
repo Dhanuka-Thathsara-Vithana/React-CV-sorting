@@ -10,17 +10,22 @@ import DisplaySettingsTwoToneIcon from '@mui/icons-material/DisplaySettingsTwoTo
 import { TextField, TextareaAutosize, Typography } from '@mui/material'
 import {Box, Grow} from '@mui/material';
 import Divider from '@mui/material/Divider';
+import { MouseEventHandler } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 
 interface Props {
     message: string,
-    icon: JSX.Element
+    icon: JSX.Element,
+    link: string
 }
 
-function ListItemCom({message,icon }: Props) {
+
+
+function ListItemCom({message,icon,link }: Props) {
   return (
    <ListItem disablePadding>
-      <ListItemButton>
-        <ListItemIcon>
+      <ListItemButton  >
+          <ListItemIcon>
             {icon}
         </ListItemIcon>
         <ListItemText primary={message} />

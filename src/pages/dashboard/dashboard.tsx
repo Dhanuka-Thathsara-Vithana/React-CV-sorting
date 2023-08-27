@@ -1,13 +1,11 @@
 import { Container, Grid } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import Calander from './Calander';
+import UserPerformance from './UserPerformance';
 
-function dashboard() {
+function Dashboard() {
   return (
     <>
-    <Helmet>
-      <title>User Dashboard</title>
-    </Helmet>
     <Container maxWidth="lg">
       <Grid
         paddingTop='20px'
@@ -21,10 +19,10 @@ function dashboard() {
         <UserPerformance/>
         </Grid>
         <Grid item lg={3} xs={12}>
-          <Calander/>
+          {/* <Calander/> */}
         </Grid>
         <Grid item lg={25} xs={12}>
-        <JobPostGrid/>
+        {/* <JobPostGrid/> */}
         </Grid>
         <Grid item xs={12}>
           {/* <WatchList /> */}
@@ -36,4 +34,4 @@ function dashboard() {
   )
 }
 
-export default dashboard
+export default Dashboard;
