@@ -52,7 +52,7 @@ function RecJobGrid() {
           Recomemded Jobs
         </Typography>
         <Grow in={true} {...(true ? { timeout: 800 } : {})} >   
-        <Grid container spacing={9}>
+        <Grid container spacing={12}>
          
            {jobs.map((job) => (
              <Grid key={job._id} item xs={12} md={4} lg={3.7}>
