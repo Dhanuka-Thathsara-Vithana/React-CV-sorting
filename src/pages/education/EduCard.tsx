@@ -3,56 +3,97 @@ import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import EduCardComponent from './EduCardComponent';
+import EduDatePicker from './EduDatePicker';
+
+import axios from 'axios';
+import { FieldValues, useForm } from 'react-hook-form';
+import dayjs, { Dayjs } from 'dayjs';
+import { useState } from 'react';
+
 
 function EduCard() {
-  return (
+  const [fromDate, setFromDate] = useState<Dayjs | null>(null)
+  const [toDate, setToDate] = useState<Dayjs | null>(null)
+  
+  const handelFrom = (newValue: Dayjs | null) => {
+      setFromDate(newValue);
+    
+  }
+
+  const handelTo = (newValue: Dayjs | null) => {
+    setToDate(newValue);
+   
+  }
+
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
+  const onSubmit = (data: FieldValues) => {
+       if(fromDate) {
+         const from = fromDate.$d
+         const to = toDate.$d 
+         const newData = {...data, from, to}
+       console.log(newData);
+       }
+       
+      // axios.post('http://localhost:5000/api/education',  data )
+      // .then(res => 
+      //  console.log(res.data) )
+      }
+    console.log(fromDate);
+return (
     <Card sx={{
         alignItems: 'center',
         paddingLeft: '2rem'
        }}>
-       
+         <form onSubmit={handleSubmit(onSubmit)}>
         <Box p={1} width='740px' sx={{borderRadius: '15px'}}>
            <Typography variant='subtitle1'>
              Fields marked with * are required.
            </Typography>
            <Grid container spacing={2} paddingTop='2rem'>
-               <EduCardComponent Md={15} label={'Institution'}/>
-               <EduCardComponent Md={6} label={'Major'}/>
-               <EduCardComponent Md={6} label={'Degree'}/>
+               <EduCardComponent Md={15} label={'Institution'} id={'institution'} objRef={register('institution')}/>
+               <EduCardComponent Md={6} label={'Major'} id={'major'} objRef={register('major')} />
+               <EduCardComponent Md={6} label={'Degree'} id={'degree'} objRef={register('degree')} />
 
                <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
                <Typography paddingTop='1rem' >
                  Description
                </Typography>
                
-               <TextField 
-                  id="outlined-multiline-static"
+               <TextField
+                  { ...register('description')}
+                  id='description' 
                   multiline
                   rows={4}
+                  InputProps={{
+                    style: {
+                        borderRadius: "10px",
+                        fontFamily: "Roboto"
+                    }}}
                 //  defaultValue="Default Value"
                   fullWidth
                 />
                </Grid>
                <Grid sx={{ padding: '1rem' }} item xs={6} md={6} >
-                 <Typography>From</Typography>
-                  <DatePicker/>
+                  <EduDatePicker label={'From'} handelChange={handelFrom}/>
                </Grid>
                <Grid sx={{ padding: '1rem' }} item xs={6} md={6}>
-                  <Typography>To</Typography>
-                  <DatePicker/>
+                  <EduDatePicker label={'To'} handelChange={handelTo}/>
                </Grid>
                <Grid item xs={6} md={15}>
-               <FormControlLabel control={<Checkbox />} label="I currently attend" />
+               <FormControlLabel control={<Checkbox 
+                  { ...register('check')}
+                  id='check' 
+               />} label="I currently attend" />
                </Grid>
                <Grid item xs={6} md={1.7} >
-                 <Button sx={{borderRadius: '12px'}} variant="outlined">cancel</Button>
+                 <Button  sx={{borderRadius: '12px'}} variant="outlined">cancel</Button>
                </Grid>
                <Grid item xs={6} md={1.5}>
-                 <Button  variant="contained" sx={{ width: '95px',borderRadius: '12px'}}>Save</Button>
+                 <Button type='submit'  variant="contained" sx={{ width: '95px',borderRadius: '12px'}}>Save</Button>
                </Grid>
            </Grid>
         </Box>
-     
+         </form>
        </Card>
   )
 }

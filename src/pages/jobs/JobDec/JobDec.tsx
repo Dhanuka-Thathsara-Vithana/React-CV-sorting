@@ -26,9 +26,9 @@ interface JobDesProps{
 function JobDec() {
   const params = useParams();
 
-  const [jobDes, setJobDes] = useState<JobDesProps[]>([]);
+  const [jobDes, setJobDes] = useState<JobDesProps[] | null>([]);
   const [error, setError] = useState('');
-  
+
   useEffect(() => {
     // const savedId = localStorage.getItem('jobCardId');
     // if(savedId) { const parsedId = JSON.parse(savedId); 
