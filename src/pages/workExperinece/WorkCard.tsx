@@ -34,7 +34,7 @@ function WorkCard({handelClick}: Props) {
          const to = toDate.toString() 
          const newData = {...data, from, to}
          console.log(newData);
-      axios.post('http://localhost:5000/api/education', newData )
+      axios.post('http://localhost:5000/api/work', newData )
       .then(res => 
        console.log(res.data) )
        }
@@ -56,7 +56,7 @@ function WorkCard({handelClick}: Props) {
            <Grid container spacing={2} paddingTop='2rem'>
               <CardComponent Md={6} label={'Title'}  objRef={register('Title')}/>
               <CardComponent Md={6} label={'Company'}  objRef={register('Company')}/>
-              <CardComponent Md={15} label={'Office Location'}  objRef={register('Office Location')}/>
+              <CardComponent Md={15} label={'OfficeLocation'}  objRef={register('OfficeLocation')}/>
 
                <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
                <Typography paddingTop='1rem' >
