@@ -33,9 +33,9 @@ function UserPerformance() {
         <Box >
         <Grid container spacing={20}>
           
-        <PerformanceCard start={0} end={500} title={'Avalible Jobs'} b1={'#D1E9FC'} b2={'#79c2fc'}/>
-        <PerformanceCard start={0} end={10} title={'Applied Jobs'} b1={'#D0F2FF'} b2={'#68d3fc'}/>
-        <PerformanceCard start={0} end={250} title={'Recommended Jobs'} b1={'#FFF7CD'} b2={'#ffed87'}/>
+        <PerformanceCard start={0} end={500} title={'Avalible Jobs'} b1={'#D1E9FC'} b2={'#79c2fc'} link={'/jobs'}/>
+        <PerformanceCard start={0} end={10} title={'Applied Jobs'} b1={'#D0F2FF'} b2={'#68d3fc'} link={'/education'}/>
+        <PerformanceCard start={0} end={250} title={'Recommended Jobs'} b1={'#FFF7CD'} b2={'#ffed87'} link={''}/>
         
         </Grid>
         </Box> 

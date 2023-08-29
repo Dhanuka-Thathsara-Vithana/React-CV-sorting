@@ -2,6 +2,7 @@ import { Card, Grid, Grow, Typography } from '@mui/material'
 import React from 'react'
 import Counter from './Counter'
 import { transform } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 interface Props {
     start: number,
@@ -9,13 +10,14 @@ interface Props {
     title: string,
     b1: string,
     b2: string
-
+    link: string
 }
 
-function PerformanceCard({start, end, title, b1, b2}:Props) {
+function PerformanceCard({start, end, title, b1, b2, link}:Props) {
   return (
     <Grid item xs={12} md={4} lg={3}>
     <Grow in={true}>
+      <Link to={`${link}`}>
     <Card
         sx={{
           width: 200,
@@ -27,7 +29,7 @@ function PerformanceCard({start, end, title, b1, b2}:Props) {
           '&:hover': {
             backgroundColor: b2,
             CSSTransition: '10s',
-            opacity: [0.9, 0.8, 0.7],
+            opacity: [1, 1, 1],
             transform: "scale3d(1.02, 1.02, 1)"
           },
           ':hover': {
@@ -43,6 +45,7 @@ function PerformanceCard({start, end, title, b1, b2}:Props) {
       </Typography>
       <Typography variant="h4"><Counter start={start} end={end}/></Typography>
     </Card>
+    </Link>
   </Grow>
 </Grid>
   )
