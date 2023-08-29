@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import axios, { CanceledError } from 'axios';
 
 interface EduProps{
-  id: string,
+  _id: string,
   Institution: string,
   Major:string,
   Degree: string,
@@ -54,6 +54,17 @@ function Education() {
     const handleClose = () => {
       setOpen(false);
     }; 
+    
+    const handelDelete = (id: string) => {
+      const originalWork = [...education];
+      setEducation(education.filter(u => u._id !== id));
+
+      axios.delete(`http://localhost:5000/api/education/${id}` )
+      .catch(err => {
+        setError(err.message);
+        setEducation(originalWork)
+      })
+    }
 
     useEffect(() => {
       const controller = new AbortController();
@@ -88,15 +99,16 @@ function Education() {
                 <Grid container spacing={3}>
                 
                 {education.map((edu) => (
-                    <Grid key={edu.id} item xs={12} md={4} lg={6}>
+                    <Grid key={edu._id} item xs={12} md={4} lg={6}>
                     <EduDecCard
-                        id={edu.id}
+                        id={edu._id}
                         institution={edu.Institution}
                         major={edu.Major}
                         degree={edu.Degree}
                         description={edu.Description}
                         to={edu.To}
                         from={edu.From}
+                        handelClick={handelDelete}
                     />
                     </Grid>
                     ))}

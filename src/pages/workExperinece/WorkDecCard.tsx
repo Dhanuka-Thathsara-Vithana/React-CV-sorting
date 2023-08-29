@@ -2,15 +2,17 @@ import { Box, Button, Card, CardMedia, Checkbox, FormControlLabel, Grid, Grow, L
 import DeleteIcon from '@mui/icons-material/Delete';
 
 interface Props{
+    id: string,
     title: string,
     company: string,
     officeLocation: string,
     description: string,
     to: string,
-    from: string
+    from: string,
+    handelClick: (id: string) => void
 }
 
-function WorkDecCard({ title, company, officeLocation, description, to , from }: Props) {
+function WorkDecCard({id, title, company, officeLocation, description, to , from, handelClick }: Props) {
     return (
       <Grow in={true} {...(true ? { timeout: 1000 } : {})} style={{ transformOrigin: '0 0 0' }}>
       <Card sx={{
@@ -49,7 +51,7 @@ function WorkDecCard({ title, company, officeLocation, description, to , from }:
                    {description}
                  </Typography>
                  <Box paddingTop='20px'>
-               <Button variant="contained" startIcon={<DeleteIcon />}>
+               <Button onClick={() => handelClick(id)} variant="contained" startIcon={<DeleteIcon />}>
                     Delete
                 </Button>
                 </Box>

@@ -8,10 +8,11 @@ interface Props{
     degree: string,
     description: string,
     to: string,
-    from: string
+    from: string,
+    handelClick: (id: string) => void
 }
 
-function EduDecCard({id, institution, major, degree, description, to , from }: Props) {
+function EduDecCard({id, institution, major, degree, description, to , from, handelClick }: Props) {
   return (
     <Grow in={true} {...(true ? { timeout: 700 } : {})} style={{ transformOrigin: '0 0 0' }}>
     <Card sx={{
@@ -51,7 +52,7 @@ function EduDecCard({id, institution, major, degree, description, to , from }: P
                  {description}
                </Typography>
                <Box paddingTop='20px'>
-               <Button variant="contained" startIcon={<DeleteIcon />}>
+               <Button onClick={() => handelClick(id)} variant="contained" startIcon={<DeleteIcon />}>
                     Delete
                 </Button>
                 </Box>

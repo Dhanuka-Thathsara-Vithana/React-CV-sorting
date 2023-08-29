@@ -9,7 +9,7 @@ import axios, { CanceledError } from 'axios';
 
 interface WorkProps{
    Description: string;
-   id: string,
+   _id: string,
    Title: string,
    Company: string,
    OfficeLocation: string,
@@ -55,8 +55,15 @@ function Work() {
       setOpen(false);
     }; 
      
-    const handelCancel = () => {
-      console.log('clicked')
+    const handelDelete = (id: string) => {
+      const originalWork = [...works];
+      setWorks(works.filter(u => u._id !== id));
+
+      axios.delete(`http://localhost:5000/api/work/${id}`)
+      .catch(err => {
+        setError(err.message);
+        setWorks(originalWork)
+      })
     }
 
     useEffect(() => {
@@ -92,14 +99,16 @@ function Work() {
           <Grid container spacing={3}>
           
           {works.map((works) => (
-              <Grid key={works.id} item xs={12} md={4} lg={6}>
+              <Grid key={works._id} item xs={12} md={4} lg={6}>
               <WorkDecCard 
+                  id={works._id}
                   title={works.Title}
                   company={works.Company}
                   officeLocation={works.OfficeLocation}
                   description={works.Description}
                   to={works.To}
                   from={works.From}
+                  handelClick={handelDelete}
                   />
               </Grid>
               ))}
