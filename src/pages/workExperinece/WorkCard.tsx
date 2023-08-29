@@ -6,8 +6,14 @@ import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
 import { Dayjs } from 'dayjs';
 import { useState } from 'react';
+import CardComponent from '../education/CardComponent';
+import EduDatePicker from '../education/DatePicker';
 
-function WorkCard() {
+interface Props {
+  handelClick: () => void
+}
+
+function WorkCard({handelClick}: Props) {
   const [fromDate, setFromDate] = useState<Dayjs | null>(null)
   const [toDate, setToDate] = useState<Dayjs | null>(null)
   
@@ -15,7 +21,7 @@ function WorkCard() {
       setFromDate(newValue);
     
   }
-
+  
   const handelTo = (newValue: Dayjs | null) => {
     setToDate(newValue);
    
@@ -42,52 +48,56 @@ function WorkCard() {
         paddingLeft: '2rem',
          borderRadius: '15px'
        }}>
+        <form onSubmit={handleSubmit(onSubmit)}>
         <Box p={1} width='740px' >
            <Typography variant='subtitle1'>
              Fields marked with * are required.
            </Typography>
            <Grid container spacing={2} paddingTop='2rem'>
-               <Grid sx={{ padding: '1rem' }} item xs={6} md={6} >
-                  <TextField label='Title' sx={{ color: 'black'}}  size="small" fullWidth />
-               </Grid>
-               <Grid sx={{ padding: '1rem' }} item xs={6} md={6} >
-                  <TextField label='Company' sx={{ color: 'black'}}  size="small" fullWidth/>
-               </Grid>
-               <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
-                  <TextField label='Office Location' sx={{ color: 'black'}}  size="small" fullWidth/>
-               </Grid>
+              <CardComponent Md={6} label={'Title'}  objRef={register('Title')}/>
+              <CardComponent Md={6} label={'Company'}  objRef={register('Company')}/>
+              <CardComponent Md={15} label={'Office Location'}  objRef={register('Office Location')}/>
+
                <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
                <Typography paddingTop='1rem' >
                Let the company know about your interest working there
                </Typography>
                
                <TextField 
-                  id="outlined-multiline-static"
-                  multiline
-                  rows={4}
-                //  defaultValue="Default Value"
-                  fullWidth
+                 { ...register('Description')}
+                 id='Description' 
+                 multiline
+                 rows={4}
+                 InputProps={{
+                   style: {
+                       borderRadius: "10px",
+                       fontFamily: "Roboto"
+                   }}}
+               //  defaultValue="Default Value"
+                 fullWidth
                 />
                </Grid>
                <Grid sx={{ padding: '1rem' }} item xs={6} md={6} >
-                 <Typography>From</Typography>
-                  <DatePicker/>
+                  <EduDatePicker label={'From'} handelChange={handelFrom}/>
                </Grid>
                <Grid sx={{ padding: '1rem' }} item xs={6} md={6}>
-                  <Typography>To</Typography>
-                  <DatePicker/>
+                  <EduDatePicker label={'To'} handelChange={handelTo}/>
                </Grid>
                <Grid item xs={6} md={15}>
-               <FormControlLabel control={<Checkbox />} label="I currently work here" />
+               <FormControlLabel control={<Checkbox 
+                { ...register('Check')}
+                id='Check' 
+               />} label="I currently work here" />
                </Grid>
                <Grid item xs={6} md={1.7} >
-                 <Button variant="outlined">cancel</Button>
+                 <Button onClick={handelClick} variant="outlined">cancel</Button>
                </Grid>
                <Grid item xs={6} md={1.5}>
-                 <Button  variant="contained" sx={{ width: '95px'}}>Save</Button>
+                 <Button type='submit'  variant="contained" sx={{ width: '95px'}}>Save</Button>
                </Grid>
            </Grid>
-        </Box>   
+        </Box> 
+        </form>  
        </Card>
   )
 }

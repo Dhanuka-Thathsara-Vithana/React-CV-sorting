@@ -30,7 +30,7 @@ interface WorkProps{
             backdropFilter: "blur(2px) sepia(5%)",
           }}
           onClose={handleClose} open={open} maxWidth='xl' scroll='body'  TransitionComponent={Fade}>
-            <WorkCard/>
+            <WorkCard handelClick={handleClose}/>
           </Dialog>
         );
       }
@@ -51,10 +51,14 @@ function Work() {
       setOpen(true);
     };
   
-    const handleClose = (value) => {
+    const handleClose = () => {
       setOpen(false);
     }; 
      
+    const handelCancel = () => {
+      console.log('clicked')
+    }
+
     useEffect(() => {
       const controller = new AbortController();
   

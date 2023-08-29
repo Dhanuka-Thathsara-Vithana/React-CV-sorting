@@ -29,7 +29,7 @@ interface EduProps{
             backdropFilter: "blur(2px) sepia(5%)",
           }}
           onClose={handleClose} open={open} maxWidth='xl' scroll='body' TransitionComponent={Fade}>
-            <EduCard/>
+            <EduCard handelClick={handleClose}/>
           </Dialog>
         
         );

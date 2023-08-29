@@ -3,15 +3,18 @@ import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import CardComponent from './CardComponent';
-import EduDatePicker from './EduDatePicker';
+import EduDatePicker from './DatePicker';
 
 import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
 import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';
 
+interface Props {
+  handelClick: () => void
+}
 
-function EduCard() {
+function EduCard({handelClick}: Props) {
   const [fromDate, setFromDate] = useState<Dayjs | null>(null)
   const [toDate, setToDate] = useState<Dayjs | null>(null)
   
@@ -87,7 +90,7 @@ return (
                />} label="I currently attend" />
                </Grid>
                <Grid item xs={6} md={1.7} >
-                 <Button  sx={{borderRadius: '12px'}} variant="outlined">cancel</Button>
+                 <Button onClick={handelClick}  sx={{borderRadius: '12px'}} variant="outlined">cancel</Button>
                </Grid>
                <Grid item xs={6} md={1.5}>
                  <Button type='submit'  variant="contained" sx={{ width: '95px',borderRadius: '12px'}}>Save</Button>
