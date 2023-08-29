@@ -6,7 +6,7 @@ interface Props{
     objRef: object
 }
 
-function EduCardComponent({ Md, label, objRef}: Props) {
+function CardComponent({ Md, label, objRef}: Props) {
   return (
     <Grid sx={{ padding: '1rem' }} item xs={6} md={Md} >
         <TextField
@@ -22,4 +22,4 @@ function EduCardComponent({ Md, label, objRef}: Props) {
   )
 }
 
-export default EduCardComponent;
+export default CardComponent;

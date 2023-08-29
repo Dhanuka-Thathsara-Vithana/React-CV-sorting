@@ -2,7 +2,7 @@ import { Box, Button, Card, CardMedia, Checkbox, FormControlLabel, Grid, Grow, L
 import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
-import EduCardComponent from './EduCardComponent';
+import CardComponent from './CardComponent';
 import EduDatePicker from './EduDatePicker';
 
 import axios from 'axios';
@@ -51,9 +51,9 @@ return (
              Fields marked with * are required.
            </Typography>
            <Grid container spacing={2} paddingTop='2rem'>
-               <EduCardComponent Md={15} label={'Institution'}  objRef={register('Institution')}/>
-               <EduCardComponent Md={6} label={'Major'} objRef={register('Major')} />
-               <EduCardComponent Md={6} label={'Degree'} objRef={register('Degree')} />
+               <CardComponent Md={15} label={'Institution'}  objRef={register('Institution')}/>
+               <CardComponent Md={6} label={'Major'} objRef={register('Major')} />
+               <CardComponent Md={6} label={'Degree'} objRef={register('Degree')} />
 
                <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
                <Typography paddingTop='1rem' >

@@ -2,8 +2,40 @@ import { Box, Button, Card, CardMedia, Checkbox, FormControlLabel, Grid, Link, L
 import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
+import axios from 'axios';
+import { FieldValues, useForm } from 'react-hook-form';
+import { Dayjs } from 'dayjs';
+import { useState } from 'react';
 
 function WorkCard() {
+  const [fromDate, setFromDate] = useState<Dayjs | null>(null)
+  const [toDate, setToDate] = useState<Dayjs | null>(null)
+  
+  const handelFrom = (newValue: Dayjs | null) => {
+      setFromDate(newValue);
+    
+  }
+
+  const handelTo = (newValue: Dayjs | null) => {
+    setToDate(newValue);
+   
+  }
+
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
+  const onSubmit = (data: FieldValues) => {
+       if(fromDate) {
+         const from = fromDate.toString()
+         const to = toDate.toString() 
+         const newData = {...data, from, to}
+         console.log(newData);
+      axios.post('http://localhost:5000/api/education', newData )
+      .then(res => 
+       console.log(res.data) )
+       }
+       
+    
+      }
+      
   return (
     <Card sx={{
         alignItems: 'center',
