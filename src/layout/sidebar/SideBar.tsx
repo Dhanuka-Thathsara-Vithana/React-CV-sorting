@@ -28,7 +28,7 @@ function SideBar() {
                 QUALIFICATION
         </Typography>
         <ListItemCom message='Educational' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'education'}/> 
-        <ListItemCom message='Work Experience' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={''}/> 
+        <ListItemCom message='Work Experience' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'workExperience'}/> 
 
   </List>
         </Grow>

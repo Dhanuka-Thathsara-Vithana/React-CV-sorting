@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import EduDecCard from './EduDecCard'
-import { Box, Button, Card, Collapse, Dialog, Divider, Fade, Grid, Typography, Zoom } from '@mui/material'
+import { Box, Button, Card, Collapse, Dialog, Divider, Fade, Grid, Grow, Typography, Zoom } from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EduCard from './EduCard';
 import PropTypes from 'prop-types';
@@ -24,7 +24,11 @@ interface EduProps{
         };
       
         return (
-          <Dialog onClose={handleClose} open={open} maxWidth='xl' scroll='body' TransitionComponent={Fade}>
+          <Dialog 
+          sx={{
+            backdropFilter: "blur(2px) sepia(5%)",
+          }}
+          onClose={handleClose} open={open} maxWidth='xl' scroll='body' TransitionComponent={Fade}>
             <EduCard/>
           </Dialog>
         
@@ -65,7 +69,7 @@ function Education() {
     }, [])
 
   return (
-    
+    <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}> 
           <Card sx={{width: '1300px', borderRadius: '15px'}}>
             <Box p={5} >
                 <Typography
@@ -103,6 +107,7 @@ function Education() {
                 onClose={handleClose} selectedValue={''}                />
                 </Box>
             </Card>
+    </Grow>        
   )
 }
 

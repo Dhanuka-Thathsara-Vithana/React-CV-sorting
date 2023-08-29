@@ -28,15 +28,16 @@ function EduCard() {
   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
        if(fromDate) {
-         const from = fromDate.$d
-         const to = toDate.$d 
+         const from = fromDate.toString()
+         const to = toDate.toString() 
          const newData = {...data, from, to}
-       console.log(newData);
+         console.log(newData);
+      axios.post('http://localhost:5000/api/education', newData )
+      .then(res => 
+       console.log(res.data) )
        }
        
-      // axios.post('http://localhost:5000/api/education',  data )
-      // .then(res => 
-      //  console.log(res.data) )
+    
       }
     console.log(fromDate);
 return (
@@ -50,9 +51,9 @@ return (
              Fields marked with * are required.
            </Typography>
            <Grid container spacing={2} paddingTop='2rem'>
-               <EduCardComponent Md={15} label={'Institution'} id={'institution'} objRef={register('institution')}/>
-               <EduCardComponent Md={6} label={'Major'} id={'major'} objRef={register('major')} />
-               <EduCardComponent Md={6} label={'Degree'} id={'degree'} objRef={register('degree')} />
+               <EduCardComponent Md={15} label={'Institution'}  objRef={register('Institution')}/>
+               <EduCardComponent Md={6} label={'Major'} objRef={register('Major')} />
+               <EduCardComponent Md={6} label={'Degree'} objRef={register('Degree')} />
 
                <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
                <Typography paddingTop='1rem' >
@@ -60,8 +61,8 @@ return (
                </Typography>
                
                <TextField
-                  { ...register('description')}
-                  id='description' 
+                  { ...register('Description')}
+                  id='Description' 
                   multiline
                   rows={4}
                   InputProps={{
@@ -81,8 +82,8 @@ return (
                </Grid>
                <Grid item xs={6} md={15}>
                <FormControlLabel control={<Checkbox 
-                  { ...register('check')}
-                  id='check' 
+                  { ...register('Check')}
+                  id='Check' 
                />} label="I currently attend" />
                </Grid>
                <Grid item xs={6} md={1.7} >

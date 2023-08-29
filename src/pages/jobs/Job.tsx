@@ -44,6 +44,7 @@ const handelId = (id: number) => {
  }
 
   return (
+    <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}>   
     <Card sx={{width: '1200px', paddingLeft: '4rem', borderRadius: '15px'}}>
     <Box p={5} paddingTop='3rem'>
         <Typography
@@ -76,7 +77,8 @@ const handelId = (id: number) => {
 
         </Box>
        
-</Card>
+    </Card>
+    </Grow>
   )
 }
 

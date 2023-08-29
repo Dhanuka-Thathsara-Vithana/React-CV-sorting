@@ -7,6 +7,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Jobs from "./pages/jobs/Job";
 import JobDec from "./pages/jobs/JobDec/JobDec";
 import Education from "./pages/education/Education";
+import Work from "./pages/workExperinece/Work";
 
 const router = createBrowserRouter([
     { path: '/',
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
             { path: 'dashboard',  element: <Dashboard/> },
             { path: 'jobs',  element: <Jobs/> },
             { path: 'jobs/:id', element: <JobDec/> },
-            { path: 'education', element: <Education/> }
+            { path: 'education', element: <Education/> },
+            { path: 'workExperience', element: <Work/>}
           ]
         }
       ]
