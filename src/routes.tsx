@@ -8,19 +8,24 @@ import Jobs from "./pages/jobs/Job";
 import JobDec from "./pages/jobs/JobDec/JobDec";
 import Education from "./pages/education/Education";
 import Work from "./pages/workExperinece/Work";
+import Home from "./pages/Home/Home";
 
 const router = createBrowserRouter([
     { path: '/',
       element: <Layout/>,
       children: [
-        { path: '/',
+        {
+          path: '/',
+          element: <Home/>
+        },
+        { path: 'user',
           element: <DashLayout/>,
           children: [
-            { path: 'dashboard',  element: <Dashboard/> },
-            { path: 'jobs',  element: <Jobs/> },
-            { path: 'jobs/:id', element: <JobDec/> },
-            { path: 'education', element: <Education/> },
-            { path: 'workExperience', element: <Work/>}
+            { path: 'user/',  element: <Dashboard/> },
+            { path: 'user/jobs',  element: <Jobs/> },
+            { path: 'user/jobs/:id', element: <JobDec/> },
+            { path: 'user/education', element: <Education/> },
+            { path: 'user/workExperience', element: <Work/>}
           ]
         }
       ]

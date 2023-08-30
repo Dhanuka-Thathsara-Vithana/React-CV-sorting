@@ -1,8 +1,10 @@
+import { Box } from '@mui/material'
 import './home.css'
 import { About, Contact, Experience, Feedbacks, Hero, StarsCanvas, Tech, Works } from './homeComponents'
 
 function Home() {
   return (
+   <Box sx={{width: '1840px', paddingLeft: '1rem', borderRadius: '15px'}}>   
     <div className="relative z-0 bg-primary">
     <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
         <Hero/>
@@ -17,6 +19,7 @@ function Home() {
         <StarsCanvas/>
     </div>
     </div>
+    </Box>
   )
 }
 
