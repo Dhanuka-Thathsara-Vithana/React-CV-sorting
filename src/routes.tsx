@@ -21,11 +21,11 @@ const router = createBrowserRouter([
         { path: 'user',
           element: <DashLayout/>,
           children: [
-            { path: 'user/',  element: <Dashboard/> },
-            { path: 'user/jobs',  element: <Jobs/> },
-            { path: 'user/jobs/:id', element: <JobDec/> },
-            { path: 'user/education', element: <Education/> },
-            { path: 'user/workExperience', element: <Work/>}
+            { path: '',  element: <Dashboard/> },
+            { path: 'jobs',  element: <Jobs/> },
+            { path: 'jobs/:id', element: <JobDec/> },
+            { path: 'education', element: <Education/> },
+            { path: 'workExperience', element: <Work/>}
           ]
         }
       ]

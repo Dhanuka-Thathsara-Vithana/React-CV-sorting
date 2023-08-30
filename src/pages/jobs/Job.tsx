@@ -45,7 +45,7 @@ const handelId = (id: number) => {
 
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}>   
-    <Card sx={{width: '1200px', paddingLeft: '4rem', borderRadius: '15px'}}>
+    <Card sx={{width: '1300px', paddingLeft: '4rem', borderRadius: '15px'}}>
     <Box p={5} paddingTop='3rem'>
         <Typography
           sx={{
@@ -56,7 +56,7 @@ const handelId = (id: number) => {
           All Jobs
         </Typography>
            
-        <Grid container spacing={25}>
+        <Grid container spacing={23}>
          
            {jobCard.map((job) => (
              <Grid key={job._id} item xs={12} md={4} lg={3.4}>

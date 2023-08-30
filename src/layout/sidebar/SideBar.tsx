@@ -19,16 +19,16 @@ function SideBar() {
         <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
                 DASHBOARDS
         </Typography>
-      <ListItemCom message='Dashboard' icon={<StarIcon sx={{ color: '#A4EBF3' }} />} link={'user/dashboard'} /> 
-      <ListItemCom message='Messenger' icon={<MmsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'user/messanger'} /> 
-      <ListItemCom message='Jobs' icon={<DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'user/jobs'} /> 
+      <ListItemCom message='Dashboard' icon={<StarIcon sx={{ color: '#A4EBF3' }} />} link={''} /> 
+      <ListItemCom message='Messenger' icon={<MmsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'messanger'} /> 
+      <ListItemCom message='Jobs' icon={<DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'jobs'} /> 
 
        <Divider/>
         <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
                 QUALIFICATION
         </Typography>
-        <ListItemCom message='Educational' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'user/education'}/> 
-        <ListItemCom message='Work Experience' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'user/workExperience'}/> 
+        <ListItemCom message='Educational' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'education'}/> 
+        <ListItemCom message='Work Experience' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'workExperience'}/> 
 
   </List>
         </Grow>

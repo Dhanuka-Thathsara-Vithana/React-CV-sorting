@@ -29,7 +29,7 @@ export default function JobCard({id, image, title, subheader, rating, des1, des2
 
   return (
     <Grow in={true} {...(true ? { timeout: 1000 } : {})} style={{ transformOrigin: '0 0 0' }} >   
-    <Card sx={{ width: '350px', height: '410px' , borderRadius: '12px', bgcolor: '#cae5fa'  }}>
+    <Card sx={{ width: '350px', height: '460px' , borderRadius: '12px', bgcolor: '#cae5fa'  }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: blue[500] }} aria-label="recipe">

@@ -1,10 +1,11 @@
-import { AppBar, Badge, Box, Button, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
+import { AppBar, Badge, Box, Button, IconButton,  List, ListItem, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
   return (
@@ -23,20 +24,24 @@ function NavBar() {
             classes={{ root: 'MuiListItem-indicators' }}
             button
           >
+             <Link to={''}>
             <ListItemText
             sx={{fontFamily:'sans-serif'}}
               primaryTypographyProps={{ noWrap: true }}
               primary="Home"
             />
+            </Link>
         </ListItem>
         <ListItem
             classes={{ root: 'MuiListItem-indicators' }}
             button
           >
+             <Link to={'/user'}>
             <ListItemText
               primaryTypographyProps={{ noWrap: true }}
               primary="Dashboard"
             />
+            </Link>
         </ListItem>
         <ListItem
             classes={{ root: 'MuiListItem-indicators' }}
@@ -73,12 +78,14 @@ function NavBar() {
           </IconButton>
         </Box>
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+         
           <IconButton
             size="large"
             color="inherit"
           >
             <MoreIcon />
           </IconButton>
+         
         </Box>
       </Toolbar>
     </AppBar>

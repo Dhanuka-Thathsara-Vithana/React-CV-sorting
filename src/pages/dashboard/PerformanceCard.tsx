@@ -22,6 +22,7 @@ function PerformanceCard({start, end, title, b1, b2, link}:Props) {
         sx={{
           width: 200,
           height: 200,
+          paddingTop: '3rem',
           backgroundColor: b1,
           borderRadius: '12px',
           textAlign: 'center',
@@ -38,12 +39,12 @@ function PerformanceCard({start, end, title, b1, b2, link}:Props) {
          
         }}
       >
-      <Typography variant="subtitle2" sx={{ opacity: 0.72 }} 
+      <Typography variant="subtitle2"  fontFamily='sans-serif' fontWeight='440' sx={{ opacity: 0.72 }} 
         style={{ transformOrigin: '0 0 0' }}
       >
         <h4>{title}</h4>
       </Typography>
-      <Typography variant="h4"><Counter start={start} end={end}/></Typography>
+      <Typography sx={{paddingTop: '1rem'}} variant="h4" fontFamily='sans-serif' fontWeight='550'><Counter start={start} end={end}/></Typography>
     </Card>
     </Link>
   </Grow>

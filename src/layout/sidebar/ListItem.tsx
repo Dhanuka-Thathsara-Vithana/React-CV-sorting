@@ -24,7 +24,7 @@ function ListItemCom({message,icon,link }: Props) {
   const navigate = useNavigate();
   
   const handelClick = () => {
-      navigate(`/${link}`)
+      navigate(`${link}`)
   }
   
   

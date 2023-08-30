@@ -25,7 +25,7 @@ interface Props {
 export default function RecJobCard({image, title, subheader, rating, des1, des2}: Props) {
 
   return (
-    <Card sx={{ width: '350px', height: '410px' , borderRadius: '12px', bgcolor: '#cae5fa'  }}>
+    <Card sx={{ width: '350px', height: '460px' , borderRadius: '12px', bgcolor: '#cae5fa'  }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: blue[500] }} aria-label="recipe">
