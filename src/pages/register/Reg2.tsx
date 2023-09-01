@@ -1,7 +1,21 @@
 import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
 import regBack from './assets/Registration.png'
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-import CardComponent from '../education/CardComponent';
+import InputComponent from '../education/InputComponent';
+import { useNavigate } from 'react-router-dom';
+import { FieldValues, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const schema = z.object({
+    fName: z.string().min(3),
+    lName: z.string().min(3),
+    email: z.string().email("This is not a valid email."),
+    telephone: z.string().min(9).max(15)
+  });
+  
+  type FormData = z.infer<typeof schema>
+  
 
 const styles = {
     paperContainer: {
@@ -18,6 +32,7 @@ function Reg2() {
     console.log(data)
     navigate('/reg3') 
     }
+
   return (
 <Paper style={styles.paperContainer}>
     <Grid height='60.8rem' container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -52,10 +67,10 @@ function Reg2() {
            </Typography>  
            <Box paddingTop='1.5rem'>
                 <Grid container spacing={2} paddingTop='2rem'>
-                    <CardComponent Md={15} label={'First Name'} objRef={register('fName')}/>
-                    <CardComponent Md={15} label={'Last Name'} objRef={register('lName')}/>
-                    <CardComponent Md={15} label={'Email Name'} objRef={register('email')}/>
-                    <CardComponent Md={15} label={'Telephone'} objRef={register('telephone')}/>
+                    <InputComponent Md={15} label={'First Name'} objRef={register('fName')}/>
+                    <InputComponent Md={15} label={'Last Name'} objRef={register('lName')}/>
+                    <InputComponent Md={15} label={'Email Name'} objRef={register('email')}/>
+                    <InputComponent Md={15} label={'Telephone'} objRef={register('telephone')}/>
                 </Grid>    
            </Box>
           

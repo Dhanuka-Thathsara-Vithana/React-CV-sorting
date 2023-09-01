@@ -6,7 +6,7 @@ interface Props{
     objRef: object
 }
 
-function CardComponent({ Md, label, objRef}: Props) {
+function InputComponent({ Md, label, objRef}: Props) {
   return (
     <Grid sx={{ padding: '1rem' }} item xs={6} md={Md} >
         <TextField
@@ -19,10 +19,10 @@ function CardComponent({ Md, label, objRef}: Props) {
         }}}
         label={label} sx={{ color: 'black'}} size="small" fullWidth />
         <Box>
-        <Alert severity="error">This is an error alert — check it out!</Alert>
+        <Alert sx={{color: 'white', background:'red'}} severity="error">This is an error alert — check it out!</Alert>
         </Box>
     </Grid>
   )
 }
 
-export default CardComponent;
+export default InputComponent;
