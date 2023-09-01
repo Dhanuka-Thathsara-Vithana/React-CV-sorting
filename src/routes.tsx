@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       path: 'reg',
       element: <RegLayout/>,
       children: [
-        { path: 'reg1', element: <Reg1/>},
+        { path: '', element: <Reg1/>},
         { path: 'reg2', element: <Reg2/>},
         { path: 'reg3', element: <Reg3/>},
         { path: 'reg4', element: <Reg4/>},

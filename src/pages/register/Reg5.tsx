@@ -40,7 +40,7 @@ function Reg5() {
          localStorage.removeItem('formData1');
          localStorage.removeItem('formData2');
          localStorage.removeItem('formData3');
-         navigate('/reg6'); }
+         }
        )
        }
      };

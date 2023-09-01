@@ -2,6 +2,7 @@ import { Box, Button, Grid, Paper, Typography } from '@mui/material'
 import regBack from './assets/Registration.png'
 import GoogleIcon from '@mui/icons-material/Google';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import { useNavigate } from 'react-router-dom';
 
 const styles = {
     paperContainer: {
@@ -10,6 +11,12 @@ const styles = {
 };
 
 function Reg1() {
+    const navigate = useNavigate();
+    
+    const createAccount = () => {
+        navigate('reg2')
+    }
+
   return (
 <Paper style={styles.paperContainer}>
     <Grid height='60.8rem' container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -38,7 +45,7 @@ function Reg1() {
            </Box>
           
            <Box paddingTop='1.8rem'>
-                <Button endIcon={<PersonAddAltIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Create Your own Account</Button>
+                <Button onClick={createAccount} endIcon={<PersonAddAltIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Create Your own Account</Button>
            </Box>
         </Box>  
     </Grid>

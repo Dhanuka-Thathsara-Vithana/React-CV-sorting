@@ -27,7 +27,7 @@ function Reg3() {
         const edu = {...education, status}
         localStorage.setItem('formData2', JSON.stringify(edu));
     
-      //  navigate('/reg4') 
+        navigate('/reg/reg4') 
     }
 
   return (

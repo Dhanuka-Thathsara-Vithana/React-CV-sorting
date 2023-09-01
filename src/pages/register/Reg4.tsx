@@ -32,7 +32,7 @@ function Reg4() {
        console.log(password);
        localStorage.setItem('formData3', JSON.stringify(password));
   
-     // navigate('/reg5') 
+       navigate('/reg/reg5') 
      };
 
   return (
