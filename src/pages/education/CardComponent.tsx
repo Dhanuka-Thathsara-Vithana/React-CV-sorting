@@ -1,4 +1,4 @@
-import { Grid, TextField } from '@mui/material'
+import { Alert, Box, Grid, TextField } from '@mui/material'
 
 interface Props{
     Md: number,
@@ -18,6 +18,9 @@ function CardComponent({ Md, label, objRef}: Props) {
             fontFamily: "Roboto"
         }}}
         label={label} sx={{ color: 'black'}} size="small" fullWidth />
+        <Box>
+        <Alert severity="error">This is an error alert — check it out!</Alert>
+        </Box>
     </Grid>
   )
 }
