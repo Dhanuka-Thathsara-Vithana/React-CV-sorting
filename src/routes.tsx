@@ -13,6 +13,7 @@ import RegLayout from "./layout/RegLayout";
 import Reg1 from "./pages/register/Reg1";
 import Reg2 from "./pages/register/Reg2";
 import Reg3 from "./pages/register/Reg3";
+import Reg4 from "./pages/register/Reg4";
 
 const router = createBrowserRouter([
     { path: '/',
@@ -40,7 +41,8 @@ const router = createBrowserRouter([
       children: [
         { path: 'reg1', element: <Reg1/>},
         { path: 'reg2', element: <Reg2/>},
-        { path: 'reg3', element: <Reg3/>}
+        { path: 'reg3', element: <Reg3/>},
+        { path: 'reg4', element: <Reg4/>}
       ]
     }
 ])

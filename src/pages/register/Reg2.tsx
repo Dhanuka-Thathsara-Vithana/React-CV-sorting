@@ -63,7 +63,7 @@ function Reg2() {
            <Typography
            sx={{ paddingLeft: '9rem',fontFamily: '-apple-system', fontSize: '40px' ,display: { xs: 'none', sm: 'block' } }}
            >
-           Let’s Register
+           Personal Details
            </Typography>  
            <Box paddingTop='1.5rem'>
                 <Grid container spacing={2} paddingTop='2rem'>
