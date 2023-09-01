@@ -54,9 +54,9 @@ return (
              Fields marked with * are required.
            </Typography>
            <Grid container spacing={2} paddingTop='2rem'>
-               <InputComponent Md={15} label={'Institution'}  objRef={register('Institution')}/>
-               <InputComponent Md={6} label={'Major'} objRef={register('Major')} />
-               <InputComponent Md={6} label={'Degree'} objRef={register('Degree')} />
+               <InputComponent Md={15} label={'Institution'} objRef={register('Institution')} error={''}/>
+               <InputComponent Md={6} label={'Major'} objRef={register('Major')} error={''}/>
+               <InputComponent Md={6} label={'Degree'} objRef={register('Degree')} error={''}/>
 
                <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
                <Typography paddingTop='1rem' >

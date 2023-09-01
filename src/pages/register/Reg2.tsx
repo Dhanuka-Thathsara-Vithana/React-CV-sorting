@@ -30,7 +30,7 @@ function Reg2() {
     // Save form data to localStorage whenever it changes
         localStorage.setItem('formData1', JSON.stringify(data));
     console.log(data)
-    navigate('/reg3') 
+   // navigate('/reg3') 
     }
 
   return (
@@ -59,7 +59,7 @@ function Reg2() {
     </Grid>
     <Grid item xs={6}>
     <form onSubmit={handleSubmit(onSubmit)}>
-        <Box paddingLeft='6rem'  paddingTop='19rem' width='40rem'>
+        <Box paddingLeft='6rem'  paddingTop='15rem' width='40rem'>
            <Typography
            sx={{ paddingLeft: '9rem',fontFamily: '-apple-system', fontSize: '40px' ,display: { xs: 'none', sm: 'block' } }}
            >
@@ -67,15 +67,15 @@ function Reg2() {
            </Typography>  
            <Box paddingTop='1.5rem'>
                 <Grid container spacing={2} paddingTop='2rem'>
-                    <InputComponent Md={15} label={'First Name'} objRef={register('fName')}/>
-                    <InputComponent Md={15} label={'Last Name'} objRef={register('lName')}/>
-                    <InputComponent Md={15} label={'Email Name'} objRef={register('email')}/>
-                    <InputComponent Md={15} label={'Telephone'} objRef={register('telephone')}/>
+                    <InputComponent Md={15} label={'First Name'} objRef={register('fName')} error={errors.fName?.message}/>
+                    <InputComponent Md={15} label={'Last Name'} objRef={register('lName')} error={errors.lName?.message}/>
+                    <InputComponent Md={15} label={'Email Name'} objRef={register('email')} error={errors.email?.message}/>
+                    <InputComponent Md={15} label={'Telephone'} objRef={register('telephone')} error={errors.telephone?.message}/>
                 </Grid>    
            </Box>
           
            <Box paddingTop='1.8rem' width='33rem'>
-                <Button endIcon={<PersonAddAltIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Submit</Button>
+                <Button type='submit' endIcon={<PersonAddAltIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Submit</Button>
            </Box>
         </Box> 
     </form>     

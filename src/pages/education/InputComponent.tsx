@@ -3,10 +3,11 @@ import { Alert, Box, Grid, TextField } from '@mui/material'
 interface Props{
     Md: number,
     label: string,
-    objRef: object
+    objRef: object,
+    error: string | null | undefined
 }
 
-function InputComponent({ Md, label, objRef}: Props) {
+function InputComponent({ Md, label, objRef, error}: Props) {
   return (
     <Grid sx={{ padding: '1rem' }} item xs={6} md={Md} >
         <TextField
@@ -18,9 +19,8 @@ function InputComponent({ Md, label, objRef}: Props) {
             fontFamily: "Roboto"
         }}}
         label={label} sx={{ color: 'black'}} size="small" fullWidth />
-        <Box>
-        <Alert sx={{color: 'white', background:'red'}} severity="error">This is an error alert — check it out!</Alert>
-        </Box>
+       {error && <Alert sx={{color: 'white', background:'#FF9494', borderRadius: '12px'}} severity="error">{error}</Alert>}
+        
     </Grid>
   )
 }
