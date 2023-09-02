@@ -21,50 +21,12 @@ function NavBar() {
         </Typography>
         <Box paddingLeft='7rem'>
         <List disablePadding component={Box} display="flex">  
-        <ListItem
-            classes={{ root: 'MuiListItem-indicators' }}
-            button
-          >
-             <Link to={''}>
-            <ListItemText
-            sx={{fontFamily:'sans-serif'}}
-              primaryTypographyProps={{ noWrap: true }}
-              primary="Home"
-            />
-            </Link>
-        </ListItem>
-        <NavListComponent to={'user'} name={'Dashboard'}/>
-        <ListItem
-            classes={{ root: 'MuiListItem-indicators' }}
-            button
-          >
-            <ListItemText
-              primaryTypographyProps={{ noWrap: true }}
-              primary="Help"
-            />
-        </ListItem>
-        <ListItem
-            classes={{ root: 'MuiListItem-indicators' }}
-            button
-          >
-             <Link to={'/reg'}>
-            <ListItemText
-              primaryTypographyProps={{ noWrap: true }}
-              primary="Register"
-            />
-            </Link>
-        </ListItem>
-        <ListItem
-            classes={{ root: 'MuiListItem-indicators' }}
-            button
-          >
-             <Link to={'/reg'}>
-            <ListItemText
-              primaryTypographyProps={{ noWrap: true }}
-              primary="Register"
-            />
-            </Link>
-        </ListItem>
+  
+            <NavListComponent to={''} name={'Home'}/>
+            <NavListComponent to={'user'} name={'Dashboard'}/>
+            <NavListComponent to={''} name={'Help'}/>
+            <NavListComponent to={'reg'} name={'Register'}/>
+            <NavListComponent to={''} name={'Login'}/>
 
         </List>
         </Box>
