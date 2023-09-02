@@ -1,7 +1,7 @@
 import { Box, Grid, Paper } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import NavBar from './navbar/NavBar'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import backImg from '../assets/image.jpg'
 
 const styles = {
@@ -12,6 +12,7 @@ const styles = {
 
 
 function Layout() {
+  const navigate = useNavigate();
   const [user, setUser] = useState<boolean | undefined>(false)
   
   useEffect(() => {
@@ -21,12 +22,18 @@ function Layout() {
        setUser(parsedUser)
     }
   }, [])
+  
+  const handelLogout = () => {
+    localStorage.removeItem('user');
+    navigate('');
+  }
+
   return (
     <Paper style={styles.paperContainer}>
     <Box >
     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={30}>
-            <NavBar user={user} />
+            <NavBar handelClick={handelLogout} user={user} />
         </Grid>
         <Grid item xs={6}>
              <Outlet/>

@@ -33,7 +33,7 @@ function Reg2() {
       {if(res.data) 
        { 
         localStorage.setItem('user', JSON.stringify(data));
-        navigate('/dashboard');}} }
+        navigate('/user');}} }
     )
      console.log(data)
     navigate('') 

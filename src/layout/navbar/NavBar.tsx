@@ -9,11 +9,12 @@ import { Link } from 'react-router-dom';
 import NavListComponent from './NavListComponent';
 
 interface Props {
-  user: boolean | undefined
+  user: boolean | undefined,
+  handelClick: () => void
 }
 
-function NavBar({user}: Props) {
-  
+function NavBar({user, handelClick}: Props) {
+
   return (
     <Box borderRadius='18'  paddingLeft='1rem' sx={{ width: '1840px' }}>
     <AppBar position="static" sx={{bgcolor: '#19A7CE'}}>
@@ -26,9 +27,13 @@ function NavBar({user}: Props) {
         </Typography>
         <Box paddingLeft='7rem'>
         <List disablePadding component={Box} display="flex">  
-  
+          
             <NavListComponent to={''} name={'Home'}/>
-         {user &&  <NavListComponent to={'user'} name={'Dashboard'}/>}
+         {user &&  
+         <>
+            <NavListComponent to={'user'} name={'Dashboard'}/>
+         </>
+         }
             <NavListComponent to={''} name={'Help'}/>
          {!user &&  
            <>
@@ -44,6 +49,7 @@ function NavBar({user}: Props) {
 
         {user &&
           <>
+          <Button onClick={handelClick} sx={{color: 'white', width: '7rem' }}>Logout</Button>
           <IconButton size="large" aria-label="show 4 new mails" color="inherit">
             <Badge badgeContent={3} color="primary">
               <MailIcon sx={{ fontSize: 32 }} color="action" />
