@@ -8,7 +8,12 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { Link } from 'react-router-dom';
 import NavListComponent from './NavListComponent';
 
-function NavBar() {
+interface Props {
+  user: boolean | undefined
+}
+
+function NavBar({user}: Props) {
+  
   return (
     <Box borderRadius='18'  paddingLeft='1rem' sx={{ width: '1840px' }}>
     <AppBar position="static" sx={{bgcolor: '#19A7CE'}}>
@@ -23,15 +28,22 @@ function NavBar() {
         <List disablePadding component={Box} display="flex">  
   
             <NavListComponent to={''} name={'Home'}/>
-            <NavListComponent to={'user'} name={'Dashboard'}/>
+         {user &&  <NavListComponent to={'user'} name={'Dashboard'}/>}
             <NavListComponent to={''} name={'Help'}/>
+         {!user &&  
+           <>
             <NavListComponent to={'reg'} name={'Register'}/>
-            <NavListComponent to={''} name={'Login'}/>
+            <NavListComponent to={'login'} name={'Login'}/>
+            </>   
+          }
 
         </List>
         </Box>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+
+        {user &&
+          <>
           <IconButton size="large" aria-label="show 4 new mails" color="inherit">
             <Badge badgeContent={3} color="primary">
               <MailIcon sx={{ fontSize: 32 }} color="action" />
@@ -52,6 +64,8 @@ function NavBar() {
           >
             <AccountCircle sx={{ fontSize: 32 }}/>
           </IconButton>
+          </>  
+        }
         </Box>
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
          

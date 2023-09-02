@@ -6,14 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
 
 const schema = z.object({
-    fName: z.string().min(3),
-    lName: z.string().min(3),
     email: z.string().email("This is not a valid email."),
-    telephone: z.string().min(9).max(15)
+    password: z.string().min(3)
   });
-  
+
   type FormData = z.infer<typeof schema>
   
 
@@ -27,11 +26,18 @@ function Reg2() {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)});
     const onSubmit = (data: FieldValues) => {
-    // Save form data to localStorage whenever it changes
-        localStorage.setItem('formData1', JSON.stringify(data));
-    console.log(data)
-    navigate('/reg/reg3') 
-    }
+     console.log(data)
+     axios.post('http://localhost:5000/api/auth',  data )
+     .then(res => {
+      console.log(res.data);
+      {if(res.data) 
+       { 
+        localStorage.setItem('user', JSON.stringify(data));
+        navigate('/dashboard');}} }
+    )
+     console.log(data)
+    navigate('') 
+   }
 
   return (
 <Paper style={styles.paperContainer}>
@@ -64,15 +70,13 @@ function Reg2() {
            </Typography>  
            <Box paddingTop='1.5rem'>
                 <Grid container spacing={2} paddingTop='2rem'>
-                    <InputComponent Md={15} label={'First Name'} objRef={register('fName')} error={errors.fName?.message}/>
-                    <InputComponent Md={15} label={'Last Name'} objRef={register('lName')} error={errors.lName?.message}/>
-                    <InputComponent Md={15} label={'Email Name'} objRef={register('email')} error={errors.email?.message}/>
-                    <InputComponent Md={15} label={'Telephone'} objRef={register('telephone')} error={errors.telephone?.message}/>
+                    <InputComponent Md={15} label={'Email'} objRef={register('email')} error={errors.email?.message}/>
+                    <InputComponent Md={15} label={'Password'} objRef={register('password')} error={errors.password?.message}/>
                 </Grid>    
            </Box>
           
            <Box paddingTop='1.8rem' width='33rem'>
-                <Button type='submit' endIcon={<PersonAddAltIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Submit</Button>
+                <Button type='submit' endIcon={<PersonAddAltIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Login</Button>
            </Box>
         </Box> 
     </form>     

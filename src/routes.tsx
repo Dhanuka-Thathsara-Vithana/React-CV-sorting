@@ -15,6 +15,8 @@ import Reg2 from "./pages/register/Reg2";
 import Reg3 from "./pages/register/Reg3";
 import Reg4 from "./pages/register/Reg4";
 import Reg5 from "./pages/register/Reg5";
+import Login from "./pages/Login/Login";
+import LoginLayout from "./layout/LoginLayout";
 
 const router = createBrowserRouter([
     { path: '/',
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
         { path: 'reg4', element: <Reg4/>},
         { path: 'reg5', element: <Reg5/>}
       ]
+    },
+    {
+      path: 'login',
+      element: <LoginLayout/>,
     }
 ])
 
