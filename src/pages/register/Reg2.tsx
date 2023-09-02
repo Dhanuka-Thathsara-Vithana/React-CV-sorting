@@ -37,7 +37,7 @@ function Reg2() {
 <Paper style={styles.paperContainer}>
     <Grid height='60.8rem' container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
     <Grid item xs={6}>
-       <Box paddingLeft='23rem' paddingTop='26rem'>
+       <Box paddingLeft='23rem' paddingTop='23rem'>
            <Typography
             color='white'
             component="div"
@@ -48,7 +48,7 @@ function Reg2() {
            <Typography
             color='white'
             component="div"
-            sx={{ paddingLeft: '2.8rem',fontFamily: '-apple-system', fontStyle: 'italic', fontSize: '55px' ,display: { xs: 'none', sm: 'block' } }}
+            sx={{paddingTop: '1rem', paddingLeft: '2.8rem',fontFamily: '-apple-system', fontStyle: 'italic', fontSize: '55px' ,display: { xs: 'none', sm: 'block' } }}
             >
             CarrierCompass
             </Typography>

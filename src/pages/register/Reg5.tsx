@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import axios from 'axios';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 const styles = {
     paperContainer: {
@@ -66,13 +67,18 @@ function Reg5() {
     <form onSubmit={handleSubmit(onSubmit)}>
         <Box paddingLeft='6rem'  paddingTop='22rem' width='37rem'>
            <Typography
-           sx={{ paddingLeft: '8rem',fontFamily: '-apple-system', fontSize: '40px' ,display: { xs: 'none', sm: 'block' } }}
+           sx={{ paddingLeft: '4rem',fontFamily: '-apple-system', fontSize: '40px' ,display: { xs: 'none', sm: 'block' } }}
            >
-           Your Profile has been created!
+           Your Profile has been 
+           </Typography>
+           <Typography
+           sx={{ paddingLeft: '10rem',fontFamily: '-apple-system', fontSize: '40px' ,display: { xs: 'none', sm: 'block' } }}
+           >
+          created!
            </Typography>
           
-           <Box paddingTop='1.8rem' width='30rem'>
-           <Button type='submit' endIcon={<NavigateNextIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Next</Button>
+           <Box paddingTop='4rem' width='30rem'>
+           <Button type='submit' endIcon={<PersonAddIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Submit</Button>
            </Box>
         </Box> 
     </form>     

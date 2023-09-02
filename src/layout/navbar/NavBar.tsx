@@ -6,6 +6,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { Link } from 'react-router-dom';
+import NavListComponent from './NavListComponent';
 
 function NavBar() {
   return (
@@ -32,17 +33,7 @@ function NavBar() {
             />
             </Link>
         </ListItem>
-        <ListItem
-            classes={{ root: 'MuiListItem-indicators' }}
-            button
-          >
-             <Link to={'/user'}>
-            <ListItemText
-              primaryTypographyProps={{ noWrap: true }}
-              primary="Dashboard"
-            />
-            </Link>
-        </ListItem>
+        <NavListComponent to={'user'} name={'Dashboard'}/>
         <ListItem
             classes={{ root: 'MuiListItem-indicators' }}
             button
@@ -52,6 +43,29 @@ function NavBar() {
               primary="Help"
             />
         </ListItem>
+        <ListItem
+            classes={{ root: 'MuiListItem-indicators' }}
+            button
+          >
+             <Link to={'/reg'}>
+            <ListItemText
+              primaryTypographyProps={{ noWrap: true }}
+              primary="Register"
+            />
+            </Link>
+        </ListItem>
+        <ListItem
+            classes={{ root: 'MuiListItem-indicators' }}
+            button
+          >
+             <Link to={'/reg'}>
+            <ListItemText
+              primaryTypographyProps={{ noWrap: true }}
+              primary="Register"
+            />
+            </Link>
+        </ListItem>
+
         </List>
         </Box>
         <Box sx={{ flexGrow: 1 }} />

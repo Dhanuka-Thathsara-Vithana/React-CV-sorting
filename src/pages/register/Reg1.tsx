@@ -23,12 +23,13 @@ function Reg1() {
     <Grid item xs={6}>
        <Box paddingLeft='23rem' paddingTop='26rem'>
            <Typography
+            color='white'
             component="div"
             sx={{ paddingLeft: '2.8rem',fontFamily: '-apple-system', fontStyle: 'italic', fontSize: '50px' ,display: { xs: 'none', sm: 'block' } }}
             >
             CarrierCompass
             </Typography>
-            <Typography sx={{paddingTop: '1rem', fontSize: '20px'}}>
+            <Typography color='white' sx={{paddingTop: '1rem', fontSize: '20px'}}>
             Log in to apply for jobs and check your resume status
             </Typography>
        </Box>
