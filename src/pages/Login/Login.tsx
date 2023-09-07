@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import { Box, Button, Dialog, Grid, Paper, TextField, Typography } from '@mui/material'
 import regBack from './assets/Registration.png'
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import InputComponent from '../education/InputComponent';
@@ -8,6 +8,10 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios, { CanceledError } from 'axios';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+import ErrorMsg from './ErrorMsg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const schema = z.object({
     email: z.string().email("This is not a valid email."),
@@ -27,7 +31,8 @@ function Reg2() {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)});
     const [error, setError] = useState('');
-    
+    const [ err, setErr ] = useState('')
+
     const onSubmit = (data: FieldValues) => {
       const controller = new AbortController();
 
@@ -42,16 +47,21 @@ function Reg2() {
     )
     .catch(err => {
       if(err instanceof CanceledError) return;
-      setError(err.message)
+      setError(err.response.data)
+     
     });
-   
+    toast.info(error);
     console.log(data)
     navigate('') 
     return () => controller.abort();
    }
+   console.log(error)
 
-  return (
+return (
 <Paper style={styles.paperContainer}>
+     { error &&  <div>
+        <ToastContainer toastStyle={{ backgroundColor: " #AFDCEB" }} />
+      </div>} 
     <Grid height='60.8rem' container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
     <Grid item xs={6}>
        <Box paddingLeft='23rem' paddingTop='23rem'>
