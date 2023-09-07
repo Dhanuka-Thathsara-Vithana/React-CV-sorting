@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
+import axios, { CanceledError } from 'axios';
+import { useState } from 'react';
 
 const schema = z.object({
     email: z.string().email("This is not a valid email."),
@@ -25,7 +26,11 @@ const styles = {
 function Reg2() {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)});
+    const [error, setError] = useState('');
+    
     const onSubmit = (data: FieldValues) => {
+      const controller = new AbortController();
+
      console.log(data)
      axios.post('http://localhost:5000/api/auth',  data )
      .then(res => {
@@ -35,8 +40,14 @@ function Reg2() {
         localStorage.setItem('user', JSON.stringify(res.data));
         navigate('/user');}} }
     )
-     console.log(data)
+    .catch(err => {
+      if(err instanceof CanceledError) return;
+      setError(err.message)
+    });
+   
+    console.log(data)
     navigate('') 
+    return () => controller.abort();
    }
 
   return (

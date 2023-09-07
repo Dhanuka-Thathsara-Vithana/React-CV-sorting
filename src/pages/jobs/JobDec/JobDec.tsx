@@ -26,7 +26,7 @@ interface JobDesProps {
 function JobDec() {
   const params = useParams();
 
-  const [jobDes, setJobDes] = useState<JobDesProps[] | null>([]);
+  const [jobDes, setJobDes] = useState<JobDesProps | null>();
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function JobDec() {
     const controller = new AbortController();
      const dataId = {parsedId}
     axios
-      .post<JobDesProps[]>('http://localhost:5000/api/jobDescription', params)
+      .post<JobDesProps>('http://localhost:5000/api/jobDescription', params)
       .then((res) => {
       setJobDes(res.data)
       // console.log(res.data)
