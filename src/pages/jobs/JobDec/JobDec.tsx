@@ -4,7 +4,7 @@ import axios, { CanceledError } from 'axios';
 import { Card } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-interface JobDesProps{
+interface JobDesProps {
   id: string,
   Img1: string
   Logo: string,
@@ -30,12 +30,12 @@ function JobDec() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // const savedId = localStorage.getItem('jobCardId');
-    // if(savedId) { const parsedId = JSON.parse(savedId); 
-    // console.log(parsedId)
+     const savedId = localStorage.getItem('jobCardId');
+     if(savedId) { const parsedId = JSON.parse(savedId); 
+     console.log(parsedId)
     
     const controller = new AbortController();
-    // const dataId = {parsedId}
+     const dataId = {parsedId}
     axios
       .post<JobDesProps[]>('http://localhost:5000/api/jobDescription', params)
       .then((res) => {
@@ -47,12 +47,12 @@ function JobDec() {
         setError(err.message)
       });
       return () => controller.abort();
-   
+    }
   }, [])
     console.log(jobDes);
  return (
     <>
-   { jobDes &&
+   { jobDes && 
       <JobDecCard 
         id={jobDes.id} img1={jobDes.Img1} logo={jobDes.Logo} position={jobDes.Position} comName={jobDes.Des1}
         rating={jobDes.Rating} reviews={jobDes.Reviews} company={jobDes.Company} aboutCom={jobDes.AboutCompany}

@@ -9,11 +9,12 @@ import { Link } from 'react-router-dom';
 import NavListComponent from './NavListComponent';
 
 interface Props {
-  user: boolean | undefined,
-  handelClick: () => void
+  user: string | undefined,
+  handelClick: () => void,
+  name: string | undefined
 }
 
-function NavBar({user, handelClick}: Props) {
+function NavBar({user, handelClick, name}: Props) {
 
   return (
     <Box borderRadius='18'  paddingLeft='1rem' sx={{ width: '1840px' }}>
@@ -41,9 +42,16 @@ function NavBar({user, handelClick}: Props) {
             <NavListComponent to={'login'} name={'Login'}/>
             </>   
           }
-
+          <Box >
+          </Box>
         </List>
         </Box>
+         {user && <Typography
+            component="div"
+            sx={{ paddingLeft: '3rem', fontFamily: '-apple-system', fontSize: '21px' ,display: { xs: 'none', sm: 'block' } }}
+          >
+            Welcome Back {name}
+          </Typography>}
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 

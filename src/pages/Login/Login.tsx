@@ -32,7 +32,7 @@ function Reg2() {
       console.log(res.data);
       {if(res.data) 
        { 
-        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('user', JSON.stringify(res.data));
         navigate('/user');}} }
     )
      console.log(data)

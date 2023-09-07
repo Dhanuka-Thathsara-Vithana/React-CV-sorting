@@ -13,19 +13,23 @@ const styles = {
 
 function Layout() {
   const navigate = useNavigate();
-  const [user, setUser] = useState<boolean | undefined>(false)
-  
+  const [user, setUser] = useState<string | undefined>('')
+
   useEffect(() => {
-    const user = localStorage.getItem('user');
-    if(user) 
-     { const parsedUser = JSON.parse(user);
-       setUser(parsedUser)
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUser(parsedUser);
     }
   }, [])
-  
+
   const handelLogout = () => {
+    // Clear user data from localStorage
     localStorage.removeItem('user');
-    navigate('');
+    
+    setUser('');
+    
+    navigate(''); 
   }
 
   return (
@@ -33,7 +37,7 @@ function Layout() {
     <Box >
     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={30}>
-            <NavBar handelClick={handelLogout} user={user} />
+            <NavBar handelClick={handelLogout} user={user} name={user.fName} />
         </Grid>
         <Grid item xs={6}>
              <Outlet/>
@@ -44,4 +48,4 @@ function Layout() {
   )
 }
 
-export default Layout
+export default Layout;
