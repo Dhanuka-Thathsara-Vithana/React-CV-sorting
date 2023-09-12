@@ -39,10 +39,9 @@ function EduCard({handelClick}: Props) {
       .then(res => 
        console.log(res.data) )
        }
-       
-    
-      }
+  }
     console.log(fromDate);
+
 return (
     <Card sx={{
         alignItems: 'center',

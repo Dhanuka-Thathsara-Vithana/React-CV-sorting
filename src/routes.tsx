@@ -17,6 +17,7 @@ import Reg4 from "./pages/register/Reg4";
 import Reg5 from "./pages/register/Reg5";
 import Login from "./pages/Login/Login";
 import LoginLayout from "./layout/LoginLayout";
+import JobApplyForm from "./pages/jobs/ApplyJob/ApplyJobForm";
 
 const router = createBrowserRouter([
     { path: '/',
@@ -31,9 +32,10 @@ const router = createBrowserRouter([
           children: [
             { path: '',  element: <Dashboard/> },
             { path: 'jobs',  element: <Jobs/> },
-            { path: 'jobs/:id', element: <JobDec/> },
+            { path: 'jobDec', element: <JobDec/> },
             { path: 'education', element: <Education/> },
-            { path: 'workExperience', element: <Work/>}
+            { path: 'workExperience', element: <Work/>},
+            { path: 'jobApply', element: <JobApplyForm/>}
           ]
         }
       ]

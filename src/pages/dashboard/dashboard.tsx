@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import Calander from './Calander';
 import UserPerformance from './UserPerformance';
 import RecJobGrid from './RecJobGrid';
+import Job from '../jobs/Job';
 
 function Dashboard() {
   return (
@@ -35,7 +36,7 @@ function Dashboard() {
         <Grid item lg={10.1} xs={12}>
           <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 1600 } : {})}>   
             <Box borderRadius ='15px' sx={{boxShadow: 3}}>
-            <RecJobGrid/>
+            <Job/>
             </Box>
           </Grow>  
         </Grid>

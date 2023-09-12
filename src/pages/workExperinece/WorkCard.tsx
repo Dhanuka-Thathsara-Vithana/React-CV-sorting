@@ -93,7 +93,16 @@ function WorkCard({handelClick}: Props) {
                  <Button onClick={handelClick} variant="outlined">cancel</Button>
                </Grid>
                <Grid item xs={6} md={1.5}>
-                 <Button type='submit'  variant="contained" sx={{ width: '95px'}}>Save</Button>
+                 <Button
+                 sx={{
+                  bgcolor: '#09bd0c'+ ' !important', 
+                  '&:hover': {
+                      backgroundColor: '#4EF037',
+                      opacity: [0.9, 0.8, 0.7]
+                    },
+                  color: 'white', width: '120px'
+                }} 
+                 type='submit'  variant="contained" sx={{ width: '95px'}}>Save</Button>
                </Grid>
            </Grid>
         </Box> 

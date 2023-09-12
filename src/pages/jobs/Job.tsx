@@ -9,6 +9,7 @@ import {
 import JobCard from './JobCard';
 import { useEffect, useState } from 'react';
 import axios, { CanceledError } from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 interface JobProps {
   _id: number,
@@ -21,6 +22,7 @@ interface JobProps {
 }
 
 function Job() {
+  const navigate = useNavigate();
   const [jobCard, setJobCard] = useState<JobProps[]>([]);
   const [error, setError] = useState('');
 
@@ -37,9 +39,10 @@ function Job() {
       return () => controller.abort();
   }, [])
 console.log(jobCard)
+
 const handelId = (id: number) => {
   localStorage.setItem('jobCardId', JSON.stringify(id));
-  
+  navigate('/user/jobDec')
    console.log(id)
  }
 
@@ -68,7 +71,7 @@ const handelId = (id: number) => {
                   rating={job.Rating}
                   des1={job.Des1}
                   des2={job.Des2}
-              
+                  handelClick={handelId}
                />
             </Grid>
             ))}

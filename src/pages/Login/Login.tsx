@@ -18,7 +18,7 @@ const schema = z.object({
     password: z.string().min(3)
   });
 
-  type FormData = z.infer<typeof schema>
+type FormData = z.infer<typeof schema>
   
 
 const styles = {

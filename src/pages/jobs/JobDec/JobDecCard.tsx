@@ -36,11 +36,13 @@ function JobDecCard({img1, logo, position, comName, rating, reviews, company, ab
   return (
     <Card
     sx={{
-     alignItems: 'center'
+     alignItems: 'center',
+     width: '70rem'
     }}
+    
    >
     <Grow in={true} {...(true ? { timeout: 500 } : {})} style={{ transformOrigin: '0 0 0' }}>
-     <Box p={1} width='750px'>
+     <Box p={1} width='1200px'>
           <Box sx={{
             borderRadius: '12px'
           }}>
@@ -117,7 +119,7 @@ function JobDecCard({img1, logo, position, comName, rating, reviews, company, ab
               <Button
                 disableRipple
                 component={RouterLink}
-                to="/dashboards/jobApply"
+                to="/user/jobApply"
                 variant="contained"
                 color="primary"
                 startIcon={<NorthEastIcon />}

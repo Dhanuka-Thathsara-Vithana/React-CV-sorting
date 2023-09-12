@@ -21,11 +21,10 @@ interface Props {
   rating: number,
   des1: string,
   des2: string
-  
+  handelClick: (id: number) => void
 }
 
-export default function JobCard({id, image, title, subheader, rating, des1, des2}: Props) {
-    const navigate = useNavigate();
+export default function JobCard({id, image, title, subheader, rating, des1, des2, handelClick}: Props) {
 
   return (
     <Grow in={true} {...(true ? { timeout: 1000 } : {})} style={{ transformOrigin: '0 0 0' }} >   
@@ -68,8 +67,9 @@ export default function JobCard({id, image, title, subheader, rating, des1, des2
           <Grid item>
             <Button
               
-             onClick={() => navigate(`/jobs/${id}`)}
-             sx={{ bgcolor: '#09bd0c', 
+             onClick={() => handelClick(id)}
+             sx={{
+              bgcolor: '#09bd0c'+ ' !important', 
                 '&:hover': {
                     backgroundColor: '#4EF037',
                     opacity: [0.9, 0.8, 0.7]

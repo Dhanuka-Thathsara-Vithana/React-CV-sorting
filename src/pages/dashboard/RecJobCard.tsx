@@ -11,8 +11,6 @@ import ShareIcon from '@mui/icons-material/Share';
 import Stack from '@mui/material/Stack';
 import Rating from '@mui/material/Rating';
 import { Button, Grid } from '@mui/material';
-import { NavLink as RouterLink } from 'react-router-dom';
-
 interface Props {
   image: string,
   title: string,

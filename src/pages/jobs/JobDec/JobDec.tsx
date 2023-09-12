@@ -31,16 +31,17 @@ function JobDec() {
 
   useEffect(() => {
      const savedId = localStorage.getItem('jobCardId');
-     if(savedId) { const parsedId = JSON.parse(savedId); 
-     console.log(parsedId)
+     if(savedId) { const id = JSON.parse(savedId); 
+     console.log(id)
     
     const controller = new AbortController();
-     const dataId = {parsedId}
+     const dataId = {id}
+     console.log(dataId)
     axios
-      .post<JobDesProps>('http://localhost:5000/api/jobDescription', params)
+      .post<JobDesProps>('http://localhost:5000/api/jobDescription', dataId)
       .then((res) => {
       setJobDes(res.data)
-      // console.log(res.data)
+      console.log(res.data)
       })
       .catch(err => {
         if(err instanceof CanceledError) return;

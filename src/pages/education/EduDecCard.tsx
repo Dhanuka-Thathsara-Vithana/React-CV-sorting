@@ -52,7 +52,15 @@ function EduDecCard({id, institution, major, degree, description, to , from, han
                  {description}
                </Typography>
                <Box paddingTop='20px'>
-               <Button onClick={() => handelClick(id)} variant="contained" startIcon={<DeleteIcon />}>
+               <Button sx={{
+                 bgcolor: '#09bd0c'+ ' !important', 
+                 '&:hover': {
+                     backgroundColor: '#4EF037',
+                     opacity: [0.9, 0.8, 0.7]
+                   },
+                 color: 'white', width: '120px'
+               }} 
+               onClick={() => handelClick(id)} variant="contained" startIcon={<DeleteIcon />}>
                     Delete
                 </Button>
                 </Box>
