@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import NavBar from './layout/navbar/NavBar'
+import NavBar from './layout/userLayout/navbar/NavBar'
 import SideBar from './layout/sidebar/SideBar'
 import Layout from "./layout/Layout";
 import DashLayout from "./layout/DashLayout";
-import Dashboard from "./pages/dashboard/Dashboard";
+import UserDashboard from "../src/pages/userDashboard/UserDashboard"
 import Jobs from "./pages/jobs/Job";
 import JobDec from "./pages/jobs/JobDec/JobDec";
 import Education from "./pages/education/Education";
@@ -18,6 +18,8 @@ import Reg5 from "./pages/register/Reg5";
 import Login from "./pages/Login/Login";
 import LoginLayout from "./layout/LoginLayout";
 import JobApplyForm from "./pages/jobs/ApplyJob/ApplyJobForm";
+import ComDashboard from "./pages/companyDashboard/ComDashboard";
+import ComDashLayout from "./layout/ComDashLayout";
 
 const router = createBrowserRouter([
     { path: '/',
@@ -30,12 +32,18 @@ const router = createBrowserRouter([
         { path: 'user',
           element: <DashLayout/>,
           children: [
-            { path: '',  element: <Dashboard/> },
+            { path: '',  element: <UserDashboard/> },
             { path: 'jobs',  element: <Jobs/> },
             { path: 'jobDec', element: <JobDec/> },
             { path: 'education', element: <Education/> },
             { path: 'workExperience', element: <Work/>},
             { path: 'jobApply', element: <JobApplyForm/>}
+          ]
+        },
+        { path: 'com',
+          element: <ComDashLayout/>,
+          children: [
+            { path: '', element: <ComDashboard/> }
           ]
         }
       ]

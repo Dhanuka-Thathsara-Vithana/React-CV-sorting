@@ -2,8 +2,9 @@ import { Box, Grid } from '@mui/material'
 import React from 'react'
 import UserSideBar from './userLayout/sidebar/SideBar'
 import { Outlet } from 'react-router-dom'
+import ComSideBar from './comLayout/sidebar/ComSideBar'
 
-function DashLayout() {
+function ComDashLayout() {
   return (
     <Box >
         <Grid  width='100px'
@@ -13,7 +14,7 @@ function DashLayout() {
         alignItems="stretch"
         spacing={5}>
             <Grid item xs={3}>
-                <UserSideBar/>
+                <ComSideBar/>
             </Grid>
             <Grid item xs={3}>
                 <Box paddingLeft='350px' paddingTop='1rem'>
@@ -25,4 +26,4 @@ function DashLayout() {
   )
 }
 
-export default DashLayout
+export default ComDashLayout

@@ -14,7 +14,7 @@ interface Props {
   name: string | undefined
 }
 
-function NavBar({user, handelClick, name}: Props) {
+function UserNavBar({user, handelClick, name}: Props) {
 
   return (
     <Box borderRadius='18'  paddingLeft='1rem' sx={{ width: '1840px' }}>
@@ -42,7 +42,7 @@ function NavBar({user, handelClick, name}: Props) {
             <NavListComponent to={'login'} name={'Login'}/>
             </>   
           }
-          <Box >
+          <Box>
           </Box>
         </List>
         </Box>
@@ -98,4 +98,4 @@ function NavBar({user, handelClick, name}: Props) {
   )
 }
 
-export default NavBar
+export default UserNavBar

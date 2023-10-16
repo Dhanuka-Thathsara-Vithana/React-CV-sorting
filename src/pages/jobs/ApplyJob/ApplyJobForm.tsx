@@ -5,6 +5,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
+import File from './File';
 
 const schema = z.object({
    fName: z.string().min(3).max(20),
@@ -158,7 +159,7 @@ function JobApplyForm() {
                 Resume
              </Typography>
              <Box paddingTop='1rem'>
-                
+                <File/>
              </Box>
              <Typography paddingTop='2rem'>
               <h3> Message to Hiring Manager </h3>

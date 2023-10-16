@@ -8,7 +8,7 @@ import {Box, Grow} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import ListItemCom from './ListItem';
 
-function SideBar() {
+function UserSideBar() {
   return (
      <Box paddingBottom='0.5rem' paddingLeft='1rem' paddingTop='0.5rem' sx={{opacity: '0.8', boxShadow: 3}}>
         <Grow in={true} {...(true ? { timeout: 600 } : {})} style={{ transformOrigin: '0 0 0' }}>
@@ -36,4 +36,4 @@ function SideBar() {
   )
 }
 
-export default SideBar
+export default UserSideBar

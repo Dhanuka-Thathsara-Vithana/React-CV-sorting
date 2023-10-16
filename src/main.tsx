@@ -4,10 +4,10 @@ import App from './App.tsx'
 import './index.css'
 import SideBar from './layout/sidebar/SideBar.tsx'
 import { StyledEngineProvider } from '@mui/material/styles';
-import NavBar from './layout/navbar/NavBar.tsx'
+import NavBar from './layout/userLayout/navbar/NavBar.tsx'
 import { RouterProvider } from 'react-router-dom'
 import router from './routes.tsx'
-import Dashboard from './pages/dashboard/dashboard.tsx'
+import Dashboard from './pages/userDashboard/UserDashboard.tsx'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

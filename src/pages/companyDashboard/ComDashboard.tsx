@@ -1,11 +1,11 @@
 import { Box, Container, Grid, Grow } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
-import Calander from './Calander';
-import UserPerformance from './UserPerformance';
+import Calander from '../userDashboard/Calander'
+import ComPerformance from './ComPerformance';
 import RecJobGrid from './RecJobGrid';
 import Job from '../jobs/Job';
 
-function Dashboard() {
+function ComDashboard() {
   return (
     <>
     <Container maxWidth="lg">
@@ -22,7 +22,7 @@ function Dashboard() {
         <Grid item lg={7.5} xs={12}>
             <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}>  
                 <Box borderRadius ='15px' sx={{ boxShadow: 3}}>
-                    <UserPerformance/>
+                    <ComPerformance/>
                 </Box>
             </Grow>    
         </Grid>
@@ -50,4 +50,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard;
+export default ComDashboard;

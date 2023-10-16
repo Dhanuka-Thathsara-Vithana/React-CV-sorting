@@ -38,6 +38,7 @@ function Job() {
       });
       return () => controller.abort();
   }, [])
+  
 console.log(jobCard)
 
 const handelId = (id: number) => {
