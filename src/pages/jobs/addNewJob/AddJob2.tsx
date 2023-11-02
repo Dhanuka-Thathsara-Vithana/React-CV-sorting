@@ -5,17 +5,20 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
+import InputComponent from '../../education/InputComponent';
 
 const schema = z.object({
-   Position: z.string().min(3).max(20),
-   ComName: z.string().min(3).max(20),
-   Company: z.string().min(3).max(30),
-  Location: z.string().min(3).max(30),
-  Des1: z.string().min(5).max(50),
-   Duration: z.string().min(5).max(20),
-  linkedin: z.string().min(3).max(20),
-   facebook1: z.string().min(3).max(255),
-   message: z.string().min(5).max(500)
+   position: z.string().min(3).max(20),
+   comName: z.string().min(3).max(20),
+   company: z.string().min(3).max(30),
+   location: z.string().min(3).max(30),
+   des1: z.string().min(5).max(50),
+   duration: z.string().min(5).max(20),
+   qualifications: z.string().min(3).max(20),
+   additionalInformation: z.string().min(3).max(255),
+   responsibilities: z.string().min(3).max(255),
+   logo: z.string().min(3).max(5000),
+   img1: z.string().min(5).max(5000)
  })
 
 type FormData = z.infer<typeof schema>
@@ -23,17 +26,18 @@ type FormData = z.infer<typeof schema>
 function AddJob2() {
     const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)}); 
     const onSubmit = (data: FieldValues) => {
-        console.log(data)
-        const savedId = localStorage.getItem('jobCardId');
-        if(savedId) { const jobid = JSON.parse(savedId); 
+        
+        const savedId = localStorage.getItem('addJobId');
+        if(savedId) { 
+        const jobid = JSON.parse(savedId); 
  
-        const newData = {...data, jobId: jobid};
-       
-        axios.post('http://localhost:5000/api/application',  newData )
-        .then(res => {
-         console.log(res.data);
-         localStorage.removeItem('jobCardId');}
-       )
+        const newData = {...data, id: jobid};
+        console.log(newData)
+    //     axios.post('http://localhost:5000/api/application',  newData )
+    //     .then(res => {
+    //      console.log(res.data);
+    //      localStorage.removeItem('jobCardId');}
+    //    )
         }
     }
  
@@ -55,108 +59,20 @@ function AddJob2() {
           </Typography>
           </Box>
           <Grid container spacing={2} paddingTop='2rem'>
-              <Grid sx={{ padding: '1rem' }} item xs={6} md={12} >
-                 <TextField InputProps={{
-                     style: {
-                         borderRadius: "10px",
-                         fontFamily: "Roboto"
-                     }}}  { ...register('Position')}
-                   id='Position' label='First Name' sx={{ color: 'black'}}  size="small" fullWidth />
-                   {errors.Position && 
-                       <Alert severity="error">{errors.Position.message}</Alert>
-                   }
-              </Grid>
-              <Grid sx={{ padding: '1rem' }} item xs={6} md={12} >
-                 <TextField InputProps={{
-                     style: {
-                         borderRadius: "10px",
-                         fontFamily: "Roboto"
-                     }}} { ...register('ComName')}
-                   id='ComName' label='Last Name' sx={{ color: 'black'}}  size="small" fullWidth/>
-                   {errors.ComName && 
-                       <Alert severity="error">{errors.ComName.message}</Alert>
-                   }
-              </Grid>
-              <Grid sx={{ padding: '1rem' }} item xs={6} md={12}>
-                 <TextField InputProps={{
-                     style: {
-                         borderRadius: "10px",
-                         fontFamily: "Roboto"
-                     }}} { ...register('Company')}
-                   id='Company' label='About Company' sx={{ color: 'black'}}  size="small" fullWidth/>
-                   {errors.Company && 
-                       <Alert severity="error">{errors.Company.message}</Alert>
-                   }
-              </Grid>
-              <Grid sx={{ padding: '1rem' }} item xs={6} md={12}>
-                 <TextField InputProps={{
-                     style: {
-                         borderRadius: "10px",
-                         fontFamily: "Roboto"
-                     }}} { ...register('Location')}
-                   id='Location' label='Company Location' sx={{ color: 'black'}}  size="small" fullWidth/>
-                   {errors.Location && 
-                       <Alert severity="error">{errors.Location.message}</Alert>
-                   }
-              </Grid>
-              <Grid sx={{ padding: '1rem' }} item xs={6} md={12}>
-                 <TextField InputProps={{
-                     style: {
-                         borderRadius: "10px",
-                         fontFamily: "Roboto"
-                     }}} { ...register('Des1')}
-                   id='Des1' label='Title' sx={{ color: 'black'}}  size="small" fullWidth/>
-                   {errors.Des1 && 
-                       <Alert severity="error">{errors.Des1.message}</Alert>
-                   }
-              </Grid>
-              <Grid sx={{ padding: '1rem' }} item xs={6} md={12}>
-                 <TextField InputProps={{
-                     style: {
-                         borderRadius: "10px",
-                         fontFamily: "Roboto"
-                     }}} { ...register('Duration')}
-                   id='Duration' label='Duration Number' sx={{ color: 'black'}}  size="small" fullWidth/>
-                   {errors.Duration && 
-                       <Alert severity="error">{errors.Duration.message}</Alert>
-                   }
-              </Grid>
-              <Grid sx={{ padding: '1rem' }} item xs={6} md={12}>
-                 <TextField InputProps={{
-                     style: {
-                         borderRadius: "10px",
-                         fontFamily: "Roboto"
-                     }}} { ...register('Description')}
-                   id='Description' label='Description Number' sx={{ color: 'black'}}  size="small" fullWidth/>
-                   {errors.Description && 
-                       <Alert severity="error">{errors.Description.message}</Alert>
-                   }
-              </Grid>
-              <Grid sx={{ padding: '1rem' }} item xs={6} md={12}>
-                 <TextField InputProps={{
-                     style: {
-                         borderRadius: "10px",
-                         fontFamily: "Roboto"
-                     }}} { ...register('Qualifications')}
-                   id='Qualifications' label='Qualifications Number' sx={{ color: 'black'}}  size="small" fullWidth/>
-                   {errors.Qualifications && 
-                       <Alert severity="error">{errors.Qualifications.message}</Alert>
-                   }
-              </Grid>
-              <Grid sx={{ padding: '1rem' }} item xs={6} md={12}>
-                 <TextField InputProps={{
-                     style: {
-                         borderRadius: "10px",
-                         fontFamily: "Roboto"
-                     }}} { ...register('AdditionalInformation')}
-                   id='AdditionalInformation' label='AdditionalInformation' sx={{ color: 'black'}}  size="small" fullWidth/>
-                   {errors.AdditionalInformation && 
-                       <Alert severity="error">{errors.AdditionalInformation.message}</Alert>
-                   }
-              </Grid>
+            <InputComponent Md={15} label={'Position'} objRef={register('position')} error={errors.position?.message}/>
+            <InputComponent Md={15} label={'Company Name'} objRef={register('comName')} error={errors.comName?.message}/>
+            <InputComponent Md={15} label={'About Company'} objRef={register('company')} error={errors.company?.message}/>
+            <InputComponent Md={15} label={'Company Location'} objRef={register('location')} error={errors.location?.message}/>
+            <InputComponent Md={15} label={'Description'} objRef={register('des1')} error={errors.des1?.message}/>
+            <InputComponent Md={15} label={'Duration'} objRef={register('duration')} error={errors.duration?.message}/>
+            <InputComponent Md={15} label={'Qualifications'} objRef={register('qualifications')} error={errors.qualifications?.message}/>
+            <InputComponent Md={15} label={'AdditionalInformation'} objRef={register('additionalInformation')} error={errors.additionalInformation?.message}/>
+            <InputComponent Md={15} label={'Image Url'} objRef={register('img1')} error={errors.img1?.message}/>
+            <InputComponent Md={15} label={'Logo Url'} objRef={register('logo')} error={errors.logo?.message}/>
+            <InputComponent Md={15} label={'Responsibilities'} objRef={register('responsibilities')} error={errors.responsibilities?.message}/>
           </Grid>
              <Box paddingTop='2rem' paddingBottom='2rem'>
-              <Button
+                 <Button
                    type='submit'
                    variant="contained"
                    color="primary"

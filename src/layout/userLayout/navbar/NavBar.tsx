@@ -18,7 +18,7 @@ function UserNavBar({user, handelClick, name}: Props) {
 
   return (
     <Box borderRadius='18'  paddingLeft='1rem' sx={{ width: '1840px' }}>
-    <AppBar position="static" sx={{bgcolor: '#19A7CE'}}>
+    <AppBar position="static" sx={{bgcolor: '#1A5092'}}>
       <Toolbar>
         <Typography
           component="div"

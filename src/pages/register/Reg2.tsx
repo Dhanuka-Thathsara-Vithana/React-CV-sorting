@@ -29,8 +29,8 @@ function Reg2() {
     const onSubmit = (data: FieldValues) => {
     // Save form data to localStorage whenever it changes
         localStorage.setItem('formData1', JSON.stringify(data));
-    console.log(data)
-    navigate('/reg/reg3') 
+        console.log(data)
+       navigate('/reg/reg3') 
     }
 
   return (

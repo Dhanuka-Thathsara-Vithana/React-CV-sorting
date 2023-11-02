@@ -10,21 +10,21 @@ import { blue, green, red } from '@mui/material/colors';
 import ShareIcon from '@mui/icons-material/Share';
 import Stack from '@mui/material/Stack';
 import Rating from '@mui/material/Rating';
-import { Button, Grid, Grow } from '@mui/material';
+import { Box, Button, Grid, Grow } from '@mui/material';
 import { Link, NavLink as RouterLink, useNavigate } from 'react-router-dom';
+import { ForkLeft } from '@mui/icons-material';
 
 interface Props {
    id: number,
   image: string,
   title: string,
   subheader: string,
-  rating: number,
   des1: string,
   des2: string
   handelClick: (id: number) => void
 }
 
-export default function JobCard({id, image, title, subheader, rating, des1, des2, handelClick}: Props) {
+export default function JobCard({id, image, title, subheader, des1, des2, handelClick}: Props) {
 
   return (
     <Grow in={true} {...(true ? { timeout: 1000 } : {})} style={{ transformOrigin: '0 0 0' }} >   
@@ -38,12 +38,21 @@ export default function JobCard({id, image, title, subheader, rating, des1, des2
         title={title}
         subheader={subheader}
       />
+      <Card
+      raised
+      sx={{
+        maxWidth: 350,
+        height: 250
+      }}
+    >
       <CardMedia
         component="img"
         height="184"
         image={image}
         alt="img1"
       />
+    </Card>
+      
       <CardContent>
     <Typography variant="body2" color="text.secondary">
         {des1}
@@ -54,17 +63,7 @@ export default function JobCard({id, image, title, subheader, rating, des1, des2
 </CardContent>
     <CardActions disableSpacing>
       <Grid container spacing={2}>
-         <Grid item>
-        <Stack spacing={2}>
-            <Rating name="read-only" value={rating} readOnly />
-         </Stack>
-         </Grid>
-         <Grid item>
-        <IconButton sx={{ bgcolor: green[100] }} aria-label="share">
-          <ShareIcon />
-        </IconButton>
-          </Grid>
-          <Grid item>
+          <Grid item alignContent='end'>
             <Button
               
              onClick={() => handelClick(id)}
