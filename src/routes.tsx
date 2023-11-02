@@ -20,6 +20,8 @@ import LoginLayout from "./layout/LoginLayout";
 import JobApplyForm from "./pages/jobs/ApplyJob/ApplyJobForm";
 import ComDashboard from "./pages/companyDashboard/ComDashboard";
 import ComDashLayout from "./layout/ComDashLayout";
+import AddJob from "./pages/jobs/addNewJob/AddJob";
+import AddJob2 from "./pages/jobs/addNewJob/AddJob2";
 
 const router = createBrowserRouter([
     { path: '/',
@@ -43,7 +45,9 @@ const router = createBrowserRouter([
         { path: 'com',
           element: <ComDashLayout/>,
           children: [
-            { path: '', element: <ComDashboard/> }
+            { path: '', element: <ComDashboard/> },
+            { path: 'newjob', element: <AddJob/> },
+            { path: 'newjob2', element: <AddJob2/> }
           ]
         }
       ]

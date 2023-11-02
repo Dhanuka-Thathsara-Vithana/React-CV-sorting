@@ -20,7 +20,7 @@ function ComSideBar() {
                 DASHBOARDS
         </Typography>
       <ListItemCom message='Dashboard' icon={<StarIcon sx={{ color: '#A4EBF3' }} />} link={''} /> 
-      <ListItemCom message='Published Jobs' icon={<MmsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'messanger'} /> 
+      <ListItemCom message='Add New Job' icon={<MmsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'newjob'} /> 
       <ListItemCom message='Publish Jobs' icon={<DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'jobs'} /> 
       
        <Divider/>

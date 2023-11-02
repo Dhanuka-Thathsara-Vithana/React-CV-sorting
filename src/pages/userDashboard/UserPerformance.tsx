@@ -9,7 +9,6 @@ import {
   import Counter from './Counter';
 import PerformanceCard from './PerformanceCard';
   
-
 function UserPerformance() {
   return (
     <Card sx={{borderRadius: '15px',opacity: '0.8',

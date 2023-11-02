@@ -34,7 +34,7 @@ function JobApplyForm() {
        if(savedId) { const jobid = JSON.parse(savedId); 
 
        const newData = {...data, jobId: jobid};
-
+      
        axios.post('http://localhost:5000/api/application',  newData )
        .then(res => {
         console.log(res.data);
