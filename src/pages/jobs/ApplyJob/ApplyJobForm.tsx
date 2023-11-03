@@ -10,6 +10,7 @@ import File from './File';
 const schema = z.object({
    fName: z.string().min(3).max(20),
    lName: z.string().min(3).max(20),
+   age: z.string().min(1).max(3),
    email: z.string().min(3).max(30).email(),
   confirmEmail: z.string().min(3).max(30),
   residence: z.string().min(5).max(50),
@@ -103,6 +104,17 @@ function JobApplyForm() {
                   id='confirmEmail' label='Confirm Your Email' sx={{ color: 'black'}}  size="small" fullWidth/>
                   {errors.confirmEmail && 
                       <Alert severity="error">{errors.confirmEmail.message}</Alert>
+                  }
+             </Grid>
+             <Grid sx={{ padding: '1rem' }} item xs={6} md={6}>
+                <TextField InputProps={{
+                    style: {
+                        borderRadius: "10px",
+                        fontFamily: "Roboto"
+                    }}} { ...register('age')}
+                  id='age' label='Age' sx={{ color: 'black'}}  size="small" fullWidth/>
+                  {errors.age && 
+                      <Alert severity="error">{errors.age.message}</Alert>
                   }
              </Grid>
              <Grid sx={{ padding: '1rem' }} item xs={6} md={6}>

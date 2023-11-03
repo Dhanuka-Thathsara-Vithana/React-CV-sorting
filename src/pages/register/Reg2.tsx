@@ -11,7 +11,8 @@ const schema = z.object({
     fName: z.string().min(3),
     lName: z.string().min(3),
     email: z.string().email("This is not a valid email."),
-    telephone: z.string().min(9).max(15)
+    telephone: z.string().min(9).max(15),
+    age: z.string().min(1).max(3)
   });
   
   type FormData = z.infer<typeof schema>
@@ -71,6 +72,7 @@ function Reg2() {
                     <InputComponent Md={15} label={'Last Name'} objRef={register('lName')} error={errors.lName?.message}/>
                     <InputComponent Md={15} label={'Email Name'} objRef={register('email')} error={errors.email?.message}/>
                     <InputComponent Md={15} label={'Telephone'} objRef={register('telephone')} error={errors.telephone?.message}/>
+                    <InputComponent Md={15} label={'Age'} objRef={register('age')} error={errors.age?.message}/>
                 </Grid>    
            </Box>
           

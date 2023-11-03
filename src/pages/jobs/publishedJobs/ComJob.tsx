@@ -47,7 +47,7 @@ import {
    }
 
    const handelIdCandi = (id: number) => {
-    localStorage.setItem('ComjobCardId', JSON.stringify(id));
+    localStorage.setItem('jobCardId', JSON.stringify(id));
     navigate('/com/jobDec')
      console.log(id)
    }
