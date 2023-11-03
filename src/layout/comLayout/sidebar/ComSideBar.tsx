@@ -13,7 +13,7 @@ function ComSideBar() {
      <Box paddingBottom='0.5rem' paddingLeft='1rem' paddingTop='0.5rem' sx={{opacity: '0.8', boxShadow: 3}}>
         <Grow in={true} {...(true ? { timeout: 600 } : {})} style={{ transformOrigin: '0 0 0' }}>
     <List
-    sx={{ paddingTop: '2rem', paddingLeft: '1rem', borderRadius: '18px' ,width: '260px', height: '800px', bgcolor: '#009BD6', color: 'white' }}
+    sx={{ paddingTop: '2rem', paddingLeft: '1rem', borderRadius: '18px' ,width: '260px', height: '800px', bgcolor: '#1A5092', color: 'white' }}
     aria-label="contacts"
   >
         <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
@@ -21,14 +21,9 @@ function ComSideBar() {
         </Typography>
       <ListItemCom message='Dashboard' icon={<StarIcon sx={{ color: '#A4EBF3' }} />} link={''} /> 
       <ListItemCom message='Add New Job' icon={<MmsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'newjob'} /> 
-      <ListItemCom message='Publish Jobs' icon={<DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'jobs'} /> 
+      <ListItemCom message='Publish Jobs' icon={<DisplaySettingsTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'publishedJobs'} /> 
       
        <Divider/>
-        <Typography  color='#A4EBF3' variant="subtitle1" paddingTop='2rem' paddingBottom='1rem'>
-                QUALIFICATION
-        </Typography>
-        <ListItemCom message='Educational' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'education'}/> 
-        <ListItemCom message='Work Experience' icon={<TableChartTwoToneIcon sx={{ color: '#A4EBF3' }} />} link={'workExperience'}/> 
 
   </List>
         </Grow>

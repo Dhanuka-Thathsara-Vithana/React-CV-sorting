@@ -21,12 +21,13 @@ function AddJob() {
     const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)}); 
     const pubDate = new Date().toLocaleDateString();
     const onSubmit = (data: FieldValues) => {
+      
         const allData = {...data, pubDate}
         console.log(allData)
         axios.post('http://localhost:5000/api/jobCard',  allData )
         .then(res => {
-          localStorage.setItem('addJobId', JSON.stringify(res));
-          navigate('newjob2')}
+          localStorage.setItem('addJobId', JSON.stringify(res.data));
+          navigate('/com/newjob2')}
        )
     }
 

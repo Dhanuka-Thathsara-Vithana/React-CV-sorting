@@ -6,17 +6,18 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import InputComponent from '../../education/InputComponent';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const schema = z.object({
    position: z.string().min(3).max(20),
    comName: z.string().min(3).max(20),
-   company: z.string().min(3).max(30),
+   aboutCompany: z.string().min(3),
    location: z.string().min(3).max(30),
-   des1: z.string().min(5).max(50),
+   des1: z.string().min(5),
    duration: z.string().min(5).max(20),
-   qualifications: z.string().min(3).max(20),
-   additionalInformation: z.string().min(3).max(255),
-   responsibilities: z.string().min(3).max(255),
+   qualifications: z.string().min(3),
+   additionalInformation: z.string(),
+   responsibilities: z.string().min(3),
    logo: z.string().min(3).max(5000),
    img1: z.string().min(5).max(5000)
  })
@@ -24,20 +25,22 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 function AddJob2() {
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)}); 
     const onSubmit = (data: FieldValues) => {
         
         const savedId = localStorage.getItem('addJobId');
         if(savedId) { 
         const jobid = JSON.parse(savedId); 
- 
         const newData = {...data, id: jobid};
-        console.log(newData)
-    //     axios.post('http://localhost:5000/api/application',  newData )
-    //     .then(res => {
-    //      console.log(res.data);
-    //      localStorage.removeItem('jobCardId');}
-    //    )
+       console.log(newData)
+        axios.post('http://localhost:5000/api/jobDescription/add',  newData )
+        .then(res => {
+         console.log(res.data);
+         localStorage.removeItem('addJobId');
+         navigate('/com')
+        }
+       )
         }
     }
  
@@ -61,7 +64,7 @@ function AddJob2() {
           <Grid container spacing={2} paddingTop='2rem'>
             <InputComponent Md={15} label={'Position'} objRef={register('position')} error={errors.position?.message}/>
             <InputComponent Md={15} label={'Company Name'} objRef={register('comName')} error={errors.comName?.message}/>
-            <InputComponent Md={15} label={'About Company'} objRef={register('company')} error={errors.company?.message}/>
+            <InputComponent Md={15} label={'About Company'} objRef={register('aboutCompany')} error={errors.company?.message}/>
             <InputComponent Md={15} label={'Company Location'} objRef={register('location')} error={errors.location?.message}/>
             <InputComponent Md={15} label={'Description'} objRef={register('des1')} error={errors.des1?.message}/>
             <InputComponent Md={15} label={'Duration'} objRef={register('duration')} error={errors.duration?.message}/>
