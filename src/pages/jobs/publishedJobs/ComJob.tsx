@@ -42,13 +42,13 @@ import {
   
   const handelIdView = (id: number) => {
     localStorage.setItem('jobCardId', JSON.stringify(id));
-    navigate('/user/jobDec')
+    navigate('/com/jobDec')
      console.log(id)
    }
 
    const handelIdCandi = (id: number) => {
-    localStorage.setItem('jobCardId', JSON.stringify(id));
-    navigate('/user/jobDec')
+    localStorage.setItem('ComjobCardId', JSON.stringify(id));
+    navigate('/com/jobDec')
      console.log(id)
    }
   

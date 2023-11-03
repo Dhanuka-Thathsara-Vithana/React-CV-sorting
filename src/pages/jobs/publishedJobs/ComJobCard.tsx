@@ -63,7 +63,7 @@ export default function ComJobCard({id, image, title, subheader, des1, des2, han
     </Typography>
 </CardContent>
     <CardActions disableSpacing>
-      <Grid container spacing={2}>
+      <Grid paddingLeft={1.5} container spacing={2.5}>
           <Grid item alignContent='end'>
             <Button
               
@@ -86,7 +86,7 @@ export default function ComJobCard({id, image, title, subheader, des1, des2, han
                     backgroundColor: '#4EF037',
                     opacity: [0.9, 0.8, 0.7]
                   },
-                color: 'white', width: '120px' }}>View Candidates</Button>
+                color: 'white', width: '160px' }}>View Candidates</Button>
           </Grid>
         </Grid>
       </CardActions>

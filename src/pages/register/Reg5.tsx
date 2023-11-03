@@ -27,11 +27,12 @@ function Reg5() {
         const parsedFormData1 = JSON.parse(savedFormData1);
         const password = JSON.parse(savedFormData2);
         const education = JSON.parse(savedFormData3);
-         
+        const type = 'user' 
         const data = {
           ...password,
           ...education,
-          ...parsedFormData1
+          ...parsedFormData1,
+             type
         }
         
          console.log(data);
@@ -41,6 +42,7 @@ function Reg5() {
          localStorage.removeItem('formData1');
          localStorage.removeItem('formData2');
          localStorage.removeItem('formData3');
+         navigate('/login')
          }
        )
        }

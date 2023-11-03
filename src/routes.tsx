@@ -49,7 +49,8 @@ const router = createBrowserRouter([
             { path: '', element: <ComDashboard/> },
             { path: 'newjob', element: <AddJob/> },
             { path: 'newjob2', element: <AddJob2/> },
-            { path: 'publishedJobs', element: <ComJob/> }
+            { path: 'publishedJobs', element: <ComJob/> },
+            { path: 'jobDec', element: <JobDec/> }
           ]
         }
       ]
