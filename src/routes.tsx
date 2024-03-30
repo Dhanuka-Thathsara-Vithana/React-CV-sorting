@@ -23,6 +23,7 @@ import ComDashLayout from "./layout/ComDashLayout";
 import AddJob from "./pages/jobs/addNewJob/AddJob";
 import AddJob2 from "./pages/jobs/addNewJob/AddJob2";
 import ComJob from "./pages/jobs/publishedJobs/ComJob";
+import Candidates from "./pages/jobs/candidates/Candidates";
 
 const router = createBrowserRouter([
     { path: '/',
@@ -50,7 +51,8 @@ const router = createBrowserRouter([
             { path: 'newjob', element: <AddJob/> },
             { path: 'newjob2', element: <AddJob2/> },
             { path: 'publishedJobs', element: <ComJob/> },
-            { path: 'jobDec', element: <JobDec/> }
+            { path: 'jobDec', element: <JobDec/> },
+            { path: 'candidates', element: <Candidates/> }
           ]
         }
       ]

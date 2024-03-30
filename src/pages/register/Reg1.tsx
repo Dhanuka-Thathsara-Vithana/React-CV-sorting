@@ -3,7 +3,7 @@ import regBack from './assets/Registration.png'
 import GoogleIcon from '@mui/icons-material/Google';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { useNavigate } from 'react-router-dom';
-
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 const styles = {
     paperContainer: {
         backgroundImage: `url(${regBack})`
@@ -15,6 +15,10 @@ function Reg1() {
     
     const createAccount = () => {
         navigate('reg2')
+    }
+
+    const handelBack = () => {
+      navigate('/')
     }
 
   return (
@@ -47,6 +51,9 @@ function Reg1() {
           
            <Box paddingTop='1.8rem'>
                 <Button onClick={createAccount} endIcon={<PersonAddAltIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Create Your own Account</Button>
+           </Box>
+           <Box paddingTop='1.8rem'>
+                <Button onClick={handelBack} startIcon={<ArrowBackIosNewIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Back</Button>
            </Box>
         </Box>  
     </Grid>

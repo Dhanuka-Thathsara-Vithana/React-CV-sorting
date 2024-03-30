@@ -29,17 +29,17 @@ function UserNavBar({user, handelClick, name}: Props) {
         <Box paddingLeft='7rem'>
         <List disablePadding component={Box} display="flex">  
           
-            <NavListComponent to={''} name={'Home'}/>
+            {/* <NavListComponent to={''} name={'Home'}/> */}
          {user &&  
          <>
-            <NavListComponent to={'user'} name={'Dashboard'}/>
+            {/* <NavListComponent to={'user'} name={'Dashboard'}/> */}
          </>
          }
-            <NavListComponent to={''} name={'Help'}/>
+            {/* <NavListComponent to={''} name={'Help'}/> */}
          {!user &&  
            <>
-            <NavListComponent to={'reg'} name={'Register'}/>
-            <NavListComponent to={'login'} name={'Login'}/>
+            {/* <NavListComponent to={'reg'} name={'Register'}/>
+            <NavListComponent to={'login'} name={'Login'}/> */}
             </>   
           }
           <Box>

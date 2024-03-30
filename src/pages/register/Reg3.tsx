@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Radio from '@mui/material/Radio';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useState } from 'react';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const styles = {
     paperContainer: {
@@ -29,6 +30,10 @@ function Reg3() {
     
         navigate('/reg/reg4') 
     }
+
+    const handelBack = () => {
+        navigate('/reg/reg2')
+      }
 
   return (
 <Paper style={styles.paperContainer}>
@@ -83,6 +88,9 @@ function Reg3() {
            </Box>
            <Box paddingTop='3rem' width='31rem' paddingLeft='3rem'>
                 <Button type='submit' endIcon={<NavigateNextIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Next</Button>
+           </Box>
+           <Box paddingTop='1.8rem'>
+                <Button onClick={handelBack} startIcon={<ArrowBackIosNewIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Back</Button>
            </Box>
         </Box> 
     </form>     

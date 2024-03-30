@@ -33,7 +33,7 @@ import {
         const dataId = {id}
         console.log(dataId)
        axios
-         .post<CandiProps[]>('http://localhost:5000/api/application', dataId)
+         .post<CandiProps[]>('http://localhost:5000/api/application/id', dataId)
          .then((res) => {
          setCandiCard(res.data)
          console.log(res.data)
@@ -70,13 +70,13 @@ import {
             }}
             variant="h4"
           >
-            All Jobs
+            Applied Candidates
           </Typography>
              
-          <Grid container spacing={23}>
+          <Grid container spacing={2}>
            
              {candiCard.map((Candi) => (
-               <Grid key={Candi._id} item xs={12} md={4} lg={3.4}>
+               <Grid key={Candi._id} item xs={12} md={4} lg={12}>
                  <CandiCard
                     id={Candi._id}
                     fName={Candi.fName}

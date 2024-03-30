@@ -20,21 +20,21 @@ function CandiCard({id, fName, lName, field , age, handelClickCV,handelClickView
           background: '#e1f1fd',
           borderRadius: '15px'
          }}>
-          <Box p={1} width='640px'>
-             <Grid container spacing={1} paddingTop='2rem'>
-                 <Grid sx={{ padding: '1rem' }} item xs={6} md={6} >
+          <Box p={1} width='840px' height='160px'>
+             <Grid container spacing={15} paddingTop='2rem'>
+                 <Grid sx={{ padding: '1rem' }} item xs={6} md={4} >
                     <Typography paddingTop='1rem' >Name</Typography>
                     <Typography>{fName+' '+lName}</Typography>
                  </Grid>
-                 <Grid sx={{ padding: '1rem' }} item xs={6} md={6} >
+                 <Grid sx={{ padding: '1rem' }} item xs={6} md={3} >
                      <Typography paddingTop='1rem' >age</Typography>
                      <Typography>{age}</Typography>
                  </Grid>
-                 <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
+                 <Grid sx={{ padding: '1rem' }} item xs={6} md={3}>
                      <Typography paddingTop='1rem' >Field</Typography>
                      <Typography>{field}</Typography>
                  </Grid>
-                 <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
+                 <Grid sx={{ padding: '1rem' }} item xs={6} md={2}>
                  <CardActions disableSpacing>
       <Grid paddingLeft={1.5} container spacing={2.5}>
           <Grid item alignContent='end'>
@@ -47,7 +47,7 @@ function CandiCard({id, fName, lName, field , age, handelClickCV,handelClickView
                     backgroundColor: '#4EF037',
                     opacity: [0.9, 0.8, 0.7]
                   },
-                color: 'white', width: '120px' }}>View CV</Button>
+                color: 'white', width: '150px' }}>View CV</Button>
           </Grid>
           <Grid item alignContent='end'>
             <Button
@@ -59,7 +59,7 @@ function CandiCard({id, fName, lName, field , age, handelClickCV,handelClickView
                     backgroundColor: '#4EF037',
                     opacity: [0.9, 0.8, 0.7]
                   },
-                color: 'white', width: '160px' }}>View Profile</Button>
+                color: 'white', width: '150px' }}>View Profile</Button>
           </Grid>
         </Grid>
       </CardActions>

@@ -40,9 +40,6 @@ function UserDashboard() {
             </Box>
           </Grow>  
         </Grid>
-        <Grid item xs={12}>
-          {/* <WatchList /> */}
-        </Grid>
       </Grid>
     </Container>
    

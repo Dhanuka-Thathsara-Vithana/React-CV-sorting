@@ -48,7 +48,7 @@ import {
 
    const handelIdCandi = (id: number) => {
     localStorage.setItem('jobCardId', JSON.stringify(id));
-    navigate('/com/jobDec')
+    navigate('/com/candidates')
      console.log(id)
    }
   

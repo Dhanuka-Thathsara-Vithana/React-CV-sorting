@@ -7,6 +7,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const schema = z.object({
     password: z.string().min(5).max(20),
@@ -34,6 +35,10 @@ function Reg4() {
   
        navigate('/reg/reg5') 
      };
+
+     const handelBack = () => {
+      navigate('/reg/reg3')
+    }
 
   return (
 <Paper style={styles.paperContainer}>
@@ -76,6 +81,9 @@ function Reg4() {
           
            <Box paddingTop='1.8rem' width='30rem'>
            <Button type='submit' endIcon={<NavigateNextIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Next</Button>
+           </Box>
+           <Box paddingTop='1.8rem'>
+                <Button onClick={handelBack} startIcon={<ArrowBackIosNewIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Back</Button>
            </Box>
         </Box> 
     </form>     

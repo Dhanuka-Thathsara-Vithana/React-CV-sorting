@@ -85,18 +85,18 @@ return (
     <form onSubmit={handleSubmit(onSubmit)}>
         <Box paddingLeft='6rem'  paddingTop='15rem' width='40rem'>
            <Typography
-           sx={{ paddingLeft: '9rem',fontFamily: '-apple-system', fontSize: '40px' ,display: { xs: 'none', sm: 'block' } }}
+           sx={{ paddingLeft: '9rem',fontFamily: '-apple-system', fontSize: '38px' ,display: { xs: 'none', sm: 'block' } }}
            >
            Personal Details
            </Typography>  
-           <Box paddingTop='1.5rem'>
-                <Grid container spacing={2} paddingTop='2rem'>
+           <Box paddingTop='10rem'>
+                <Grid container spacing={2} >
                     <InputComponent Md={15} label={'Email'} objRef={register('email')} error={errors.email?.message}/>
                     <InputComponent Md={15} label={'Password'} objRef={register('password')} error={errors.password?.message}/>
                 </Grid>    
            </Box>
           
-           <Box paddingTop='1.8rem' width='33rem'>
+          <Box paddingTop='1.8rem' width='33rem'>
                 <Button type='submit' endIcon={<PersonAddAltIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Login</Button>
            </Box>
         </Box> 

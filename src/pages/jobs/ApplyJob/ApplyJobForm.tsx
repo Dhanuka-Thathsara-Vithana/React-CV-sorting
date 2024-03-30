@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import File from './File';
+import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
    fName: z.string().min(3).max(20),
@@ -27,7 +28,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 function JobApplyForm() {
-
+  const navigate = useNavigate();
    const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)}); 
    const onSubmit = (data: FieldValues) => {
 
@@ -35,11 +36,13 @@ function JobApplyForm() {
        if(savedId) { const jobid = JSON.parse(savedId); 
 
        const newData = {...data, jobId: jobid};
-      
+       console.log(newData)
        axios.post('http://localhost:5000/api/application',  newData )
        .then(res => {
         console.log(res.data);
-        localStorage.removeItem('jobCardId');}
+        localStorage.removeItem('jobCardId');
+        navigate('/user')
+      }
       )
        }
    }

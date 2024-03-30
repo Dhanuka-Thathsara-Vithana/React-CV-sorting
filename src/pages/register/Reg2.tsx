@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const schema = z.object({
     fName: z.string().min(3),
@@ -31,7 +32,11 @@ function Reg2() {
     // Save form data to localStorage whenever it changes
         localStorage.setItem('formData1', JSON.stringify(data));
         console.log(data)
-       navigate('/reg/reg3') 
+       navigate('/reg/reg1') 
+    }
+
+    const handelBack = () => {
+      navigate('/')
     }
 
   return (
@@ -78,6 +83,9 @@ function Reg2() {
           
            <Box paddingTop='1.8rem' width='33rem'>
                 <Button type='submit' endIcon={<PersonAddAltIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Submit</Button>
+           </Box>
+           <Box paddingTop='1.8rem'>
+                <Button onClick={handelBack} startIcon={<ArrowBackIosNewIcon />} sx={{height: '2.8rem', borderRadius: '12px'}} variant="outlined" fullWidth >Back</Button>
            </Box>
         </Box> 
     </form>     
