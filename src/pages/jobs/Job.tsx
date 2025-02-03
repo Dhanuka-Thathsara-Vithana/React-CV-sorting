@@ -48,7 +48,7 @@ const handelId = (id: number) => {
 
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}>   
-    <Card sx={{width: '1300px', paddingLeft: '4rem', borderRadius: '15px'}}>
+    <Card sx={{width: '63rem', paddingLeft: '4rem', borderRadius: '15px'}}>
     <Box p={5} paddingTop='3rem'>
         <Typography
           sx={{

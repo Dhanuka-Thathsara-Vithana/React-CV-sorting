@@ -8,43 +8,45 @@ import Job from '../jobs/Job';
 function UserDashboard() {
   return (
     <>
-    <Container maxWidth="lg">
-      <Grid
-        width='1500px'
-        paddingTop='20px'
-        container
-        direction="row"
-        //justifyContent="center"
-        alignItems="stretch"
-        spacing={5}
-        
-      >
-        <Grid item lg={7.5} xs={12}>
-            <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}>  
-                <Box borderRadius ='15px' sx={{ boxShadow: 3}}>
-                    <UserPerformance/>
+      
+      <Container maxWidth="lg">
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="stretch"
+          spacing={3}
+          paddingTop="20px"
+        >
+          {/* UserPerformance and Calendar Sections */}
+          <Grid item container spacing={3} lg={10} md={10} xs={12}>
+            <Grid item lg={8} md={8} xs={12}>
+              <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}>
+                <Box borderRadius="15px" sx={{ boxShadow: 3, bgcolor: 'white' }}>
+                  <UserPerformance />
                 </Box>
-            </Grow>    
-        </Grid>
-        <Grid item lg={3} xs={12}>
-            <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 1200 } : {})}> 
-                <Box borderRadius ='15px' sx={{boxShadow: 3}}>
-                    <Calander/>
+              </Grow>
+            </Grid>
+            <Grid item lg={4} md={4} xs={12}>
+              <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 1200 } : {})}>
+                <Box borderRadius="15px" sx={{ boxShadow: 3 }}>
+                  <Calander />
                 </Box>
+              </Grow>
+            </Grid>
+          </Grid>
+
+          {/* Job Section */}
+          <Grid item lg={10} md={10} xs={12}>
+            <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 1600 } : {})}>
+              <Box borderRadius="15px" sx={{ boxShadow: 3 }}>
+                <Job />
+              </Box>
             </Grow>
+          </Grid>
         </Grid>
-        <Grid item lg={10.1} xs={12}>
-          <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 1600 } : {})}>   
-            <Box borderRadius ='15px' sx={{boxShadow: 3}}>
-            <Job/>
-            </Box>
-          </Grow>  
-        </Grid>
-      </Grid>
-    </Container>
-   
-  </>
-  )
+      </Container>
+    </>
+  );
 }
 
 export default UserDashboard;
