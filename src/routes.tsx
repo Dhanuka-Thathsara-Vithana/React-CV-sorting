@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import NavBar from './layout/userLayout/navbar/NavBar'
 import SideBar from './layout/sidebar/SideBar'
 import Layout from "./layout/Layout";
@@ -24,54 +24,69 @@ import AddJob from "./pages/jobs/addNewJob/AddJob";
 import AddJob2 from "./pages/jobs/addNewJob/AddJob2";
 import ComJob from "./pages/jobs/publishedJobs/ComJob";
 import Candidates from "./pages/jobs/candidates/Candidates";
+import { AuthProvider } from './context/AuthContext';
+
+// Create an AuthWrapper component
+const AuthWrapper = () => {
+  return (
+    <AuthProvider>
+      <Outlet />
+    </AuthProvider>
+  );
+};
 
 const router = createBrowserRouter([
-    { path: '/',
-      element: <Layout/>,
-      children: [
-        {
-          path: '/',
-          element: <Home/>
-        },
-        { path: 'user',
-          element: <DashLayout/>,
-          children: [
-            { path: '',  element: <UserDashboard/> },
-            { path: 'jobs',  element: <Jobs/> },
-            { path: 'jobDec', element: <JobDec/> },
-            { path: 'education', element: <Education/> },
-            { path: 'workExperience', element: <Work/>},
-            { path: 'jobApply', element: <JobApplyForm/>}
-          ]
-        },
-        { path: 'com',
-          element: <ComDashLayout/>,
-          children: [
-            { path: '', element: <ComDashboard/> },
-            { path: 'newjob', element: <AddJob/> },
-            { path: 'newjob2', element: <AddJob2/> },
-            { path: 'publishedJobs', element: <ComJob/> },
-            { path: 'jobDec', element: <JobDec/> },
-            { path: 'candidates', element: <Candidates/> }
-          ]
-        }
-      ]
-    },
-    {
-      path: 'reg',
-      element: <RegLayout/>,
-      children: [
-        { path: '', element: <Reg1/>},
-        { path: 'reg2', element: <Reg2/>},
-        { path: 'reg3', element: <Reg3/>},
-        { path: 'reg4', element: <Reg4/>},
-        { path: 'reg5', element: <Reg5/>}
-      ]
-    },
-    {
-      path: 'login',
-      element: <LoginLayout/>,
-    }
-])
+  {
+    element: <AuthWrapper />,
+    children: [
+      { path: '/',
+        element: <Layout/>,
+        children: [
+          {
+            path: '/',
+            element: <Home/>
+          },
+          { path: 'user',
+            element: <DashLayout/>,
+            children: [
+              { path: '',  element: <UserDashboard/> },
+              { path: 'jobs',  element: <Jobs/> },
+              { path: 'jobDec', element: <JobDec/> },
+              { path: 'education', element: <Education/> },
+              { path: 'workExperience', element: <Work/>},
+              { path: 'jobApply', element: <JobApplyForm/>}
+            ]
+          },
+          { path: 'com',
+            element: <ComDashLayout/>,
+            children: [
+              { path: '', element: <ComDashboard/> },
+              { path: 'newjob', element: <AddJob/> },
+              { path: 'newjob2', element: <AddJob2/> },
+              { path: 'publishedJobs', element: <ComJob/> },
+              { path: 'jobDec', element: <JobDec/> },
+              { path: 'candidates', element: <Candidates/> }
+            ]
+          }
+        ]
+      },
+      {
+        path: 'reg',
+        element: <RegLayout/>,
+        children: [
+          { path: '', element: <Reg1/>},
+          { path: 'reg2', element: <Reg2/>},
+          { path: 'reg3', element: <Reg3/>},
+          { path: 'reg4', element: <Reg4/>},
+          { path: 'reg5', element: <Reg5/>}
+        ]
+      },
+      {
+        path: 'login',
+        element: <LoginLayout/>,
+      }
+    ]
+  }
+]);
 
 export default router;

@@ -32,7 +32,7 @@ function Reg2() {
     // Save form data to localStorage whenever it changes
         localStorage.setItem('formData1', JSON.stringify(data));
         console.log(data)
-       navigate('/reg/reg1') 
+       navigate('/reg/reg3') 
     }
 
     const handelBack = () => {

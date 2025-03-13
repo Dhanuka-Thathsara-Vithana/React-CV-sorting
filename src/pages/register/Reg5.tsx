@@ -36,7 +36,7 @@ function Reg5() {
         }
         
          console.log(data);
-        axios.post('http://localhost:5000/api/users',  data )
+        axios.post('http://localhost:5000/api/users/createUser',  data )
         .then(res => {
          console.log(res.data);
          localStorage.removeItem('formData1');

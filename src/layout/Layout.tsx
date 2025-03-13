@@ -1,7 +1,8 @@
 import { Box, Grid, Paper } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import UserNavBar from './userLayout/navbar/NavBar';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import backImg from '../assets/image.jpg';
 
 const styles = {
@@ -18,82 +19,17 @@ const styles = {
 };
 
 function Layout() {
-  const navigate = useNavigate();
-  const [user, setUser] = useState<string | undefined>('');
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setUser(parsedUser);
-    }
-  }, []);
-
-  const handelLogout = () => {
-    localStorage.removeItem('user');
-    setUser('');
-    navigate('/');
-  };
+  const { user, logout } = useAuth();
 
   return (
-    <Paper 
-      style={styles.paperContainer} 
-      elevation={0} 
-      square
-    >
-      <Box 
-        sx={{ 
-          flexGrow: 1,
-          margin: 0,
-          padding: 0,
-          width: '100vw',
-          overflowX: 'hidden'
-        }}
-      >
-        <Grid 
-          container 
-          spacing={0} 
-          sx={{ 
-            margin: 0,
-            width: '100%',
-            maxWidth: '100vw'
-          }}
-        >
-          {/* Navbar */}
-          <Grid 
-            item 
-            xs={12} 
-            sx={{ 
-              padding: 0,
-              width: '100%'
-            }}
-          >
-            <UserNavBar 
-              handelClick={handelLogout} 
-              user={user} 
-              name={user?.fName || ''} 
-            />
+    <Paper style={styles.paperContainer} elevation={0} square>
+      <Box sx={{ flexGrow: 1, margin: 0, padding: 0, width: '100vw', overflowX: 'hidden' }}>
+        <Grid container spacing={0} sx={{ margin: 0, width: '100%', maxWidth: '100vw' }}>
+          <Grid item xs={12} sx={{ padding: 0, width: '100%' }}>
+            <UserNavBar handelClick={logout} user={user} name={user?.userObj?.fName || ''} />
           </Grid>
-
-          {/* Main Content */}
-          <Grid 
-            item 
-            xs={12} 
-            sx={{ 
-              padding: 0,
-              width: '100%'
-            }}
-          >
-            <Box 
-              sx={{ 
-                width: '100%',
-                padding: 0,
-                '& > *': { // This targets all direct children
-                  maxWidth: '100vw',
-                  overflowX: 'hidden'
-                }
-              }}
-            >
+          <Grid item xs={12} sx={{ padding: 0, width: '100%' }}>
+            <Box sx={{ width: '100%', padding: 0, '& > *': { maxWidth: '100vw', overflowX: 'hidden' } }}>
               <Outlet />
             </Box>
           </Grid>
