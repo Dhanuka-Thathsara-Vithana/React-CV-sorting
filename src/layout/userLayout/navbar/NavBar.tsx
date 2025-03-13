@@ -58,7 +58,11 @@ function UserNavBar({ user, handelClick, name }: Props) {
               ml: 2
             }}>
               {user && (
-                <NavListComponent to="user" name="Dashboard" />
+                <>
+                
+                 <NavListComponent to="" name="Home" />
+                 <NavListComponent to="user" name="Dashboard" />
+                </>
               )}
               {!user && (
                 <>

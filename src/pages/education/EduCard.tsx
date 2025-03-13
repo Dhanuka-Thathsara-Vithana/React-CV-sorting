@@ -9,6 +9,7 @@ import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
 import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 
 interface Props {
   handelClick: () => void
@@ -17,7 +18,8 @@ interface Props {
 function EduCard({handelClick}: Props) {
   const [fromDate, setFromDate] = useState<Dayjs | null>(null)
   const [toDate, setToDate] = useState<Dayjs | null>(null)
-  
+  const {user} = useAuth();
+  const userID = user?._id;
   const handelFrom = (newValue: Dayjs | null) => {
       setFromDate(newValue);
     
@@ -30,15 +32,17 @@ function EduCard({handelClick}: Props) {
 
   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
-       if(fromDate) {
-         const from = fromDate.toString()
-         const to = toDate.toString() 
-         const newData = {...data, from, to}
-         console.log(newData);
-      axios.post('http://localhost:5000/api/education', newData )
-      .then(res => 
-       console.log(res.data) )
-       }
+    if(fromDate) {
+      const from = fromDate.toString();
+    
+      const to = toDate ? toDate.toString() : null;
+      
+      const newData = {...data, from, to, userID};
+      console.log(newData);
+      axios.post('http://localhost:5000/api/education/', newData)
+        .then(res => console.log(res.data))
+        .catch(err => console.error('Error posting education data:', err));
+    }
   }
     console.log(fromDate);
 
