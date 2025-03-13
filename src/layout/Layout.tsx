@@ -26,7 +26,7 @@ function Layout() {
       <Box sx={{ flexGrow: 1, margin: 0, padding: 0, width: '100vw', overflowX: 'hidden' }}>
         <Grid container spacing={0} sx={{ margin: 0, width: '100%', maxWidth: '100vw' }}>
           <Grid item xs={12} sx={{ padding: 0, width: '100%' }}>
-            <UserNavBar handelClick={logout} user={user} name={user?.userObj?.fName || ''} />
+            <UserNavBar handelClick={logout} user={user} name={user?.fName || ''} />
           </Grid>
           <Grid item xs={12} sx={{ padding: 0, width: '100%' }}>
             <Box sx={{ width: '100%', padding: 0, '& > *': { maxWidth: '100vw', overflowX: 'hidden' } }}>

@@ -25,6 +25,8 @@ import AddJob2 from "./pages/jobs/addNewJob/AddJob2";
 import ComJob from "./pages/jobs/publishedJobs/ComJob";
 import Candidates from "./pages/jobs/candidates/Candidates";
 import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './util/ProtectedRoute';
+import Unauthorized from './pages/Unauthorized'; // Create this component
 
 // Create an AuthWrapper component
 const AuthWrapper = () => {
@@ -39,15 +41,21 @@ const router = createBrowserRouter([
   {
     element: <AuthWrapper />,
     children: [
-      { path: '/',
+      { 
+        path: '/',
         element: <Layout/>,
         children: [
           {
             path: '/',
             element: <Home/>
           },
-          { path: 'user',
-            element: <DashLayout/>,
+          { 
+            path: 'user',
+            element: (
+              <ProtectedRoute requiredRole="user">
+                <DashLayout/>
+              </ProtectedRoute>
+            ),
             children: [
               { path: '',  element: <UserDashboard/> },
               { path: 'jobs',  element: <Jobs/> },
@@ -57,8 +65,13 @@ const router = createBrowserRouter([
               { path: 'jobApply', element: <JobApplyForm/>}
             ]
           },
-          { path: 'com',
-            element: <ComDashLayout/>,
+          { 
+            path: 'com',
+            element: (
+              <ProtectedRoute requiredRole="com">
+                <ComDashLayout/>
+              </ProtectedRoute>
+            ),
             children: [
               { path: '', element: <ComDashboard/> },
               { path: 'newjob', element: <AddJob/> },
@@ -84,6 +97,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginLayout/>,
+      },
+      {
+        path: 'unauthorized',
+        element: <Unauthorized />, // Create this component
       }
     ]
   }

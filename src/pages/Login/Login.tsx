@@ -27,7 +27,6 @@ function Reg2() {
   const onSubmit = async (data: FormData) => {
     try {
       await login(data);
-      // No need to manually navigate here - the AuthContext will handle it
     } catch (error) {
       console.error(error);
     }
