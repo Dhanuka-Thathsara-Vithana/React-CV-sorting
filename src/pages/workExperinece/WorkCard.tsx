@@ -6,7 +6,7 @@ import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
 import { Dayjs } from 'dayjs';
 import { useState } from 'react';
-import CardComponent from '../education/CardComponent';
+import InputComponent from '../education/InputComponent';
 import EduDatePicker from '../education/DatePicker';
 
 interface Props {
@@ -54,9 +54,9 @@ function WorkCard({handelClick}: Props) {
              Fields marked with * are required.
            </Typography>
            <Grid container spacing={2} paddingTop='2rem'>
-              <CardComponent Md={6} label={'Title'}  objRef={register('Title')}/>
-              <CardComponent Md={6} label={'Company'}  objRef={register('Company')}/>
-              <CardComponent Md={15} label={'OfficeLocation'}  objRef={register('OfficeLocation')}/>
+              <InputComponent Md={6} label={'Title'}  objRef={register('Title')}/>
+              <InputComponent Md={6} label={'Company'}  objRef={register('Company')}/>
+              <InputComponent Md={15} label={'OfficeLocation'}  objRef={register('OfficeLocation')}/>
 
                <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
                <Typography paddingTop='1rem' >
@@ -93,7 +93,16 @@ function WorkCard({handelClick}: Props) {
                  <Button onClick={handelClick} variant="outlined">cancel</Button>
                </Grid>
                <Grid item xs={6} md={1.5}>
-                 <Button type='submit'  variant="contained" sx={{ width: '95px'}}>Save</Button>
+                 <Button
+                 sx={{
+                  bgcolor: '#09bd0c'+ ' !important', 
+                  '&:hover': {
+                      backgroundColor: '#4EF037',
+                      opacity: [0.9, 0.8, 0.7]
+                    },
+                  color: 'white', width: '120px'
+                }} 
+                 type='submit'  variant="contained" sx={{ width: '95px'}}>Save</Button>
                </Grid>
            </Grid>
         </Box> 

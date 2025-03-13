@@ -1,40 +1,54 @@
 import { Box, Grid } from '@mui/material'
 import React from 'react'
-import SideBar from './sidebar/SideBar'
+import UserSideBar from './userLayout/sidebar/SideBar'
 import { Outlet } from 'react-router-dom'
 
 function DashLayout() {
   return (
-    // <>
-    // <Box>
-    //      <SideBar/>
-    //     <Box>
-    //       <Box >
-    //         <Outlet />
-    //       </Box>
-    //     </Box>
-    //   </Box>
-    // </>
-
-
-    <Box >
-        <Grid  width='100px'
-        paddingTop='1rem'
+    <Box sx={{ width: '100%', minHeight: '100vh' }}>
+      <Grid
         container
-        direction="row"
-        alignItems="stretch"
-        spacing={5}>
-            <Grid item xs={3}>
-                <SideBar/>
-            </Grid>
-            <Grid item xs={3}>
-                <Box paddingLeft='350px' paddingTop='1rem'>
-                <Outlet/>
-                </Box>
-            </Grid>
+        sx={{
+          width: '100%',
+          minHeight: '100vh',
+          pt: 2,
+        }}
+      >
+        {/* Sidebar */}
+        <Grid 
+          item 
+          sx={{ 
+            width: { xs: '4rem', sm: '16.2rem' },
+            height: 'calc(100vh - 16px)',
+            overflowY: 'auto',
+            transition: 'width 0.3s ease'
+          }}
+        >
+          <UserSideBar />
         </Grid>
+
+        {/* Main Content */}
+        <Grid 
+          item 
+          sx={{ 
+            position: 'fixed',
+            width: { 
+              xs: 'calc(100% - 4rem)',
+              sm: 'calc(100% - 16.2rem)'
+            },
+            ml: { 
+              xs: '4rem',
+              sm: '16.2rem'
+            },
+            p: 2,
+            transition: 'all 0.3s ease'
+          }}
+        >
+          <Outlet />
+        </Grid>
+      </Grid>
     </Box>
-  )
+  );
 }
 
-export default DashLayout
+export default DashLayout;

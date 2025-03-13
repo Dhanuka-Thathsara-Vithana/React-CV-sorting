@@ -1,5 +1,5 @@
 import { Box, Button, Card, CardMedia, Grow, Link, List, ListItem, ListItemText, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import StarIcon from '@mui/icons-material/Star';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ApartmentIcon from '@mui/icons-material/Apartment';
@@ -33,14 +33,28 @@ interface Props {
 function JobDecCard({img1, logo, position, comName, rating, reviews, company, aboutCom, location,
    dec2, duration, jobDec, Responsibilities, technology, qualifications, additionalInformation, id
 }: Props) {
+   
+  const [user, setUser] = useState<string | undefined>('')
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUser(parsedUser);
+    }
+  }, [])
+
+
   return (
     <Card
     sx={{
-     alignItems: 'center'
+     alignItems: 'center',
+     width: '70rem'
     }}
+    
    >
     <Grow in={true} {...(true ? { timeout: 500 } : {})} style={{ transformOrigin: '0 0 0' }}>
-     <Box p={1} width='750px'>
+     <Box p={1} width='1200px'>
           <Box sx={{
             borderRadius: '12px'
           }}>
@@ -114,10 +128,10 @@ function JobDecCard({img1, logo, position, comName, rating, reviews, company, ab
               </Link> 
               </Typography>
              <Box paddingLeft='60px' paddingTop='40px'>
-              <Button
+             {user.type==='user' && <Button
                 disableRipple
                 component={RouterLink}
-                to="/dashboards/jobApply"
+                to="/user/jobApply"
                 variant="contained"
                 color="primary"
                 startIcon={<NorthEastIcon />}
@@ -129,7 +143,7 @@ function JobDecCard({img1, logo, position, comName, rating, reviews, company, ab
               >
                
                   Apply
-              </Button>
+              </Button>}
               </Box>  
               <Typography paddingTop='40px' paddingLeft='55px'>
                 <h3>Company Description</h3> 

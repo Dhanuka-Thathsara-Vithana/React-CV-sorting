@@ -4,7 +4,7 @@ import axios, { CanceledError } from 'axios';
 import { Card } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-interface JobDesProps{
+interface JobDesProps {
   id: string,
   Img1: string
   Logo: string,
@@ -26,33 +26,34 @@ interface JobDesProps{
 function JobDec() {
   const params = useParams();
 
-  const [jobDes, setJobDes] = useState<JobDesProps[] | null>([]);
+  const [jobDes, setJobDes] = useState<JobDesProps | null>();
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // const savedId = localStorage.getItem('jobCardId');
-    // if(savedId) { const parsedId = JSON.parse(savedId); 
-    // console.log(parsedId)
+     const savedId = localStorage.getItem('jobCardId');
+     if(savedId) { const id = JSON.parse(savedId); 
+     console.log(id)
     
     const controller = new AbortController();
-    // const dataId = {parsedId}
+     const dataId = {id}
+     console.log(dataId)
     axios
-      .post<JobDesProps[]>('http://localhost:5000/api/jobDescription', params)
+      .post<JobDesProps>('http://localhost:5000/api/jobDescription', dataId)
       .then((res) => {
       setJobDes(res.data)
-      // console.log(res.data)
+      console.log(res.data)
       })
       .catch(err => {
         if(err instanceof CanceledError) return;
         setError(err.message)
       });
       return () => controller.abort();
-   
+    }
   }, [])
     console.log(jobDes);
  return (
     <>
-   { jobDes &&
+   { jobDes && 
       <JobDecCard 
         id={jobDes.id} img1={jobDes.Img1} logo={jobDes.Logo} position={jobDes.Position} comName={jobDes.Des1}
         rating={jobDes.Rating} reviews={jobDes.Reviews} company={jobDes.Company} aboutCom={jobDes.AboutCompany}
