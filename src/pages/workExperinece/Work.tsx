@@ -5,6 +5,7 @@ import WorkCard from './WorkCard';
 import PropTypes from 'prop-types';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import axios, { CanceledError } from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
 
 interface WorkProps{
@@ -44,7 +45,7 @@ interface WorkProps{
 function Work() {
     const [works, setWorks] = useState<WorkProps[]>([]);
     const [error, setError] = useState('');
- 
+    const {user} = useAuth();
     const [open, setOpen] = useState(false);
   
     const handleClickOpen = () => {
@@ -70,7 +71,7 @@ function Work() {
       const controller = new AbortController();
   
       axios
-        .get<WorkProps[]>('http://localhost:5000/api/work')
+        .post<WorkProps[]>(`http://localhost:5000/api/work/${user._id}`)
         .then((res) => setWorks(res.data))
         .catch(err => {
           if(err instanceof CanceledError) return;
@@ -106,8 +107,8 @@ function Work() {
                   company={works.Company}
                   officeLocation={works.OfficeLocation}
                   description={works.Description}
-                  to={works.To}
-                  from={works.From}
+                  to={works.to}
+                  from={works.from}
                   handelClick={handelDelete}
                   />
               </Grid>

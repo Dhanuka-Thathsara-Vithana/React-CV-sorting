@@ -8,6 +8,7 @@ import { Dayjs } from 'dayjs';
 import { useState } from 'react';
 import InputComponent from '../education/InputComponent';
 import EduDatePicker from '../education/DatePicker';
+import { useAuth } from '../../context/AuthContext';
 
 interface Props {
   handelClick: () => void
@@ -16,7 +17,8 @@ interface Props {
 function WorkCard({handelClick}: Props) {
   const [fromDate, setFromDate] = useState<Dayjs | null>(null)
   const [toDate, setToDate] = useState<Dayjs | null>(null)
-  
+  const {user} = useAuth();
+  const userID = user?._id;
   const handelFrom = (newValue: Dayjs | null) => {
       setFromDate(newValue);
     
@@ -30,9 +32,11 @@ function WorkCard({handelClick}: Props) {
   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
        if(fromDate) {
-         const from = fromDate.toString()
-         const to = toDate.toString() 
-         const newData = {...data, from, to}
+        const from = fromDate.toString();
+    
+        const to = toDate ? toDate.toString() : null;
+        
+         const newData = {...data, from, to, userID};
          console.log(newData);
       axios.post('http://localhost:5000/api/work', newData )
       .then(res => 

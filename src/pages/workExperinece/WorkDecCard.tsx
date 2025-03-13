@@ -13,6 +13,44 @@ interface Props{
 }
 
 function WorkDecCard({id, title, company, officeLocation, description, to , from, handelClick }: Props) {
+
+  const formatDate = (dateString: string) => {
+    if (!dateString) return "Not specified";
+  
+    
+    try {
+    
+      const date = new Date(dateString);
+      
+      // Check if the date is valid
+      if (!isNaN(date.getTime())) {
+        return date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+      }
+      
+     
+      const parts = dateString.split(' ');
+      if (parts.length >= 4) {
+        const day = parseInt(parts[1]);
+        const month = parts[2];
+        const year = parseInt(parts[3]);
+        
+     
+        const simpleDate = `${month} ${day}, ${year}`;
+        return simpleDate;
+      }
+      
+    
+      return dateString;
+    } catch (error) {
+      console.error("Error parsing date:", error);
+      return dateString; 
+    }
+  };
+
     return (
       <Grow in={true} {...(true ? { timeout: 1000 } : {})} style={{ transformOrigin: '0 0 0' }}>
       <Card sx={{
@@ -37,11 +75,11 @@ function WorkDecCard({id, title, company, officeLocation, description, to , from
                  </Grid>
                  <Grid sx={{ padding: '1rem' }} item xs={6} md={6} >
                    <Typography>From</Typography>
-                       {from}
+                   {from ? formatDate(from) : "Not specified"}
                  </Grid>
                     <Grid sx={{ padding: '1rem' }} item xs={6} md={6}>
                         <Typography>To</Typography>
-                        {to}
+                        <Typography>{to ? formatDate(to) : "Not specified"}</Typography>
                     </Grid>
                  <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
                  <Typography paddingTop='1rem' >
