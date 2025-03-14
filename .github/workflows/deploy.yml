@@ -1,0 +1,44 @@
+name: Deploy to AWS EC2  # Name of the GitHub Actions workflow
+
+on:
+  push:
+    branches:
+      - main  # This workflow runs when code is pushed to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Runs on an Ubuntu server
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Clones your repository into the workflow runner
+
+      - name: SSH into EC2 and deploy
+        env:
+          PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}  # Private key for SSH access
+          HOST: ${{ secrets.EC2_HOST }}  # EC2 instance IP
+          USER: ubuntu  # EC2 username (default for Ubuntu instances)
+        run: |
+          # Store the private key in a file
+          echo "$PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem  # Secure the key file
+
+          # SSH into the EC2 instance and execute deployment commands
+          ssh -o StrictHostKeyChecking=no -i private_key.pem $USER@$HOST << 'EOF'
+            cd your-repo  # Go to the project directory
+            git pull origin main  # Pull the latest code from GitHub
+
+            # Backend setup
+            cd backend
+            npm install  # Install backend dependencies
+            pm2 restart backend  # Restart backend server
+
+            # Frontend setup
+            cd ../frontend
+            npm install  # Install frontend dependencies
+            npm run build  # Build the frontend
+
+            # Deploy frontend to Nginx
+            sudo rm -rf /var/www/html/*  # Remove old files
+            sudo cp -r build/* /var/www/html/  # Copy new frontend build files
+            sudo systemctl restart nginx  # Restart Nginx server
+          EOF
