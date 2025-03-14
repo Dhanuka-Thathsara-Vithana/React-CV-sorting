@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 import './home.css'
-import { About, Contact, Experience, Feedbacks, Hero, StarsCanvas, Tech, Works } from './homeComponents'
+import { About, Contact, Experience, Feedbacks, Hero, Tech, Works } from './homeComponents'
 
 function Home() {
   return (
@@ -24,7 +24,6 @@ function Home() {
         <Feedbacks />
         <div className="relative z-0">
           <Contact />
-          <StarsCanvas />
         </div>
       </div>
     </Box>
