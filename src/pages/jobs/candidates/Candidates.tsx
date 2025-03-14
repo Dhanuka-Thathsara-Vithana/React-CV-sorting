@@ -3,7 +3,6 @@ import {
     Box,
     Grid,
     Typography,
-    useTheme,
     Grow
   } from '@mui/material';
   import CandiCard from './CandiCard';
@@ -47,6 +46,7 @@ import {
      }, [])
     
   console.log(candiCard)
+  console.log(error)
   
   const handelIdView = (id: number) => {
     localStorage.setItem('candiCardId', JSON.stringify(id));

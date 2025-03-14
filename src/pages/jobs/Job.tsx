@@ -3,7 +3,6 @@ import {
   Box,
   Grid,
   Typography,
-  useTheme,
   Grow
 } from '@mui/material';
 import JobCard from './JobCard';
@@ -39,6 +38,7 @@ function Job() {
   }, [])
   
 console.log(jobCard)
+console.log(error)
 
 const handelId = (id: number) => {
   localStorage.setItem('jobCardId', JSON.stringify(id));

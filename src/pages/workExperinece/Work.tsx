@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import WorkDecCard from './WorkDecCard'
 import { Box, Button, Card, Dialog, Fade, Grid, Grow, Typography } from '@mui/material';
 import WorkCard from './WorkCard';
 import PropTypes from 'prop-types';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import axios, { CanceledError } from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
 
 interface WorkProps{
@@ -13,11 +14,11 @@ interface WorkProps{
    Title: string,
    Company: string,
    OfficeLocation: string,
-   From: string,
-   To: string
+   from: string,
+   to: string
 }
 
-    function SimpleDialog(props) {
+    function SimpleDialog(props: { onClose: any; selectedValue: any; open: any; }) {
         const { onClose, selectedValue, open } = props;
       
         const handleClose = () => {
@@ -44,7 +45,7 @@ interface WorkProps{
 function Work() {
     const [works, setWorks] = useState<WorkProps[]>([]);
     const [error, setError] = useState('');
- 
+    const {user} = useAuth();
     const [open, setOpen] = useState(false);
   
     const handleClickOpen = () => {
@@ -70,7 +71,7 @@ function Work() {
       const controller = new AbortController();
   
       axios
-        .get<WorkProps[]>('http://localhost:5000/api/work')
+        .post<WorkProps[]>(`http://localhost:5000/api/work/${user._id}`)
         .then((res) => setWorks(res.data))
         .catch(err => {
           if(err instanceof CanceledError) return;
@@ -78,6 +79,7 @@ function Work() {
         });
         return () => controller.abort();
     }, [])
+  console.log(error)
 
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}> 
@@ -106,8 +108,8 @@ function Work() {
                   company={works.Company}
                   officeLocation={works.OfficeLocation}
                   description={works.Description}
-                  to={works.To}
-                  from={works.From}
+                  to={works.to}
+                  from={works.from}
                   handelClick={handelDelete}
                   />
               </Grid>

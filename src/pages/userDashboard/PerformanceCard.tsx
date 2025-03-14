@@ -1,5 +1,4 @@
 import { Card, Grow, Typography } from '@mui/material'
-import React from 'react'
 import Counter from './Counter'
 import { Link } from 'react-router-dom'
 

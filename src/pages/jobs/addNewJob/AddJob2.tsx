@@ -1,12 +1,12 @@
 
-import { Alert, Box, Button, Card, CardMedia, Grid, Grow, Link, List, ListItem, ListItemText, TextField, TextareaAutosize, Typography } from '@mui/material'
+import { Box, Button, Card, Grid, Grow, Typography } from '@mui/material'
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import InputComponent from '../../education/InputComponent';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
    position: z.string().min(3).max(20),
@@ -26,7 +26,7 @@ type FormData = z.infer<typeof schema>
 
 function AddJob2() {
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)}); 
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema)}); 
     const onSubmit = (data: FieldValues) => {
         
         const savedId = localStorage.getItem('addJobId');
@@ -64,7 +64,7 @@ function AddJob2() {
           <Grid container spacing={2} paddingTop='2rem'>
             <InputComponent Md={15} label={'Position'} objRef={register('position')} error={errors.position?.message}/>
             <InputComponent Md={15} label={'Company Name'} objRef={register('comName')} error={errors.comName?.message}/>
-            <InputComponent Md={15} label={'About Company'} objRef={register('aboutCompany')} error={errors.company?.message}/>
+            <InputComponent Md={15} label={'About Company'} objRef={register('aboutCompany')} error={errors.aboutCompany?.message}/>
             <InputComponent Md={15} label={'Company Location'} objRef={register('location')} error={errors.location?.message}/>
             <InputComponent Md={15} label={'Description'} objRef={register('des1')} error={errors.des1?.message}/>
             <InputComponent Md={15} label={'Duration'} objRef={register('duration')} error={errors.duration?.message}/>

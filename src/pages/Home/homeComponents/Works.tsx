@@ -1,4 +1,3 @@
-import React from "react";
 import { Tilt } from "react-tilt";
 import {motion} from 'framer-motion'
 import {styles} from '../styles'
@@ -8,7 +7,15 @@ import {projects} from '../constants'
 import { fadeIn,textVariant } from '../utils/motion'
 
 
-const ProjectCard=({index,name,description,tags,image})=>{
+interface ProjectCardProps {
+  index: number;
+  name: string;
+  description: string;
+  tags: { name: string; color: string }[];
+  image: string;
+}
+
+const ProjectCard = ({ index, name, description, tags, image }: ProjectCardProps) => {
 return(
   <motion.div variants={fadeIn("up","spring",index*0.5,0.75)}>
    <Tilt
@@ -57,7 +64,7 @@ const Works = () => {
       </motion.div>
       <div className="w-full flex">
         <motion.p
-        variants={fadeIn("","",0.1,1)}
+        variants={fadeIn("up","spring",0.1,1)}
         className="mt-3 text-Secondary text-[17px] max-w-3xl leading-[30px]"
         >
           CareerCompass, a cutting-edge online recruitment platform, harnesses the power of Natural Language Processing (NLP) for precise CV sorting, revolutionizing the IT job market. Candidates seeking IT roles can seamlessly apply through our platform, while tech-savvy employers in the IT sector can effortlessly post job openings. At CareerCompass, we're dedicated to facilitating a highly efficient and tailored recruitment process, connecting skilled IT professionals with the right opportunities and assisting employers in sourcing top IT talent.

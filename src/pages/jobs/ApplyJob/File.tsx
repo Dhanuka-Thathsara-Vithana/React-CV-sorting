@@ -2,8 +2,8 @@ import { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 
 function File() {
-  const [file, setFile] = useState(null);
-  const handleChange = (file) => {
+  const [file, setFile] = useState<File[] | null>(null);
+  const handleChange = (file: File[]) => {
 
     setFile(file);
   };

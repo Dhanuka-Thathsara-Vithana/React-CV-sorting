@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import JobDecCard from "./JobDecCard";
 import axios, { CanceledError } from 'axios';
-import { Card } from "@mui/material";
-import { useParams } from "react-router-dom";
 
 interface JobDesProps {
   id: string,
@@ -24,7 +22,6 @@ interface JobDesProps {
 }
 
 function JobDec() {
-  const params = useParams();
 
   const [jobDes, setJobDes] = useState<JobDesProps | null>();
   const [error, setError] = useState('');
@@ -51,6 +48,7 @@ function JobDec() {
     }
   }, [])
     console.log(jobDes);
+    console.log(error);
  return (
     <>
    { jobDes && 
@@ -59,7 +57,7 @@ function JobDec() {
         rating={jobDes.Rating} reviews={jobDes.Reviews} company={jobDes.Company} aboutCom={jobDes.AboutCompany}
         location={jobDes.Location} dec2={jobDes.Des1} duration={jobDes.Duration}
         jobDec={jobDes.JobDec} Responsibilities={jobDes.Responsibilities}
-        additionalInformation={jobDes.AdditionalInformation} qualifications={jobDes.Qualifications} time={""} technology={undefined}    />
+        additionalInformation={jobDes.AdditionalInformation} qualifications={jobDes.Qualifications} time={""} technology={{}}    />
   }
   </>
  )

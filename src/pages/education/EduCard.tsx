@@ -1,5 +1,4 @@
-import { Box, Button, Card, CardMedia, Checkbox, FormControlLabel, Grid, Grow, Link, List, ListItem, ListItemText, TextField, TextareaAutosize, Typography, Zoom } from '@mui/material'
-import DatePicker from 'react-date-picker';
+import { Box, Button, Card, Checkbox, FormControlLabel, Grid, TextField, Typography } from '@mui/material'
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import InputComponent from './InputComponent';
@@ -7,8 +6,17 @@ import EduDatePicker from './DatePicker';
 
 import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
-import dayjs, { Dayjs } from 'dayjs';
+
+interface FormData {
+  Institution: string;
+  Major: string;
+  Degree: string;
+  Description: string;
+  Check: boolean;
+}
+import { Dayjs } from 'dayjs';
 import { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 
 interface Props {
   handelClick: () => void
@@ -17,7 +25,8 @@ interface Props {
 function EduCard({handelClick}: Props) {
   const [fromDate, setFromDate] = useState<Dayjs | null>(null)
   const [toDate, setToDate] = useState<Dayjs | null>(null)
-  
+  const {user} = useAuth();
+  const userID = user?._id;
   const handelFrom = (newValue: Dayjs | null) => {
       setFromDate(newValue);
     
@@ -28,17 +37,19 @@ function EduCard({handelClick}: Props) {
    
   }
 
-  const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
+  const { register, handleSubmit } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
-       if(fromDate) {
-         const from = fromDate.toString()
-         const to = toDate.toString() 
-         const newData = {...data, from, to}
-         console.log(newData);
-      axios.post('http://localhost:5000/api/education', newData )
-      .then(res => 
-       console.log(res.data) )
-       }
+    if(fromDate) {
+      const from = fromDate.toString();
+    
+      const to = toDate ? toDate.toString() : null;
+      
+      const newData = {...data, from, to, userID};
+      console.log(newData);
+      axios.post('http://localhost:5000/api/education/', newData)
+        .then(res => console.log(res.data))
+        .catch(err => console.error('Error posting education data:', err));
+    }
   }
     console.log(fromDate);
 

@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import EduDecCard from './EduDecCard'
-import { Box, Button, Card, Collapse, Dialog, Divider, Fade, Grid, Grow, Typography, Zoom } from '@mui/material'
+import { Box, Button, Card,Dialog, Fade, Grid, Grow, Typography } from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EduCard from './EduCard';
 import PropTypes from 'prop-types';
 import axios, { CanceledError } from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
 interface EduProps{
   _id: string,
   Institution: string,
   Major:string,
   Degree: string,
-  From: string,
-  To: string,
+  from: string,
+  to: string,
   Description: string
 }
 
@@ -42,6 +43,7 @@ interface EduProps{
       };
 
 function Education() {
+    const {user} = useAuth();
     const [education, setEducation] = useState<EduProps[]>([]);
     const [error, setError] = useState('');
 
@@ -70,7 +72,7 @@ function Education() {
       const controller = new AbortController();
   
       axios
-        .get<EduProps[]>('http://localhost:5000/api/education')
+        .post<EduProps[]>(`http://localhost:5000/api/education/${user._id}`)
         .then((res) => setEducation(res.data))
         .catch(err => {
           if(err instanceof CanceledError) return;
@@ -78,7 +80,7 @@ function Education() {
         });
         return () => controller.abort();
     }, [])
-
+  console.log(error)
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}> 
           <Card sx={{width: '1300px', borderRadius: '15px'}}>
@@ -106,8 +108,8 @@ function Education() {
                         major={edu.Major}
                         degree={edu.Degree}
                         description={edu.Description}
-                        to={edu.To}
-                        from={edu.From}
+                        to={edu.to}
+                        from={edu.from}
                         handelClick={handelDelete}
                     />
                     </Grid>

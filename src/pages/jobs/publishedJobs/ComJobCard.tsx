@@ -4,15 +4,9 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { blue, green, red } from '@mui/material/colors';
-import ShareIcon from '@mui/icons-material/Share';
-import Stack from '@mui/material/Stack';
-import Rating from '@mui/material/Rating';
-import { Box, Button, Grid, Grow } from '@mui/material';
-import { Link, NavLink as RouterLink, useNavigate } from 'react-router-dom';
-import { ForkLeft } from '@mui/icons-material';
+import { blue } from '@mui/material/colors';
+import { Button, Grid, Grow } from '@mui/material';
 
 interface Props {
    id: number,

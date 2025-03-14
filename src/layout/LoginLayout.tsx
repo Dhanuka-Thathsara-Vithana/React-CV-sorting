@@ -1,5 +1,5 @@
 
-import { Box, Card } from '@mui/material'
+import { Box} from '@mui/material'
 import Login from '../pages/Login/Login'
 
 function LoginLayout() {

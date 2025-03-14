@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardMedia, Checkbox, FormControlLabel, Grid, Grow, Link, List, ListItem, ListItemText, TextField, TextareaAutosize, Typography } from '@mui/material'
+import { Box, Button, Card, Grid, Grow, Typography } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 
 interface Props{
@@ -12,7 +12,46 @@ interface Props{
     handelClick: (id: string) => void
 }
 
-function EduDecCard({id, institution, major, degree, description, to , from, handelClick }: Props) {
+function EduDecCard({id, institution, major, degree, description, to, from, handelClick }: Props) {
+
+  
+  const formatDate = (dateString: string) => {
+    if (!dateString) return "Not specified";
+  
+    
+    try {
+    
+      const date = new Date(dateString);
+      
+      // Check if the date is valid
+      if (!isNaN(date.getTime())) {
+        return date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+      }
+      
+     
+      const parts = dateString.split(' ');
+      if (parts.length >= 4) {
+        const day = parseInt(parts[1]);
+        const month = parts[2];
+        const year = parseInt(parts[3]);
+        
+     
+        const simpleDate = `${month} ${day}, ${year}`;
+        return simpleDate;
+      }
+      
+    
+      return dateString;
+    } catch (error) {
+      console.error("Error parsing date:", error);
+      return dateString; 
+    }
+  };
+
   return (
     <Grow in={true} {...(true ? { timeout: 700 } : {})} style={{ transformOrigin: '0 0 0' }}>
     <Card sx={{
@@ -38,11 +77,11 @@ function EduDecCard({id, institution, major, degree, description, to , from, han
                </Grid>
                <Grid sx={{ padding: '1rem' }} item xs={6} md={6} >
                    <Typography>From</Typography>
-                       {from}
+                   <Typography>{from ? formatDate(from) : "Not specified"}</Typography>
                 </Grid>
                 <Grid sx={{ padding: '1rem' }} item xs={6} md={6}>
                     <Typography>To</Typography>
-                        {to}
+                    <Typography>{to ? formatDate(to) : "Not specified"}</Typography>
                 </Grid>
                <Grid sx={{ padding: '1rem' }} item xs={6} md={15}>
                <Typography paddingTop='1rem' >

@@ -1,9 +1,8 @@
 import List from '@mui/material/List';
 import StarIcon from '@mui/icons-material/Star';
 import MmsTwoToneIcon from '@mui/icons-material/MmsTwoTone';
-import TableChartTwoToneIcon from '@mui/icons-material/TableChartTwoTone';
 import DisplaySettingsTwoToneIcon from '@mui/icons-material/DisplaySettingsTwoTone';
-import { TextField, TextareaAutosize, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import {Box, Grow} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import ListItemCom from './ListItem';

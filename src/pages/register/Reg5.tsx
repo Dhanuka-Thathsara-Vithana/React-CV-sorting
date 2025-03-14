@@ -1,12 +1,7 @@
-import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, Paper,Typography } from '@mui/material'
 import regBack from './assets/Registration.png'
-import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-import InputComponent from '../education/InputComponent';
 import { useNavigate } from 'react-router-dom';
-import { FieldValues, useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
@@ -18,8 +13,8 @@ const styles = {
 
 function Reg5() {
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>();
-    const onSubmit = (data: FieldValues) => {
+    const { handleSubmit } = useForm<FormData>();
+    const onSubmit = () => {
       const savedFormData1 = localStorage.getItem('formData1');
       const savedFormData2 = localStorage.getItem('formData2');
       const savedFormData3 = localStorage.getItem('formData3');

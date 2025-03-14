@@ -1,8 +1,6 @@
 import { Box, Container, Grid, Grow } from '@mui/material';
-import { Helmet } from 'react-helmet-async';
 import Calander from '../userDashboard/Calander'
 import ComPerformance from './ComPerformance';
-import RecJobGrid from './RecJobGrid';
 import Job from '../jobs/Job';
 
 function ComDashboard() {

@@ -1,13 +1,22 @@
-import { Box, Button, Card, CardMedia, Checkbox, FormControlLabel, Grid, Link, List, ListItem, ListItemText, TextField, TextareaAutosize, Typography } from '@mui/material'
-import DatePicker from 'react-date-picker';
+import { Box, Button, Card, Checkbox, FormControlLabel, Grid, TextField, Typography } from '@mui/material'
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
+
+interface FormData {
+  Title: string;
+  Company: string;
+  OfficeLocation: string;
+  Description: string;
+  Check: boolean;
+}
+
 import { Dayjs } from 'dayjs';
 import { useState } from 'react';
 import InputComponent from '../education/InputComponent';
 import EduDatePicker from '../education/DatePicker';
+import { useAuth } from '../../context/AuthContext';
 
 interface Props {
   handelClick: () => void
@@ -16,10 +25,11 @@ interface Props {
 function WorkCard({handelClick}: Props) {
   const [fromDate, setFromDate] = useState<Dayjs | null>(null)
   const [toDate, setToDate] = useState<Dayjs | null>(null)
-  
+  const {user} = useAuth();
+  const userID = user?._id;
   const handelFrom = (newValue: Dayjs | null) => {
       setFromDate(newValue);
-    
+  useForm<FormData>();
   }
   
   const handelTo = (newValue: Dayjs | null) => {
@@ -27,12 +37,14 @@ function WorkCard({handelClick}: Props) {
    
   }
 
-  const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
+  const { register, handleSubmit } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
        if(fromDate) {
-         const from = fromDate.toString()
-         const to = toDate.toString() 
-         const newData = {...data, from, to}
+        const from = fromDate.toString();
+    
+        const to = toDate ? toDate.toString() : null;
+        
+         const newData = {...data, from, to, userID};
          console.log(newData);
       axios.post('http://localhost:5000/api/work', newData )
       .then(res => 
@@ -95,14 +107,15 @@ function WorkCard({handelClick}: Props) {
                <Grid item xs={6} md={1.5}>
                  <Button
                  sx={{
-                  bgcolor: '#09bd0c'+ ' !important', 
+                  bgcolor: '#09bd0c' + ' !important', 
                   '&:hover': {
                       backgroundColor: '#4EF037',
                       opacity: [0.9, 0.8, 0.7]
                     },
-                  color: 'white', width: '120px'
+                  color: 'white', 
+                  width: '120px'
                 }} 
-                 type='submit'  variant="contained" sx={{ width: '95px'}}>Save</Button>
+                 type='submit'  variant="contained">Save</Button>
                </Grid>
            </Grid>
         </Box> 
