@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, Paper, Typography } from '@mui/material'
 import regBack from './assets/Registration.png'
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import InputComponent from '../education/InputComponent';
@@ -27,7 +27,7 @@ const styles = {
 
 function Reg2() {
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)});
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema)});
     const onSubmit = (data: FieldValues) => {
     // Save form data to localStorage whenever it changes
         localStorage.setItem('formData1', JSON.stringify(data));

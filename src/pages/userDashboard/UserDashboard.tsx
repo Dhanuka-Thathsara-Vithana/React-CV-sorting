@@ -1,8 +1,6 @@
 import { Box, Container, Grid, Grow } from '@mui/material';
-import { Helmet } from 'react-helmet-async';
 import Calander from './Calander';
 import UserPerformance from './UserPerformance';
-import RecJobGrid from './RecJobGrid';
 import Job from '../jobs/Job';
 
 function UserDashboard() {

@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { ComputersCanvas } from './canvas';
-import { Box } from '@mui/material';
-import { Fullscreen, FullscreenTwoTone } from '@mui/icons-material';
 
 const Hero = () => {
   return (

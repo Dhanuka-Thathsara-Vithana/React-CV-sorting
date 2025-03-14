@@ -3,8 +3,6 @@ import {
     Box,
     Grid,
     Typography,
-    useTheme,
-    Grow
   } from '@mui/material';
 import PerformanceCard from '../userDashboard/PerformanceCard';
   

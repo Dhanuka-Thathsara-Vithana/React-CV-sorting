@@ -1,5 +1,4 @@
-import { Box, Button, Card, CardMedia, Checkbox, FormControlLabel, Grid, Grow, Link, List, ListItem, ListItemText, TextField, TextareaAutosize, Typography, Zoom } from '@mui/material'
-import DatePicker from 'react-date-picker';
+import { Box, Button, Card, Checkbox, FormControlLabel, Grid, TextField, Typography } from '@mui/material'
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import InputComponent from './InputComponent';
@@ -7,7 +6,15 @@ import EduDatePicker from './DatePicker';
 
 import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
-import dayjs, { Dayjs } from 'dayjs';
+
+interface FormData {
+  Institution: string;
+  Major: string;
+  Degree: string;
+  Description: string;
+  Check: boolean;
+}
+import { Dayjs } from 'dayjs';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -30,7 +37,7 @@ function EduCard({handelClick}: Props) {
    
   }
 
-  const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>(); 
+  const { register, handleSubmit } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
     if(fromDate) {
       const from = fromDate.toString();

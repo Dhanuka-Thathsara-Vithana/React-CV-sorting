@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import WorkDecCard from './WorkDecCard'
 import { Box, Button, Card, Dialog, Fade, Grid, Grow, Typography } from '@mui/material';
 import WorkCard from './WorkCard';
@@ -14,11 +14,11 @@ interface WorkProps{
    Title: string,
    Company: string,
    OfficeLocation: string,
-   From: string,
-   To: string
+   from: string,
+   to: string
 }
 
-    function SimpleDialog(props) {
+    function SimpleDialog(props: { onClose: any; selectedValue: any; open: any; }) {
         const { onClose, selectedValue, open } = props;
       
         const handleClose = () => {
@@ -79,6 +79,7 @@ function Work() {
         });
         return () => controller.abort();
     }, [])
+  console.log(error)
 
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}> 

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import EduDecCard from './EduDecCard'
-import { Box, Button, Card, Collapse, Dialog, Divider, Fade, Grid, Grow, Typography, Zoom } from '@mui/material'
+import { Box, Button, Card,Dialog, Fade, Grid, Grow, Typography } from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EduCard from './EduCard';
 import PropTypes from 'prop-types';
@@ -12,8 +12,8 @@ interface EduProps{
   Institution: string,
   Major:string,
   Degree: string,
-  From: string,
-  To: string,
+  from: string,
+  to: string,
   Description: string
 }
 
@@ -80,7 +80,7 @@ function Education() {
         });
         return () => controller.abort();
     }, [])
-
+  console.log(error)
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}> 
           <Card sx={{width: '1300px', borderRadius: '15px'}}>

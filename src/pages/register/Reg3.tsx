@@ -1,11 +1,7 @@
-import { Box, Button, FormControlLabel, Grid, InputLabel, MenuItem, Paper, RadioGroup, Select, TextField, Typography } from '@mui/material'
+import { Box, Button, FormControlLabel, Grid, InputLabel, MenuItem, Paper, RadioGroup, Select, Typography } from '@mui/material'
 import regBack from './assets/Registration.png'
-import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-import InputComponent from '../education/InputComponent';
 import { useNavigate } from 'react-router-dom';
 import { FieldValues, useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import Radio from '@mui/material/Radio';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useState } from 'react';
@@ -21,7 +17,12 @@ const styles = {
 
 function Reg3() {
     const [status, setStatus] = useState('')
-    const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>();
+    // Define the FormData interface
+    interface FormData {
+      field: string;
+    }
+    
+    const { register, handleSubmit } = useForm<FormData>();
     const navigate = useNavigate();
 
     const onSubmit = (education: FieldValues) => {
@@ -71,7 +72,7 @@ function Reg3() {
                     >
                         <FormControlLabel value="Graduate" control={<Radio />} label="Graduate" />
                         <FormControlLabel value="Undergraduate" control={<Radio />} label="Undergraduate" />
-                </RadioGroup>   
+                </RadioGroup>
            </Box>
            <Box paddingLeft='3rem' paddingTop='2rem'>
             <InputLabel id="demo-simple-select-label">Select your field of study</InputLabel>

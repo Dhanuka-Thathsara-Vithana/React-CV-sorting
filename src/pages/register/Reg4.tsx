@@ -1,6 +1,5 @@
-import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, Paper, Typography } from '@mui/material'
 import regBack from './assets/Registration.png'
-import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import InputComponent from '../education/InputComponent';
 import { useNavigate } from 'react-router-dom';
 import { FieldValues, useForm } from 'react-hook-form';
@@ -28,7 +27,7 @@ const styles = {
 
 function Reg4() {
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)});
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema)});
     const onSubmit = (password: FieldValues) => {
        console.log(password);
        localStorage.setItem('formData3', JSON.stringify(password));

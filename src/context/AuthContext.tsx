@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
   user: any;
@@ -22,7 +22,6 @@ const AuthProviderWithRouter = ({ children }: { children: React.ReactNode }) => 
   const [authToken, setAuthToken] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     const fetchUser = async () => {

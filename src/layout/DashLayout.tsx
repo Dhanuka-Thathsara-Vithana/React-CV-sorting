@@ -1,5 +1,4 @@
 import { Box, Grid } from '@mui/material'
-import React from 'react'
 import UserSideBar from './userLayout/sidebar/SideBar'
 import { Outlet } from 'react-router-dom'
 

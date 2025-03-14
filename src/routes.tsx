@@ -1,6 +1,4 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import NavBar from './layout/userLayout/navbar/NavBar'
-import SideBar from './layout/sidebar/SideBar'
 import Layout from "./layout/Layout";
 import DashLayout from "./layout/DashLayout";
 import UserDashboard from "../src/pages/userDashboard/UserDashboard"
@@ -15,7 +13,6 @@ import Reg2 from "./pages/register/Reg2";
 import Reg3 from "./pages/register/Reg3";
 import Reg4 from "./pages/register/Reg4";
 import Reg5 from "./pages/register/Reg5";
-import Login from "./pages/Login/Login";
 import LoginLayout from "./layout/LoginLayout";
 import JobApplyForm from "./pages/jobs/ApplyJob/ApplyJobForm";
 import ComDashboard from "./pages/companyDashboard/ComDashboard";

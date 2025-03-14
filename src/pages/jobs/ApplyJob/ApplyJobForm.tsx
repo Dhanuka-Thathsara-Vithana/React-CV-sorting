@@ -1,5 +1,5 @@
 
-import { Alert, Box, Button, Card, CardMedia, Grid, Grow, Link, List, ListItem, ListItemText, TextField, TextareaAutosize, Typography } from '@mui/material'
+import { Alert, Box, Button, Card, Grid, Grow, TextField, Typography } from '@mui/material'
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { FieldValues, useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -29,7 +29,7 @@ type FormData = z.infer<typeof schema>
 
 function JobApplyForm() {
   const navigate = useNavigate();
-   const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormData>({ resolver: zodResolver(schema)}); 
+   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema)}); 
    const onSubmit = (data: FieldValues) => {
 
        const savedId = localStorage.getItem('jobCardId');

@@ -1,10 +1,8 @@
-import { AppBar, Badge, Box, Button, IconButton, List, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Badge, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Link } from 'react-router-dom';
 import NavListComponent from './NavListComponent';
 
 interface Props {
@@ -19,8 +17,8 @@ function UserNavBar({ user, handelClick, name }: Props) {
       width: '100vw',  // Full viewport width
       minWidth: '100%',
       overflowX: 'hidden',
-    }}>
-      <AppBar position="static" sx={{ bgcolor: '#1A5092' }}>
+    }}>      
+    <AppBar position="static" sx={{ bgcolor: '#1A5092' }}>
         <Toolbar 
           sx={{ 
             width: '100%',
@@ -40,7 +38,7 @@ function UserNavBar({ user, handelClick, name }: Props) {
             gap: { xs: '0.5rem', sm: '1rem' },
             flex: { xs: 1, sm: 'unset' }
           }}>
-            <Typography
+          <Typography
               variant="h6"
               component="div"
               sx={{ 
@@ -59,7 +57,6 @@ function UserNavBar({ user, handelClick, name }: Props) {
             }}>
               {user && (
                 <>
-                
                  <NavListComponent to="" name="Home" />
                  <NavListComponent to="user" name="Dashboard" />
                 </>
@@ -71,8 +68,8 @@ function UserNavBar({ user, handelClick, name }: Props) {
                 </>
               )}
             </Box>
-          </Box>
-
+            </Box>
+       
           {/* Middle Section */}
           {user && (
             <Typography
@@ -148,10 +145,10 @@ function UserNavBar({ user, handelClick, name }: Props) {
             >
               <MoreIcon sx={{ fontSize: '1.5rem' }} />
             </IconButton>
-          </Box>
+            </Box>
         </Toolbar>
       </AppBar>
-    </Box>
+      </Box>
   );
 }
 

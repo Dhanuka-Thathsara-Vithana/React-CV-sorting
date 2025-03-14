@@ -1,6 +1,5 @@
 import * as React from 'react';
 import dayjs, { Dayjs } from 'dayjs';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -11,7 +10,7 @@ interface Props {
 }
 
 export default function EduDatePicker({label, handelChange}: Props) {
-  const [value, setValue] = React.useState<Dayjs | null>(dayjs('2022-04-20'));
+  const [value] = React.useState<Dayjs | null>(dayjs('2022-04-20'));
    console.log(value);
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>

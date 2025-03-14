@@ -3,10 +3,9 @@ import {
     Box,
     Grid,
     Typography,
-    useTheme,
     Grow
   } from '@mui/material';
-  import ComJobCard from './comJobCard';
+  import ComJobCard from './ComJobCard';
   import { useEffect, useState } from 'react';
   import axios, { CanceledError } from 'axios';
   import { useNavigate } from 'react-router-dom';
@@ -51,7 +50,7 @@ import {
     navigate('/com/candidates')
      console.log(id)
    }
-  
+  console.log(error)
     return (
       <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}>   
       <Card sx={{width: '1300px', paddingLeft: '4rem', borderRadius: '15px'}}>

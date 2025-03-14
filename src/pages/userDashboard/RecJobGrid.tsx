@@ -1,10 +1,8 @@
-import React from 'react'
 import {
     Card,
     Box,
     Grid,
     Typography,
-    useTheme,
     Grow
   } from '@mui/material';
 import RecJobCard from './RecJobCard';

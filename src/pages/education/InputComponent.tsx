@@ -1,14 +1,15 @@
-import { Alert, Box, Grid, TextField } from '@mui/material'
+import { Alert, Grid, TextField } from '@mui/material'
 
 interface Props {
     label: string;
     objRef: object;
     error?: string | null;
+    Md?: number; // Added Md property to the Props interface
 }
 
-function InputComponent({ label, objRef, error }: Props) {
+function InputComponent({ label, objRef, error, Md }: Props) {
   return (
-    <Grid item xs={12} sm={6} md={6} lg={15} sx={{ padding: '1rem' }}>
+    <Grid item xs={12} sm={6} md={Md || 6} lg={Md || 6} sx={{ padding: '1rem' }}>
         <TextField
          {...objRef}
          id={label}
