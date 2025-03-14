@@ -7,8 +7,6 @@ import PropTypes from 'prop-types';
 import axios, { CanceledError } from 'axios';
 import { useAuth } from '../../context/AuthContext';
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
-
 interface EduProps{
   _id: string,
   Institution: string,
@@ -63,7 +61,7 @@ function Education() {
       const originalWork = [...education];
       setEducation(education.filter(u => u._id !== id));
 
-      axios.delete(`${baseUrl}/${id}` )
+      axios.delete(`http://localhost:5000/api/education/${id}` )
       .catch(err => {
         setError(err.message);
         setEducation(originalWork)
