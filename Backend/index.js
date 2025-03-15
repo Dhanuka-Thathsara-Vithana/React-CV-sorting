@@ -37,12 +37,29 @@ app.use((req, res, next) => {
   next();
 });
 
+// Root endpoint to test if the server is running
+app.get('/', (req, res) => {
+  res.status(200).json({ 
+    message: "Backend server is running", 
+    status: "online",
+    timestamp: new Date().toISOString()
+  });
+});
+
+app.post('/', (req, res) => {
+  res.status(200).json({ 
+    message: "Backend server is running", 
+    status: "online",
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Route Middleware
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 // app.use('/api/adminlogin', adminLoginRoutes);
-app.use('/api/work',auth, worksRoutes);
-app.use('/api/education',auth, educationRoutes);
+app.use('/api/work', auth, worksRoutes);
+app.use('/api/education', auth, educationRoutes);
 // app.use('/api/jobDescription', jobDescriptionRoutes);
 // app.use('/api/jobCard', jobCardRoutes);
 // app.use('/api/application', applicationRoutes);
