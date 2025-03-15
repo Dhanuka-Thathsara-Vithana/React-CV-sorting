@@ -23,7 +23,7 @@ app.use(express.json());
 
 // Middleware for CORS
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://13.60.69.253:5173'); 
+  res.header('Access-Control-Allow-Origin', 'http://13.60.69.253'); 
   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
