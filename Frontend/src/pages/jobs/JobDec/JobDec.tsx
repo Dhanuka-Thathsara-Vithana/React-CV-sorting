@@ -21,6 +21,8 @@ interface JobDesProps {
   AdditionalInformation: string
 }
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 function JobDec() {
 
   const [jobDes, setJobDes] = useState<JobDesProps | null>();
@@ -35,7 +37,7 @@ function JobDec() {
      const dataId = {id}
      console.log(dataId)
     axios
-      .post<JobDesProps>('http://localhost:5000/api/jobDescription', dataId)
+      .post<JobDesProps>(`${baseUrl}/api/jobDescription`, dataId)
       .then((res) => {
       setJobDes(res.data)
       console.log(res.data)

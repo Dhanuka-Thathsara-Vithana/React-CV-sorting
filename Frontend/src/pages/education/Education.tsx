@@ -16,6 +16,7 @@ interface EduProps{
   to: string,
   Description: string
 }
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
     function SimpleDialog(props: { onClose: any; selectedValue: any; open: any; }) {
         const { onClose, selectedValue, open } = props;
@@ -61,7 +62,7 @@ function Education() {
       const originalWork = [...education];
       setEducation(education.filter(u => u._id !== id));
 
-      axios.delete(`http://localhost:5000/api/education/${id}` )
+      axios.delete(`${baseUrl}/api/education/${id}` )
       .catch(err => {
         setError(err.message);
         setEducation(originalWork)
@@ -72,7 +73,7 @@ function Education() {
       const controller = new AbortController();
   
       axios
-        .post<EduProps[]>(`http://localhost:5000/api/education/${user._id}`)
+        .post<EduProps[]>(`${baseUrl}/api/education/${user._id}`)
         .then((res) => setEducation(res.data))
         .catch(err => {
           if(err instanceof CanceledError) return;

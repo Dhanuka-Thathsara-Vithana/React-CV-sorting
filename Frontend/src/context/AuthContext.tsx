@@ -10,6 +10,7 @@ interface AuthContextType {
   logout: () => void;
 }
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 
@@ -37,7 +38,7 @@ const AuthProviderWithRouter = ({ children }: { children: React.ReactNode }) => 
         
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         
-        const response = await axios.get('http://localhost:5000/api/auth/user', { withCredentials: true });
+        const response = await axios.get(`${baseUrl}/api/auth/user`, { withCredentials: true });
         setUser(response.data);
         setAuthToken(token);
       } catch (error) {
@@ -54,7 +55,7 @@ const AuthProviderWithRouter = ({ children }: { children: React.ReactNode }) => 
 
   const login = async (data: any) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/', data, { withCredentials: true });
+      const response = await axios.post(`${baseUrl}/api/auth/`, data, { withCredentials: true });
       const { userObj: userData, token } = response.data;
      
       // Store token
@@ -76,7 +77,7 @@ const AuthProviderWithRouter = ({ children }: { children: React.ReactNode }) => 
 
   const logout = async () => {
     try {
-      await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
+      await axios.post(`${baseUrl}/api/auth/logout`, {}, { withCredentials: true });
     } catch (error) {
       console.error('Logout API call failed:', error);
     } finally {

@@ -24,6 +24,8 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 function AddJob2() {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema)}); 
@@ -34,7 +36,7 @@ function AddJob2() {
         const jobid = JSON.parse(savedId); 
         const newData = {...data, id: jobid};
        console.log(newData)
-        axios.post('http://localhost:5000/api/jobDescription/add',  newData )
+        axios.post(`${baseUrl}/api/jobDescription/add`,  newData )
         .then(res => {
          console.log(res.data);
          localStorage.removeItem('addJobId');

@@ -18,6 +18,8 @@ import {
     age: number
   }
   
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
   function Candidates() {
     const navigate = useNavigate();
     const [candiCard, setCandiCard] = useState<CandiProps[]>([]);
@@ -32,7 +34,7 @@ import {
         const dataId = {id}
         console.log(dataId)
        axios
-         .post<CandiProps[]>('http://localhost:5000/api/application/id', dataId)
+         .post<CandiProps[]>(`${baseUrl}/api/application/id`, dataId)
          .then((res) => {
          setCandiCard(res.data)
          console.log(res.data)

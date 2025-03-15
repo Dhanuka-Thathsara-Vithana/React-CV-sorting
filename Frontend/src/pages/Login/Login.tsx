@@ -8,6 +8,7 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import InputComponent from '../education/InputComponent';
 
 
+
 const schema = z.object({
   email: z.string().email('This is not a valid email.'),
   password: z.string().min(3)

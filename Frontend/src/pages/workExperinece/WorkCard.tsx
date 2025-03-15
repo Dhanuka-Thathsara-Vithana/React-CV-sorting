@@ -22,6 +22,8 @@ interface Props {
   handelClick: () => void
 }
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 function WorkCard({handelClick}: Props) {
   const [fromDate, setFromDate] = useState<Dayjs | null>(null)
   const [toDate, setToDate] = useState<Dayjs | null>(null)
@@ -46,7 +48,7 @@ function WorkCard({handelClick}: Props) {
         
          const newData = {...data, from, to, userID};
          console.log(newData);
-      axios.post('http://localhost:5000/api/work', newData )
+      axios.post(`${baseUrl}/api/work`, newData )
       .then(res => 
        console.log(res.data) )
        }

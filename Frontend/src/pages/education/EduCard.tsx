@@ -17,6 +17,7 @@ interface FormData {
 import { Dayjs } from 'dayjs';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 interface Props {
   handelClick: () => void
@@ -46,7 +47,7 @@ function EduCard({handelClick}: Props) {
       
       const newData = {...data, from, to, userID};
       console.log(newData);
-      axios.post('http://localhost:5000/api/education/', newData)
+      axios.post(`${baseUrl}/api/education/`, newData)
         .then(res => console.log(res.data))
         .catch(err => console.error('Error posting education data:', err));
     }

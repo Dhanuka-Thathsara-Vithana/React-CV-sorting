@@ -11,6 +11,8 @@ const styles = {
     }
 };
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 function Reg5() {
     const navigate = useNavigate();
     const { handleSubmit } = useForm<FormData>();
@@ -31,7 +33,7 @@ function Reg5() {
         }
         
          console.log(data);
-        axios.post('http://localhost:5000/api/users/createUser',  data )
+        axios.post(`${baseUrl}/api/users/createUser`,  data )
         .then(res => {
          console.log(res.data);
          localStorage.removeItem('formData1');

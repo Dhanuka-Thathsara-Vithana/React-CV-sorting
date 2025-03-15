@@ -19,6 +19,8 @@ import {
     des2: string
   }
   
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  
   function ComJob() {
     const navigate = useNavigate();
     const [jobCard, setJobCard] = useState<JobProps[]>([]);
@@ -28,7 +30,7 @@ import {
       const controller = new AbortController();
   
       axios
-        .get<JobProps[]>('http://localhost:5000/api/jobCard')
+        .get<JobProps[]>(`${baseUrl}/api/jobCard`)
         .then((res) => setJobCard(res.data))
         .catch(err => {
           if(err instanceof CanceledError) return;

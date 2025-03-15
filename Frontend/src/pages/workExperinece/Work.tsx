@@ -42,6 +42,8 @@ interface WorkProps{
         selectedValue: PropTypes.string.isRequired
       };
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 function Work() {
     const [works, setWorks] = useState<WorkProps[]>([]);
     const [error, setError] = useState('');
@@ -60,7 +62,7 @@ function Work() {
       const originalWork = [...works];
       setWorks(works.filter(u => u._id !== id));
 
-      axios.delete(`http://localhost:5000/api/work/${id}`)
+      axios.delete(`${baseUrl}/api/work/${id}`)
       .catch(err => {
         setError(err.message);
         setWorks(originalWork)
@@ -71,7 +73,7 @@ function Work() {
       const controller = new AbortController();
   
       axios
-        .post<WorkProps[]>(`http://localhost:5000/api/work/${user._id}`)
+        .post<WorkProps[]>(`${baseUrl}/api/work/${user._id}`)
         .then((res) => setWorks(res.data))
         .catch(err => {
           if(err instanceof CanceledError) return;
