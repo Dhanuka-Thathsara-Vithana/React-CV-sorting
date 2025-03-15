@@ -23,19 +23,17 @@ app.use(express.json());
 
 // Middleware for CORS
 app.use((req, res, next) => {
-  // Replace wildcard with your frontend origin
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.header('Access-Control-Allow-Origin', 'http://13.60.69.253:5173'); 
   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
-  
-  // Handle preflight requests
+
   if (req.method === 'OPTIONS') {
     return res.sendStatus(200);
   }
-  
   next();
 });
+
 
 // Root endpoint to test if the server is running
 app.get('/', (req, res) => {
@@ -68,4 +66,4 @@ app.use('/api/education', auth, educationRoutes);
 
 // Set Port
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Listening on port ${PORT}...`));
