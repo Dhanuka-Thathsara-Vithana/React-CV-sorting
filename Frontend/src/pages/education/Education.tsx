@@ -4,19 +4,9 @@ import { Box, Button, Card,Dialog, Fade, Grid, Grow, Typography } from '@mui/mat
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EduCard from './EduCard';
 import PropTypes from 'prop-types';
-import axios, { CanceledError } from 'axios';
 import { useAuth } from '../../context/AuthContext';
+import { useEducation, useEduDelete } from '../../services/EducationService';
 
-interface EduProps{
-  _id: string,
-  Institution: string,
-  Major:string,
-  Degree: string,
-  from: string,
-  to: string,
-  Description: string
-}
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
     function SimpleDialog(props: { onClose: any; selectedValue: any; open: any; }) {
         const { onClose, selectedValue, open } = props;
@@ -45,8 +35,6 @@ const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 function Education() {
     const {user} = useAuth();
-    const [education, setEducation] = useState<EduProps[]>([]);
-    const [error, setError] = useState('');
 
     const [open, setOpen] = useState(false);
   
@@ -57,33 +45,15 @@ function Education() {
     const handleClose = () => {
       setOpen(false);
     }; 
+
+    const deleteWorkMutation = useEduDelete(user._id);
     
     const handelDelete = (id: string) => {
-      const originalWork = [...education];
-      setEducation(education.filter(u => u._id !== id));
-
-      axios.delete(`${baseUrl}/api/education/${id}` )
-      .catch(err => {
-        setError(err.message);
-        setEducation(originalWork)
-      })
+      deleteWorkMutation.mutate(id);
     }
 
-    useEffect(() => {
-      const controller = new AbortController();
+    const {data: education} = useEducation(user._id);
   
-      axios
-        .get<EduProps[]>(`${baseUrl}/api/education/${user._id}`)
-        .then((res) => {
-          setEducation(res.data)
-          console.log(res.data)})
-        .catch(err => {
-          if(err instanceof CanceledError) return;
-          setError(err.message)
-        });
-        return () => controller.abort();
-    }, [])
-  console.log(error)
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}> 
           <Card sx={{width: '1300px', borderRadius: '15px'}}>
@@ -103,7 +73,7 @@ function Education() {
                 </Box>
                 <Grid container spacing={3}>
                 
-                {/* {education.map((edu) => (
+                {education?.map((edu) => (
                     <Grid key={edu._id} item xs={12} md={4} lg={6}>
                     <EduDecCard
                         id={edu._id}
@@ -116,7 +86,7 @@ function Education() {
                         handelClick={handelDelete}
                     />
                     </Grid>
-                    ))} */}
+                    ))}
 
                 </Grid>
                 <SimpleDialog

@@ -5,7 +5,7 @@ const { Education, validate } = require("../models/education");
 const getEducationById = async (req, res) => {
 
   try {
-    const education = await Education.findById( req.params.id );
+    const education = await Education.find({ userID: req.params.id });
     res.send(education);
   } catch (error) {
     console.error(error);
