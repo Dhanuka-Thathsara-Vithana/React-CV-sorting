@@ -3,14 +3,15 @@ const { Education, validate } = require("../models/education");
 
 // Get education by ID
 const getEducationById = async (req, res) => {
+
   try {
-    const education = await Education.find({ id: req.body.id });
+    const education = await Education.findById( req.params.id );
     res.send(education);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+}; 
 
 // Get all education records, sorted by Company
 const getAllEducation = async (req, res) => {

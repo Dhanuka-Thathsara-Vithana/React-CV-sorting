@@ -6,7 +6,7 @@ const {getWorkById,
     deleteWork} = require("../Controllers/works");
 
 // Get work by ID
-router.post("/:id", getWorkById);
+router.get("/:id", getWorkById);
 
 // Get all work entries
 router.get("/", getAllWork);

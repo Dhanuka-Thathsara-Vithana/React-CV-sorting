@@ -73,8 +73,10 @@ function Education() {
       const controller = new AbortController();
   
       axios
-        .post<EduProps[]>(`${baseUrl}/api/education/${user._id}`)
-        .then((res) => setEducation(res.data))
+        .get<EduProps[]>(`${baseUrl}/api/education/${user._id}`)
+        .then((res) => {
+          setEducation(res.data)
+          console.log(res.data)})
         .catch(err => {
           if(err instanceof CanceledError) return;
           setError(err.message)
@@ -101,7 +103,7 @@ function Education() {
                 </Box>
                 <Grid container spacing={3}>
                 
-                {education.map((edu) => (
+                {/* {education.map((edu) => (
                     <Grid key={edu._id} item xs={12} md={4} lg={6}>
                     <EduDecCard
                         id={edu._id}
@@ -114,7 +116,7 @@ function Education() {
                         handelClick={handelDelete}
                     />
                     </Grid>
-                    ))}
+                    ))} */}
 
                 </Grid>
                 <SimpleDialog

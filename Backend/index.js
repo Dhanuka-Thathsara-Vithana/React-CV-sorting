@@ -23,7 +23,7 @@ app.use(express.json());
 
 // Middleware for CORS
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://13.60.69.253'); 
+  res.header('Access-Control-Allow-Origin', `${process.env.FRONTEND_URL}`); 
   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -56,8 +56,8 @@ app.post('/', (req, res) => {
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 // app.use('/api/adminlogin', adminLoginRoutes);
-app.use('/api/work', auth, worksRoutes);
-app.use('/api/education', auth, educationRoutes);
+app.use('/api/work',  worksRoutes);
+app.use('/api/education', educationRoutes);
 // app.use('/api/jobDescription', jobDescriptionRoutes);
 // app.use('/api/jobCard', jobCardRoutes);
 // app.use('/api/application', applicationRoutes);

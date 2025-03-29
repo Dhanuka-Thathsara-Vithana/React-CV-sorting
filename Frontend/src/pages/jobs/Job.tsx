@@ -6,40 +6,16 @@ import {
   Grow
 } from '@mui/material';
 import JobCard from './JobCard';
-import { useEffect, useState } from 'react';
-import axios, { CanceledError } from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-interface JobProps {
-  _id: number,
-  image: string,
-  title: string,
-  pubDate: string,
-  des1: string,
-  des2: string
-}
-
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+import useJobs from '../../services/jobService';
 
 function Job() {
   const navigate = useNavigate();
-  const [jobCard, setJobCard] = useState<JobProps[]>([]);
-  const [error, setError] = useState('');
 
-  useEffect(() => {
-    const controller = new AbortController();
+const job = useJobs();
+const { data:jobCard, error } = useJobs();
+  console.log(job.data)
 
-    axios
-      .get<JobProps[]>(`${baseUrl}/api/jobCard`)
-      .then((res) => setJobCard(res.data))
-      .catch(err => {
-        if(err instanceof CanceledError) return;
-        setError(err.message)
-      });
-      return () => controller.abort();
-  }, [])
-  
-console.log(jobCard)
 console.log(error)
 
 const handelId = (id: number) => {
@@ -63,7 +39,7 @@ const handelId = (id: number) => {
            
         <Grid container spacing={23}>
          
-           {jobCard.map((job) => (
+           {jobCard?.map((job) => (
              <Grid key={job._id} item xs={12} md={4} lg={3.4}>
                <JobCard
                   id={job._id}

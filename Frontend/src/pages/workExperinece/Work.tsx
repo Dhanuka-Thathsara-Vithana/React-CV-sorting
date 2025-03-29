@@ -1,22 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import WorkDecCard from './WorkDecCard'
 import { Box, Button, Card, Dialog, Fade, Grid, Grow, Typography } from '@mui/material';
 import WorkCard from './WorkCard';
 import PropTypes from 'prop-types';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import axios, { CanceledError } from 'axios';
 import { useAuth } from '../../context/AuthContext';
+import { useWork, useWorkDelete } from '../../services/workService';
 
 
-interface WorkProps{
-   Description: string;
-   _id: string,
-   Title: string,
-   Company: string,
-   OfficeLocation: string,
-   from: string,
-   to: string
-}
+
 
     function SimpleDialog(props: { onClose: any; selectedValue: any; open: any; }) {
         const { onClose, selectedValue, open } = props;
@@ -42,11 +34,8 @@ interface WorkProps{
         selectedValue: PropTypes.string.isRequired
       };
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 function Work() {
-    const [works, setWorks] = useState<WorkProps[]>([]);
-    const [error, setError] = useState('');
     const {user} = useAuth();
     const [open, setOpen] = useState(false);
   
@@ -57,32 +46,15 @@ function Work() {
     const handleClose = () => {
       setOpen(false);
     }; 
-     
+    
+    const deleteWorkMutation = useWorkDelete(user._id);
+    
     const handelDelete = (id: string) => {
-      const originalWork = [...works];
-      setWorks(works.filter(u => u._id !== id));
-
-      axios.delete(`${baseUrl}/api/work/${id}`)
-      .catch(err => {
-        setError(err.message);
-        setWorks(originalWork)
-      })
+      deleteWorkMutation.mutate(id);
     }
 
-    useEffect(() => {
-      const controller = new AbortController();
-  
-      axios
-        .post<WorkProps[]>(`${baseUrl}/api/work/${user._id}`)
-        .then((res) => setWorks(res.data))
-        .catch(err => {
-          if(err instanceof CanceledError) return;
-          setError(err.message)
-        });
-        return () => controller.abort();
-    }, [])
-  console.log(error)
-
+    const {data: works1} = useWork(user._id);
+   
   return (
     <Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 700 } : {})}> 
       <Card sx={{width: '1300px', borderRadius: '15px'}}>
@@ -102,7 +74,7 @@ function Work() {
           </Box>
           <Grid container spacing={3}>
           
-          {works.map((works) => (
+          {works1?.map((works) => (
               <Grid key={works._id} item xs={12} md={4} lg={6}>
               <WorkDecCard 
                   id={works._id}

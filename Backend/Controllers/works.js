@@ -3,7 +3,7 @@ const { Work, validate } = require("../models/work");
 
 const getWorkById = async (req, res) => {
   try {
-    const work = await Work.find({ id: req.body.id });
+    const work = await Work.find({ userID: req.params.id });
     res.send(work);
   } catch (error) {
     console.error("Error fetching work by ID:", error);

@@ -8,7 +8,7 @@ const {
 
 const router = express.Router();
 
-router.post("/:id", getEducationById);
+router.get("/:id", getEducationById);
 router.get("/", getAllEducation);
 router.post("/", createEducation);
 router.delete("/:id", deleteEducation);
