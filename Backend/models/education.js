@@ -31,10 +31,6 @@ const educationSchema = new mongoose.Schema({
       minlength: 3,
       maxlength: 255
      },
-    Check: {
-      type: Boolean,
-      required: true
-    },
     Degree: {
       type: String,
       required: true,
@@ -70,7 +66,6 @@ const educationSchema = new mongoose.Schema({
       Description: Joi.string()
         .min(3)
         .max(255),
-      Check: Joi.boolean().required(),
       Degree: Joi.string()
       .min(2)
       .max(50)

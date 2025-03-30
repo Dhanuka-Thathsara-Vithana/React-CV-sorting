@@ -4,7 +4,6 @@ import 'react-calendar/dist/Calendar.css';
 import InputComponent from './InputComponent';
 import EduDatePicker from './DatePicker';
 
-import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
 
 interface FormData {
@@ -12,12 +11,12 @@ interface FormData {
   Major: string;
   Degree: string;
   Description: string;
-  Check: boolean;
 }
+
 import { Dayjs } from 'dayjs';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
+import { useCreateEducation, EduProps } from '../../services/EducationService';
 
 interface Props {
   handelClick: () => void
@@ -37,22 +36,29 @@ function EduCard({handelClick}: Props) {
     setToDate(newValue);
    
   }
+  const createEduMutation = useCreateEducation({} as EduProps);
 
   const { register, handleSubmit } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
     if(fromDate) {
       const from = fromDate.toString();
-    
       const to = toDate ? toDate.toString() : null;
       
-      const newData = {...data, from, to, userID};
+      // Explicitly include all required properties from EduProps
+      const newData: EduProps = {
+        Institution: data.Institution,
+        Major: data.Major,
+        Degree: data.Degree,
+        Description: data.Description,
+        from,
+        to,
+        userID
+      };
       console.log(newData);
-      axios.post(`${baseUrl}/api/education/`, newData)
-        .then(res => console.log(res.data))
-        .catch(err => console.error('Error posting education data:', err));
+      createEduMutation.mutate(newData);
     }
   }
-    console.log(fromDate);
+    
 
 return (
     <Card sx={{
@@ -96,7 +102,6 @@ return (
                </Grid>
                <Grid item xs={6} md={15}>
                <FormControlLabel control={<Checkbox 
-                  { ...register('Check')}
                   id='Check' 
                />} label="I currently attend" />
                </Grid>

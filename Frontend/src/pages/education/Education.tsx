@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import EduDecCard from './EduDecCard'
 import { Box, Button, Card,Dialog, Fade, Grid, Grow, Typography } from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -76,12 +76,12 @@ function Education() {
                 {education?.map((edu) => (
                     <Grid key={edu._id} item xs={12} md={4} lg={6}>
                     <EduDecCard
-                        id={edu._id}
+                        id={edu._id || ''}
                         institution={edu.Institution}
                         major={edu.Major}
                         degree={edu.Degree}
                         description={edu.Description}
-                        to={edu.to}
+                        to={edu.to || ''}
                         from={edu.from}
                         handelClick={handelDelete}
                     />

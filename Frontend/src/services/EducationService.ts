@@ -3,16 +3,17 @@ import APIClient from "./ApiClient";
 import { CACHE_KEY_EDU } from "../constants/cache";
 
 export interface EduProps {
-    _id: string,
+  _id?: string,
   Institution: string,
   Major:string,
   Degree: string,
   from: string,
-  to: string,
-  Description: string
+  to: string | null,
+  Description: string,
+  userID?: string,
 }
 
-const apiClient = new APIClient<EduProps[]>("api/education");
+const apiClient = new APIClient<EduProps>("api/education");
 
 const useEducation = (Id: string) => {
     return useQuery<EduProps[], Error>({
@@ -33,4 +34,15 @@ const useEduDelete = (_id: string) => {
     });
 };
 
-export { useEducation, useEduDelete };
+const useCreateEducation = (_newEdu: EduProps) => {
+    const queryClient = useQueryClient();
+   
+    return useMutation({
+        mutationFn: (_newEdu: EduProps) => apiClient.create(_newEdu),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [CACHE_KEY_EDU] });
+        },
+    });
+}
+
+export { useEducation, useEduDelete, useCreateEducation };

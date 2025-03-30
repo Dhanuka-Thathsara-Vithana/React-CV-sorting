@@ -11,7 +11,7 @@ interface Props {
 
 export default function EduDatePicker({label, handelChange}: Props) {
   const [value] = React.useState<Dayjs | null>(dayjs('2022-04-20'));
-   console.log(value);
+  
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       
