@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
   user: any;
-  authToken: string | null;
   loading: boolean;
   login: (data: any) => Promise<void>;
   logout: () => void;
@@ -13,62 +12,58 @@ interface AuthContextType {
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   return <AuthProviderWithRouter>{children}</AuthProviderWithRouter>;
 };
 
 const AuthProviderWithRouter = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<any>(null);
-  const [authToken, setAuthToken] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const checkAuthStatus = async () => {
       setLoading(true);
       try {
-  
-        const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+        await axios.get(`${baseUrl}/api/auth/refresh-token`, {
+                  withCredentials: true
+         });
+        // Use the correct endpoint that we fixed in the backend
+        const response = await axios.get(`${baseUrl}/api/users/me`, { 
+          withCredentials: true 
+        });
         
-        if (!token) {
-          setLoading(false);
-          return;
+        if (response.data) {
+         // console.log("User data from API:", response.data);
+          setUser(response.data);
+        } else {
+          setUser(null);
         }
-        
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        
-        const response = await axios.get(`${baseUrl}/api/auth/user`, { withCredentials: true });
-        setUser(response.data);
-        setAuthToken(token);
       } catch (error) {
+        console.error('Authentication check failed:', error);
         setUser(null);
-        setAuthToken(null);
-        localStorage.removeItem('authToken');
-        sessionStorage.removeItem('authToken');
       } finally {
         setLoading(false);
       }
     };
-    fetchUser();
+    
+    checkAuthStatus();
   }, []);
 
   const login = async (data: any) => {
     try {
-      const response = await axios.post(`${baseUrl}/api/auth/`, data, { withCredentials: true });
-      const { userObj: userData, token } = response.data;
-     
-      // Store token
-      if (token) {
-        localStorage.setItem('authToken', token);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        setAuthToken(token);
+      const response = await axios.post(`${baseUrl}/api/auth`, data, { 
+        withCredentials: true 
+      });
+      
+      // Set the user data from the response
+      if (response.data.user) {
+        setUser(response.data.user);
       }
-      
-      setUser(userData);
-      
-      // Navigate to user dashboard after successful login
-      const from = (userData.type === 'user' ? '/user' : '/com');
+
+      // Navigate to the appropriate dashboard based on user type
+      const userType = response.data.user?.type || 'user';
+      const from = userType === 'user' ? '/user' : '/com';
       navigate(from);
     } catch (error) {
       throw error;
@@ -77,22 +72,19 @@ const AuthProviderWithRouter = ({ children }: { children: React.ReactNode }) => 
 
   const logout = async () => {
     try {
-      await axios.post(`${baseUrl}/api/auth/logout`, {}, { withCredentials: true });
+      await axios.post(`${baseUrl}/api/auth/logout`, {}, { 
+        withCredentials: true 
+      });
     } catch (error) {
       console.error('Logout API call failed:', error);
     } finally {
-      // Always clear state and storage regardless of API success
       setUser(null);
-      setAuthToken(null);
-      localStorage.removeItem('authToken');
-      sessionStorage.removeItem('authToken');
-      delete axios.defaults.headers.common['Authorization'];
       navigate('/login');
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, authToken, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

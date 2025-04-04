@@ -1,14 +1,13 @@
 const express = require("express");
-const { login, getCurrentUser } = require("../Controllers/auth");
+const { loginUser, refreshToken, logoutUser  } = require("../Controllers/auth");
 const auth = require("../middleware/auth"); // Import the auth middleware
 
 const router = express.Router();
 
 // Route for user login
-router.post("/", login);
-
-// Route to get current user (protected by auth middleware)
-router.get("/user", auth, getCurrentUser);
+router.post("/", loginUser);
+router.get("/refresh-token", refreshToken); // Route for refreshing token
+router.post("/logout", logoutUser); // Route for user logout
 
 // Health check route
 router.get("/health", (req, res) => {

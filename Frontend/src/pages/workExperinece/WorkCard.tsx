@@ -1,7 +1,6 @@
 import { Box, Button, Card, Checkbox, FormControlLabel, Grid, TextField, Typography } from '@mui/material'
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
-import axios from 'axios';
 import { FieldValues, useForm } from 'react-hook-form';
 
 interface FormData {
@@ -17,44 +16,48 @@ import { useState } from 'react';
 import InputComponent from '../education/InputComponent';
 import EduDatePicker from '../education/DatePicker';
 import { useAuth } from '../../context/AuthContext';
+import { useCreateWork, WorkProps } from '../../services/workService';
 
 interface Props {
   handelClick: () => void
 }
-
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 function WorkCard({handelClick}: Props) {
   const [fromDate, setFromDate] = useState<Dayjs | null>(null)
   const [toDate, setToDate] = useState<Dayjs | null>(null)
   const {user} = useAuth();
   const userID = user?._id;
+  
   const handelFrom = (newValue: Dayjs | null) => {
       setFromDate(newValue);
-  useForm<FormData>();
   }
   
   const handelTo = (newValue: Dayjs | null) => {
     setToDate(newValue);
-   
   }
+
+  const createWorkMutation = useCreateWork({} as WorkProps);
 
   const { register, handleSubmit } = useForm<FormData>(); 
   const onSubmit = (data: FieldValues) => {
        if(fromDate) {
-        const from = fromDate.toString();
+        const from = toDate ? toDate.toString() : '';
     
-        const to = toDate ? toDate.toString() : null;
+        const to = toDate ? toDate.toString() : '';
         
-         const newData = {...data, from, to, userID};
-         console.log(newData);
-      axios.post(`${baseUrl}/api/work`, newData )
-      .then(res => 
-       console.log(res.data) )
+        const newData: WorkProps = {
+          ...data,
+          from,
+          to,
+          userID,
+          Title: data.Title,
+          Company: data.Company,
+          OfficeLocation: data.OfficeLocation,
+          Description: data.Description,
+        };
+        createWorkMutation.mutate(newData);  
        }
-       
-    
-      }
+}
       
   return (
     <Card sx={{

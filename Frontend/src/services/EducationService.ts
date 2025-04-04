@@ -23,26 +23,34 @@ const useEducation = (Id: string) => {
     });
 };
 
-const useEduDelete = (_id: string) => {
+const useCreateEducation = (_newEdu: EduProps) => {
     const queryClient = useQueryClient();
 
-    return useMutation({
-        mutationFn: (_id: string) => apiClient.delete(_id),
+    return useMutation<EduProps, Error, EduProps>({
+        mutationFn: (_newEdu) => apiClient.create(_newEdu),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: [CACHE_KEY_EDU] });
+        },
+        onError: (error) => {
+            console.error("Error creating education:", error);
+            throw error; 
         },
     });
 };
 
-const useCreateEducation = (_newEdu: EduProps) => {
+const useEduDelete = (_id: string) => {
     const queryClient = useQueryClient();
-   
-    return useMutation({
-        mutationFn: (_newEdu: EduProps) => apiClient.create(_newEdu),
+
+    return useMutation<void, Error, string>({
+        mutationFn: (_id) => apiClient.delete(_id),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: [CACHE_KEY_EDU] });
         },
+        onError: (error) => {
+            console.error("Error deleting education:", error);
+            throw error; // This allows error handling in the component
+        },
     });
-}
+};
 
 export { useEducation, useEduDelete, useCreateEducation };

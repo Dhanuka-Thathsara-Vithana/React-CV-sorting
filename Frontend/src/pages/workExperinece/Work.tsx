@@ -77,7 +77,7 @@ function Work() {
           {works1?.map((works) => (
               <Grid key={works._id} item xs={12} md={4} lg={6}>
               <WorkDecCard 
-                  id={works._id}
+                  id={works._id ?? ''}
                   title={works.Title}
                   company={works.Company}
                   officeLocation={works.OfficeLocation}

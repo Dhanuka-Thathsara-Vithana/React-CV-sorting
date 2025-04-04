@@ -4,15 +4,16 @@ import { CACHE_KEY_WORK } from "../constants/cache";
 
 export interface WorkProps {
     Description: string;
-    _id: string;
+    _id?: string;
     Title: string;
     Company: string;
     OfficeLocation: string;
     from: string;
     to: string;
+    userID?: string,
 }
 
-const apiClient = new APIClient<WorkProps[]>("api/work");
+const apiClient = new APIClient<WorkProps>("api/work");
 
 const useWork = (Id: string) => {
     return useQuery<WorkProps[], Error>({
@@ -33,4 +34,15 @@ const useWorkDelete = (_id: string) => {
     });
 };
 
-export { useWork, useWorkDelete };
+const useCreateWork = (_newEdu: WorkProps) => {
+    const queryClient = useQueryClient();
+   
+    return useMutation({
+        mutationFn: (_newWork: WorkProps) => apiClient.create(_newWork),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [CACHE_KEY_WORK] });
+        },
+    });
+}
+
+export { useWork, useWorkDelete, useCreateWork };

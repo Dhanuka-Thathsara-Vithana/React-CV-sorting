@@ -3,7 +3,7 @@ const { Education, validate } = require("../models/education");
 
 // Get education by ID
 const getEducationById = async (req, res) => {
-
+  
   try {
     const education = await Education.find({ userID: req.params.id });
     res.send(education);
